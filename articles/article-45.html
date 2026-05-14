@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="愛情裡最痛苦的事情是『原本在一起的兩個人，卻突然分手了』。">
+  <title>感情的事，聽朋友的話，多數人後悔終生 | 五四愛情學苑 派特</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    :root {
+      --bg: #0a0a0a; --surface: #0f0f0f; --card: #141414;
+      --border: #1e1e1e; --border-hover: #2e2e2e;
+      --accent: #1a3a5c; --accent-hover: #234d7a; --accent-text: #4a8bc4;
+      --text-primary: #efefef; --text-secondary: #888; --text-muted: #444;
+      --font: 'Noto Sans TC', -apple-system, 'PingFang TC', 'Microsoft JhengHei', sans-serif;
+      --max-w: 1080px; --prose-w: 680px; --nav-h: 64px;
+    }
+    html { scroll-behavior: smooth; }
+    body { background: var(--bg); color: var(--text-primary); font-family: var(--font); line-height: 1.7; -webkit-font-smoothing: antialiased; }
+    a { color: inherit; text-decoration: none; }
+    .reveal { opacity: 0; transform: translateY(24px); transition: opacity 0.65s ease, transform 0.65s ease; }
+    .reveal.visible { opacity: 1; transform: none; }
+
+    nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; height: var(--nav-h); background: rgba(10,10,10,0.88); backdrop-filter: blur(18px); -webkit-backdrop-filter: blur(18px); border-bottom: 1px solid var(--border); }
+    .nav-inner { max-width: var(--max-w); margin: 0 auto; padding: 0 24px; height: 100%; display: flex; align-items: center; justify-content: space-between; }
+    .nav-links { display: flex; align-items: center; gap: 28px; list-style: none; }
+    .nav-links a { font-size: 14px; color: var(--text-secondary); transition: color 0.2s; }
+    .nav-links a:hover { color: var(--text-primary); }
+    .nav-cta { padding: 8px 18px; border: 1px solid var(--border); border-radius: 4px; color: var(--text-primary) !important; font-size: 14px; transition: background 0.2s, border-color 0.2s !important; }
+    .nav-cta:hover { background: var(--card) !important; border-color: var(--border-hover) !important; }
+    .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 6px; background: none; border: none; }
+    .hamburger span { display: block; width: 22px; height: 1.5px; background: var(--text-primary); transition: all 0.25s; }
+    .hamburger.open span:nth-child(1) { transform: translateY(6.5px) rotate(45deg); }
+    .hamburger.open span:nth-child(2) { opacity: 0; }
+    .hamburger.open span:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
+    .mobile-menu { display: none; position: fixed; top: var(--nav-h); left: 0; right: 0; background: var(--surface); border-bottom: 1px solid var(--border); z-index: 99; }
+    .mobile-menu.open { display: block; }
+    .mobile-menu a { display: block; padding: 16px 24px; font-size: 15px; color: var(--text-secondary); border-bottom: 1px solid var(--border); transition: color 0.2s; }
+    .mobile-menu a:hover { color: var(--text-primary); }
+    .mobile-menu a:last-child { border-bottom: none; }
+
+    .prose-container { max-width: var(--prose-w); margin: 0 auto; padding: 0 24px; }
+    .article-hero { padding-top: calc(var(--nav-h) + 80px); padding-bottom: 40px; }
+    .article-eyebrow { font-size: 11px; font-weight: 400; letter-spacing: 0.16em; text-transform: uppercase; color: var(--text-muted); margin-bottom: 24px; }
+    .article-title { font-size: clamp(1.6rem, 4vw, 2.4rem); font-weight: 700; line-height: 1.3; color: var(--text-primary); }
+    .article-body { padding-bottom: 80px; }
+    .divider { border: none; border-top: 1px solid var(--border); margin: 48px 0; }
+    .prose p { font-size: clamp(1rem, 2vw, 1.1rem); color: var(--text-secondary); font-weight: 300; line-height: 2; margin-bottom: 20px; }
+    .prose p:last-child { margin-bottom: 0; }
+
+    .cta-section { text-align: center; background: linear-gradient(170deg, var(--bg) 0%, #0b1623 100%); border-top: 1px solid var(--border); padding: 96px 0; }
+    .section-label { font-size: 11px; font-weight: 400; letter-spacing: 0.16em; text-transform: uppercase; color: var(--text-muted); margin-bottom: 14px; }
+    .section-title { font-size: clamp(1.7rem, 4vw, 2.5rem); font-weight: 700; line-height: 1.25; color: var(--text-primary); margin-bottom: 36px; }
+    .cta-stack { display: flex; flex-direction: column; align-items: center; gap: 16px; }
+    .btn-primary { display: inline-flex; align-items: center; gap: 10px; padding: 14px 26px; background: var(--accent); color: #fff; font-size: 15px; font-weight: 500; font-family: var(--font); border-radius: 4px; border: none; cursor: pointer; transition: background 0.2s, transform 0.15s; }
+    .btn-primary:hover { background: var(--accent-hover); transform: translateY(-1px); }
+    .btn-text { display: inline-flex; align-items: center; gap: 6px; font-size: 14px; color: var(--text-secondary); transition: color 0.2s; }
+    .btn-text:hover { color: var(--text-primary); }
+
+    footer { padding: 32px 24px; border-top: 1px solid var(--border); }
+    .footer-inner { max-width: var(--max-w); margin: 0 auto; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 12px; }
+    .footer-copy { font-size: 13px; color: var(--text-muted); }
+    .footer-links { display: flex; gap: 24px; }
+    .footer-links a { font-size: 13px; color: var(--text-muted); transition: color 0.2s; }
+    .footer-links a:hover { color: var(--text-secondary); }
+
+    @media (max-width: 768px) {
+      .nav-links { display: none; }
+      .hamburger { display: flex; }
+      .footer-inner { flex-direction: column; align-items: flex-start; }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <a href="../index.html" class="nav-logo">
+      <img src="../logo.png" alt="派特 五四愛情學苑" height="56" style="width:auto;display:block;">
+    </a>
+    <ul class="nav-links">
+      <li><a href="../index.html">文章</a></li>
+      <li><a href="../about.html">關於派特</a></li>
+      <li><a href="../service.html" class="nav-cta">預約諮詢</a></li>
+    </ul>
+    <button class="hamburger" id="hamburger" aria-label="開啟選單" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<div class="mobile-menu" id="mobileMenu" role="navigation">
+  <a href="../index.html">文章</a>
+  <a href="../about.html">關於派特</a>
+  <a href="../service.html">預約諮詢</a>
+</div>
+
+<div class="article-hero">
+  <div class="prose-container">
+    <p class="article-eyebrow">派特觀點</p>
+    <h1 class="article-title">感情的事，聽朋友的話，多數人後悔終生</h1>
+  </div>
+</div>
+
+<div class="article-body">
+  <div class="prose-container">
+    <hr class="divider">
+    <div class="prose reveal">
+      <p>愛情裡最痛苦的事情是『原本在一起的兩個人，卻突然分手了』。</p>
+      <p>愛情裡面最冤枉的事情是『原本看似有機會在一起的，卻突然被冷漠對待』。</p>
+      <p>愛情裡最無力的事情是『完全找不到施力點，來更靠近那個喜歡的人』。</p>
+      <p>一般人遇到這些狀況時會做什麼事情呢?</p>
+      <p>一場你追他跑的戲碼，不斷重複上演，你越追不著，越是著急，他越是逃跑，越是困擾。</p>
+      <p>到底有什麼方法可以精準的解決這些問題呢?</p>
+      <p>很多人會告訴你，你需要的是自我提升，讓自己變得更好，才有可能重新吸引到對方。</p>
+      <p>這論點一點錯都沒有，但這不是逆轉兩人困境的解決辦法，因為就算在還沒交往前，甚至是已經交往中，不斷讓自己變得更好，這是只要有呼吸，還活著時，本來就應該做的，而不是等到悲劇發生之後才開始。</p>
+      <p>逆轉的關鍵應該是『精準的對症下藥』!</p>
+      <p>我想跟你分手:</p>
+      <p>A先生跟B小姐在一起一個多月，兩人從原本的如膠似漆，到逐漸冷淡，A先生認為一切應該都要很順利的，而且自己也沒做錯什麼事，但最後卻走上『被分手之路』，中間到底發生了什麼事?</p>
+      <p>從A先生的描述裡面，他想知道原因，因為他認為只要知道原因，就可以改，就可以回到那個甜蜜的過去，所以他不斷的追問B小姐原因。</p>
+      <p>而B小姐總是找了一堆自己不夠好的理由要分手，而男生也不斷地表明-愛一個人可以包容這一切，最後B小姐乾脆避不見面，也封鎖刪除了兩個人的聯絡方式....。</p>
+      <p>A先生最後聽了朋友的建議，開始寫信表示懺悔、送貴重禮物、突然出現製造驚喜、時而欲擒故縱，時而積極熱情，但這些作為最後只讓B小姐更加反感....。</p>
+      <p>謝謝你，但是對不起:</p>
+      <p>甲先生跟乙小姐，兩個陌生人因為男生的主動攀談而認識，彼此兩個人感覺都不錯，很快開始約會，突如其來的牽手，讓兩個人貌似已經交往，隔兩天晚上，兩個人的獨處之後，原本以為關係應該更加牢固，可是乙小姐卻慢慢地開始保持距離......。</p>
+      <p>從甲先生的描述裡面，他覺得是不是某些地方冒犯了女生，又或者是自己沒有把握住機會，他很想要跟女方講清楚說明白，因為知道原因，就可以讓一段好的緣分繼續下去。</p>
+      <p>而乙小姐卻躲著甲先生，即使『不小心』碰到了面，女生也只是平靜冷淡地回應著甲先生，這讓男方倍感冤枉，原本不是兩人不是在談戀愛嗎?到底發生了什麼事?這份焦慮，有多喜歡對方，就有多痛苦......。</p>
+      <p>甲先生最後聽了朋友的建議，開始寫信表示懺悔、送貴重禮物、突然出現製造驚喜、時而欲擒故縱，時而積極熱情，但這些作為最後只讓乙小姐更加反感....。</p>
+      <p>今天很高興認識你:</p>
+      <p>聰明如你，你一定也猜到了，這可能發生在你我身上的真實案例，一個男生跟一個女生剛認識，兩人聊得很開心，在最後要分開的時候，有一方熱情的說:「今天很高興認識你」。</p>
+      <p>交換了聯絡方式，然後....就沒有然後了。</p>
+      <p>放不下的那一方，最後聽了朋友的建議，開始寫信表示懺悔、送貴重禮物、突然出現製造驚喜、時而欲擒故縱，時而積極熱情，但這些作為最後只讓另一方更加反感....。</p>
+      <p>如果今天生病了，醫生開同一款藥治療所有不同疾病的病患，你會不會覺得不可思議?</p>
+      <p>而上述三個案例裡面，幾乎所有人都認為事情應該這樣解決......。</p>
+      <p>這是一堂解決感情問題的啟蒙講座，透過案例的分析，來釐清問題的源頭，看透事情的本質，以及透過自身狀況找到最佳的解決方案。</p>
+      <p>我們將提供:</p>
+      <p>1.分手的4種主因以及對方心理變化的最佳解法。</p>
+      <p>2.原本應該發展的戀情，最後告吹的3個推論方向，讓你能搞懂來龍去脈，找到逆轉的方式。</p>
+      <p>3.剛認識的熱情，到底是真是假的精準判斷，讓你能把握最大概率的機會，創造戀情。</p>
+      <p>你還有什麼愛情難題嗎?歡迎在我們講座裡發問，讓我們能給同樣需要的人更多元的解答。</p>
+      <p>======感情的事，聽朋友的話，多數人後悔終生</p>
+      <p>​</p>
+      <p>有三種愛情的痛，每一種都不一樣，但幾乎每個人的解法，都一模一樣。</p>
+      <p>​</p>
+      <p>第一種：在一起了，卻突然分手。</p>
+      <p>​</p>
+      <p>第二種：明明快在一起了，卻突然被冷漠對待。</p>
+      <p>​</p>
+      <p>第三種：連靠近的方法都找不到，站在原地，不知道從哪裡開始。</p>
+      <p>​</p>
+      <p>三種不同的傷，三種不同的處境。</p>
+      <p>​</p>
+      <p>然後呢？</p>
+      <p>​</p>
+      <p>幾乎所有人，包括你身邊的朋友，給出的解法，卻是同一帖藥。</p>
+      <p>​</p>
+      <p>------</p>
+      <p>​</p>
+      <p>我先說三個故事。</p>
+      <p>​</p>
+      <p>第一個，建宏和小芸。</p>
+      <p>​</p>
+      <p>在一起一個多月。</p>
+      <p>​</p>
+      <p>從如膠似漆到逐漸冷淡，小芸說要分手，給的理由是「自己不夠好」。</p>
+      <p>​</p>
+      <p>建宏不相信，拚命問原因，說只要知道哪裡不對，他可以改，可以包容一切。</p>
+      <p>​</p>
+      <p>小芸後來乾脆不見面，封鎖刪除。</p>
+      <p>​</p>
+      <p>朋友給建宏出主意，寫信、送禮物、製造驚喜、欲擒故縱、時而熱情時而消失……結果呢？</p>
+      <p>​</p>
+      <p>小芸更反感。</p>
+      <p>​</p>
+      <p>------</p>
+      <p>​</p>
+      <p>第二個，柏翰和欣妤。</p>
+      <p>​</p>
+      <p>兩個陌生人認識，約會，牽手，一切看起來都在往好的方向走。</p>
+      <p>​</p>
+      <p>但隔了幾天獨處之後，欣妤開始保持距離。</p>
+      <p>​</p>
+      <p>柏翰找機會把話說開，想弄清楚是哪裡冒犯了對方，或者哪個機會沒把握住。</p>
+      <p>​</p>
+      <p>欣妤不回應，偶爾碰到面，只是平靜地帶過。</p>
+      <p>​</p>
+      <p>朋友給柏翰出主意，寫信、送禮物、製造驚喜、欲擒故縱、時而熱情時而消失……結果呢？</p>
+      <p>​</p>
+      <p>欣妤更反感。</p>
+      <p>​</p>
+      <p>------</p>
+      <p>​</p>
+      <p>第三個，阿誠。最簡單，也最常見。</p>
+      <p>​</p>
+      <p>兩個人第一次認識，聊得不錯，對方說了句「今天很高興認識你」，交換了聯絡方式。</p>
+      <p>​</p>
+      <p>然後就沒有然後了。</p>
+      <p>​</p>
+      <p>朋友給阿誠出主意，寫信、送禮物、製造驚喜、欲擒故縱、時而熱情時而消失……</p>
+      <p>​</p>
+      <p>你猜結果是什麼？</p>
+      <p>​</p>
+      <p>------</p>
+      <p>​</p>
+      <p>愛因斯坦說過一句話：</p>
+      <p>​</p>
+      <p>「用同樣的方法做同樣的事，卻期待不同的結果——這是瘋狂的定義。」</p>
+      <p>​</p>
+      <p>三種不同的處境。</p>
+      <p>​</p>
+      <p>三種不同的問題。</p>
+      <p>​</p>
+      <p>三個人的朋友，給了同一帖藥。</p>
+      <p>​</p>
+      <p>如果你今天生病，醫生對每一個病人都開同一種藥，你會不會覺得不可思議？</p>
+      <p>​</p>
+      <p>但偏偏，在感情裡面，幾乎每個人都在做這件事。</p>
+      <p>​</p>
+      <p>------</p>
+      <p>​</p>
+      <p>為什麼會這樣？</p>
+      <p>​</p>
+      <p>因為大多數人解決感情問題的方式，不是在「找原因」，而是在「消滅焦慮」。</p>
+      <p>​</p>
+      <p>建宏不斷追問原因，不是因為他真的想改，而是因為「不知道原因」這件事，讓他坐立難安。</p>
+      <p>​</p>
+      <p>他需要一個解釋，讓焦慮暫時停下來。</p>
+      <p>​</p>
+      <p>柏翰想跟欣妤說清楚，不是因為他有什麼可以說的，而是沉默讓他痛苦，開口至少有種掌控感。</p>
+      <p>​</p>
+      <p>阿誠一直傳訊息，不是因為他想到了什麼，而是什麼都沒發生，這件事本身，比拒絕更難受。</p>
+      <p>​</p>
+      <p>這叫做情感作業系統1.0：我的下一步，由對方的反應來決定。</p>
+      <p>​</p>
+      <p>焦慮驅動行動，行動不是來自判斷，而是來自難受。</p>
+      <p>​</p>
+      <p>難受讓人出手，出手讓對方更反感，更反感讓人更難受，更難受讓人更用力出手……</p>
+      <p>​</p>
+      <p>你追得越用力，她跑得越快。</p>
+      <p>​</p>
+      <p>不是因為你不夠好，而是因為這個追法，本來就是在把對方推走。</p>
+      <p>​</p>
+      <p>那正確的解法是什麼？</p>
+      <p>​</p>
+      <p>不是寫信。</p>
+      <p>​</p>
+      <p>不是送禮。</p>
+      <p>​</p>
+      <p>不是消失讓她來找你。</p>
+      <p>​</p>
+      <p>不是放大熱情讓她感受到你有多喜歡。</p>
+      <p>​</p>
+      <p>是對症下藥。</p>
+      <p>​</p>
+      <p>三個案例，三種不同的問題根源。</p>
+      <p>​</p>
+      <p>建宏和小芸，關鍵不在「哪裡做錯了」，而在兩個人相處的節奏裡，有沒有讓對方覺得這段關係是她想要的。</p>
+      <p>​</p>
+      <p>一段感情讓人離開，往往不是因為某件大事，而是一個長期累積的感覺：待在這裡，我沒辦法做我自己。</p>
+      <p>​</p>
+      <p>柏翰和欣妤，問題不在「哪個機會沒把握住」，而在那次獨處之後，欣妤對這段關係的想法有了變化。</p>
+      <p>​</p>
+      <p>這種時候，能說清楚的事情，早就說清楚了。</p>
+      <p>​</p>
+      <p>說不清楚的，才是真正的答案。</p>
+      <p>​</p>
+      <p>追問只是在讓她再確認一次，這不是她想要的關係。</p>
+      <p>​</p>
+      <p>阿誠的故事，更簡單。</p>
+      <p>​</p>
+      <p>因為「很高興認識你」本來就只是一句「今天不錯」，不是邀請。</p>
+      <p>​</p>
+      <p>這個時候需要的不是追，而是讀懂訊號，知道對方是客氣，還是真的有興趣。</p>
+      <p>​</p>
+      <p>見情(錢)眼開——開口之前，先看清楚你站在哪裡。</p>
+      <p>​</p>
+      <p>所以從今天開始，先問自己三個問題：</p>
+      <p>​</p>
+      <p>第一，我現在做的這個動作，是為了解決問題，還是只是為了讓自己好受一點？</p>
+      <p>​</p>
+      <p>大多數的「追」，都是後者。</p>
+      <p>​</p>
+      <p>第二，如果我把立場換過來，對方現在的感覺是什麼？</p>
+      <p>​</p>
+      <p>1.0系統的人，只看到自己的焦慮。</p>
+      <p>​</p>
+      <p>2.0開始的人，才有辦法把視角移到對方那邊。</p>
+      <p>​</p>
+      <p>第三，我現在的行動，讓兩個人的距離變近了，還是變遠了？</p>
+      <p>​</p>
+      <p>結果不會說謊。</p>
+      <p>​</p>
+      <p>感情不是靠努力程度決定的，是靠方向對不對。</p>
+      <p>​</p>
+      <p>你可以非常努力，非常認真，非常在乎，然後非常精準地把對方推走。</p>
+      <p>​</p>
+      <p>問題從來都不是你夠不夠好。</p>
+      <p>​</p>
+      <p>是你用的方法，有沒有讓對方感覺到你們在一起，是一件值得的事。</p>
+      <p>​</p>
+      <p>------</p>
+      <p>​</p>
+      <p>我是派特。</p>
+      <p>​</p>
+      <p>感情裡的挫折，不是你的終點，它只是你現在站的地方。</p>
+      <p>​</p>
+      <p>框架在這裡，邏輯在這裡，案例在這裡。</p>
+      <p>​</p>
+      <p>剩下的，只差你願不願意停下來，看清楚自己在做什麼。</p>
+      <p>​</p>
+      <p>別再讓你的舊系統，繼續浪費你的2026年。</p>
+      <p>​</p>
+      <p>👇 下方留言「3.0」，立刻下載電子書，做情感作業系統檢測。</p>
+      <p>​</p>
+      <p>如果你也心有戚戚焉，轉發給還在追、還在等、還在不知道怎麼辦的那個人。</p>
+    </div>
+  </div>
+</div>
+
+<section class="cta-section">
+  <div class="prose-container">
+    <p class="section-label reveal">想改變，從這裡開始</p>
+    <h2 class="section-title reveal">你的感情問題，<br>不是態度問題，是系統問題。</h2>
+    <div class="cta-stack reveal">
+      <a href="https://lin.ee/pljXoyp" target="_blank" rel="noopener noreferrer" class="btn-primary">
+        加入 LINE 好友，領取免費情感作業系統診斷
+        <svg width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </a>
+      <a href="../service.html" class="btn-text">或者直接預約一對一診斷 →</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-inner">
+    <p class="footer-copy">&#169; 2026 五四愛情學苑 派特</p>
+    <div class="footer-links">
+      <a href="#">隱私權政策</a>
+      <a href="#">聯絡我們</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+  const hamburger = document.getElementById('hamburger');
+  const mobileMenu = document.getElementById('mobileMenu');
+  hamburger.addEventListener('click', () => {
+    const open = mobileMenu.classList.toggle('open');
+    hamburger.classList.toggle('open', open);
+    hamburger.setAttribute('aria-expanded', String(open));
+  });
+  mobileMenu.querySelectorAll('a').forEach(link => {
+    link.addEventListener('click', () => {
+      mobileMenu.classList.remove('open');
+      hamburger.classList.remove('open');
+      hamburger.setAttribute('aria-expanded', 'false');
+    });
+  });
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.08 });
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+</script>
+
+</body>
+</html>

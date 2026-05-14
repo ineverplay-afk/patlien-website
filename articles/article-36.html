@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="【不是她對你沒興趣——是你已經被她的直覺判出局】">
+  <title>【不是她對你沒興趣——是你已經被她的直覺判出局】 | 五四愛情學苑 派特</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    :root {
+      --bg: #0a0a0a; --surface: #0f0f0f; --card: #141414;
+      --border: #1e1e1e; --border-hover: #2e2e2e;
+      --accent: #1a3a5c; --accent-hover: #234d7a; --accent-text: #4a8bc4;
+      --text-primary: #efefef; --text-secondary: #888; --text-muted: #444;
+      --font: 'Noto Sans TC', -apple-system, 'PingFang TC', 'Microsoft JhengHei', sans-serif;
+      --max-w: 1080px; --prose-w: 680px; --nav-h: 64px;
+    }
+    html { scroll-behavior: smooth; }
+    body { background: var(--bg); color: var(--text-primary); font-family: var(--font); line-height: 1.7; -webkit-font-smoothing: antialiased; }
+    a { color: inherit; text-decoration: none; }
+    .reveal { opacity: 0; transform: translateY(24px); transition: opacity 0.65s ease, transform 0.65s ease; }
+    .reveal.visible { opacity: 1; transform: none; }
+
+    nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; height: var(--nav-h); background: rgba(10,10,10,0.88); backdrop-filter: blur(18px); -webkit-backdrop-filter: blur(18px); border-bottom: 1px solid var(--border); }
+    .nav-inner { max-width: var(--max-w); margin: 0 auto; padding: 0 24px; height: 100%; display: flex; align-items: center; justify-content: space-between; }
+    .nav-links { display: flex; align-items: center; gap: 28px; list-style: none; }
+    .nav-links a { font-size: 14px; color: var(--text-secondary); transition: color 0.2s; }
+    .nav-links a:hover { color: var(--text-primary); }
+    .nav-cta { padding: 8px 18px; border: 1px solid var(--border); border-radius: 4px; color: var(--text-primary) !important; font-size: 14px; transition: background 0.2s, border-color 0.2s !important; }
+    .nav-cta:hover { background: var(--card) !important; border-color: var(--border-hover) !important; }
+    .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 6px; background: none; border: none; }
+    .hamburger span { display: block; width: 22px; height: 1.5px; background: var(--text-primary); transition: all 0.25s; }
+    .hamburger.open span:nth-child(1) { transform: translateY(6.5px) rotate(45deg); }
+    .hamburger.open span:nth-child(2) { opacity: 0; }
+    .hamburger.open span:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
+    .mobile-menu { display: none; position: fixed; top: var(--nav-h); left: 0; right: 0; background: var(--surface); border-bottom: 1px solid var(--border); z-index: 99; }
+    .mobile-menu.open { display: block; }
+    .mobile-menu a { display: block; padding: 16px 24px; font-size: 15px; color: var(--text-secondary); border-bottom: 1px solid var(--border); transition: color 0.2s; }
+    .mobile-menu a:hover { color: var(--text-primary); }
+    .mobile-menu a:last-child { border-bottom: none; }
+
+    .prose-container { max-width: var(--prose-w); margin: 0 auto; padding: 0 24px; }
+    .article-hero { padding-top: calc(var(--nav-h) + 80px); padding-bottom: 40px; }
+    .article-eyebrow { font-size: 11px; font-weight: 400; letter-spacing: 0.16em; text-transform: uppercase; color: var(--text-muted); margin-bottom: 24px; }
+    .article-title { font-size: clamp(1.6rem, 4vw, 2.4rem); font-weight: 700; line-height: 1.3; color: var(--text-primary); }
+    .article-body { padding-bottom: 80px; }
+    .divider { border: none; border-top: 1px solid var(--border); margin: 48px 0; }
+    .prose p { font-size: clamp(1rem, 2vw, 1.1rem); color: var(--text-secondary); font-weight: 300; line-height: 2; margin-bottom: 20px; }
+    .prose p:last-child { margin-bottom: 0; }
+
+    .cta-section { text-align: center; background: linear-gradient(170deg, var(--bg) 0%, #0b1623 100%); border-top: 1px solid var(--border); padding: 96px 0; }
+    .section-label { font-size: 11px; font-weight: 400; letter-spacing: 0.16em; text-transform: uppercase; color: var(--text-muted); margin-bottom: 14px; }
+    .section-title { font-size: clamp(1.7rem, 4vw, 2.5rem); font-weight: 700; line-height: 1.25; color: var(--text-primary); margin-bottom: 36px; }
+    .cta-stack { display: flex; flex-direction: column; align-items: center; gap: 16px; }
+    .btn-primary { display: inline-flex; align-items: center; gap: 10px; padding: 14px 26px; background: var(--accent); color: #fff; font-size: 15px; font-weight: 500; font-family: var(--font); border-radius: 4px; border: none; cursor: pointer; transition: background 0.2s, transform 0.15s; }
+    .btn-primary:hover { background: var(--accent-hover); transform: translateY(-1px); }
+    .btn-text { display: inline-flex; align-items: center; gap: 6px; font-size: 14px; color: var(--text-secondary); transition: color 0.2s; }
+    .btn-text:hover { color: var(--text-primary); }
+
+    footer { padding: 32px 24px; border-top: 1px solid var(--border); }
+    .footer-inner { max-width: var(--max-w); margin: 0 auto; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 12px; }
+    .footer-copy { font-size: 13px; color: var(--text-muted); }
+    .footer-links { display: flex; gap: 24px; }
+    .footer-links a { font-size: 13px; color: var(--text-muted); transition: color 0.2s; }
+    .footer-links a:hover { color: var(--text-secondary); }
+
+    @media (max-width: 768px) {
+      .nav-links { display: none; }
+      .hamburger { display: flex; }
+      .footer-inner { flex-direction: column; align-items: flex-start; }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <a href="../index.html" class="nav-logo">
+      <img src="../logo.png" alt="派特 五四愛情學苑" height="56" style="width:auto;display:block;">
+    </a>
+    <ul class="nav-links">
+      <li><a href="../index.html">文章</a></li>
+      <li><a href="../about.html">關於派特</a></li>
+      <li><a href="../service.html" class="nav-cta">預約諮詢</a></li>
+    </ul>
+    <button class="hamburger" id="hamburger" aria-label="開啟選單" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<div class="mobile-menu" id="mobileMenu" role="navigation">
+  <a href="../index.html">文章</a>
+  <a href="../about.html">關於派特</a>
+  <a href="../service.html">預約諮詢</a>
+</div>
+
+<div class="article-hero">
+  <div class="prose-container">
+    <p class="article-eyebrow">派特觀點</p>
+    <h1 class="article-title">【不是她對你沒興趣——是你已經被她的直覺判出局】</h1>
+  </div>
+</div>
+
+<div class="article-body">
+  <div class="prose-container">
+    <hr class="divider">
+    <div class="prose reveal">
+      <p>【不是她對你沒興趣——是你已經被她的直覺判出局】</p>
+      <p>——她的回應早就告訴你答案，多數人只是沒看懂訊號：三大誤區和四種翻轉</p>
+      <p>讀得懂「Yes」，壓制「No」。</p>
+      <p>她早就把答案寫出來了，</p>
+      <p>只是多數人沒有看懂。</p>
+      <p>我輔導過幾千個學員，</p>
+      <p>最常見的不是「不知道說什麼」，</p>
+      <p>而是她已經在說了，你沒有聽懂。</p>
+      <p>這篇，我用實戰案例告訴你，怎麼回事。</p>
+      <p>▋訊號在哪？她早就給了</p>
+      <p>我常說一件事：</p>
+      <p>所有的互動，都是一場即時的訊號交換。</p>
+      <p>她每一句話，每一個回應，</p>
+      <p>都在告訴你同一件事：</p>
+      <p>我現在，想不想繼續跟你說話。</p>
+      <p>翻譯成白話：</p>
+      <p>如果她在接球，就是Yes。</p>
+      <p>如果她在敷衍，就是No。</p>
+      <p>這不是玄學，不是感覺，</p>
+      <p>它是有跡可循的規則。</p>
+      <p>▋誤區一：她回了，所以她有興趣</p>
+      <p>有些人會天真地想：</p>
+      <p>她有在回我，代表她喜歡我吧？</p>
+      <p>例如，她回「哈哈」、「喔」、「還好」。</p>
+      <p>你以為有回就是有戲，</p>
+      <p>繼續丟話題、繼續問問題。</p>
+      <p>現實是，</p>
+      <p>回覆不等於興趣。</p>
+      <p>你要看的不是她有沒有回，</p>
+      <p>而是她回的內容，</p>
+      <p>有沒有把球接起來，再傳回給你。</p>
+      <p>「哈哈」是死球。</p>
+      <p>「哈哈，你怎麼會這樣想？」是活球。</p>
+      <p>只要字串裡沒有她的主動投入，</p>
+      <p>就是No。</p>
+      <p>你只是把「有回應」當成「有興趣」，</p>
+      <p>在她眼裡，你們只是在各說各話。</p>
+      <p>▋誤區二：話題沒得聊，所以繼續換話題</p>
+      <p>對話陷入沉默，</p>
+      <p>很多人的直覺是——</p>
+      <p>那就換一個話題試試看。</p>
+      <p>換美食、換旅遊、換星座、換電影。</p>
+      <p>以為只要找到對的話題，她就會打開。</p>
+      <p>但我們聊天技能的運作，剛好相反。</p>
+      <p>問題從來不是話題不對。</p>
+      <p>是你一直在話題的表面滑動，從來沒有往下挖。</p>
+      <p>她說「最近有點累」，</p>
+      <p>你換話題聊周末要去哪。</p>
+      <p>她說「工作壓力大」，</p>
+      <p>你說「我也是，最近好忙」，然後話題結束。</p>
+      <p>你沒有進去。</p>
+      <p>她說的每一句話，都是一扇門。</p>
+      <p>你一直在門外換地圖，從來沒有敲門進去。</p>
+      <p>▋誤區三：她敷衍我，是因為她不喜歡我</p>
+      <p>這是最多人犯的致命誤判。</p>
+      <p>她敷衍你，</p>
+      <p>你的第一個念頭是：</p>
+      <p>「她對我沒興趣，算了。」</p>
+      <p>或是：</p>
+      <p>「我哪裡做錯了？」</p>
+      <p>然後開始焦慮、開始分析、開始懷疑自己。</p>
+      <p>但真正的問題不在這裡。</p>
+      <p>她敷衍你，不一定是因為她不喜歡你。</p>
+      <p>很可能是因為，你從來沒有給她一個理由，讓她不敷衍你。</p>
+      <p>敷衍，是她的預設值。</p>
+      <p>打破預設值，才是你的工作。</p>
+      <p>▋那到底要怎麼翻轉？</p>
+      <p>四個方法：釘她、挖深、轉真實、給理由</p>
+      <p>➤ 第一，釘她 → 打破敷衍的慣性</p>
+      <p>她說「好吃」，</p>
+      <p>你不要說「喔，那很好啊」。</p>
+      <p>你要說：</p>
+      <p>「好吃？別敷衍我，你認真的嗎？」</p>
+      <p>用一句溫和的衝突，</p>
+      <p>打破她的自動回覆模式。</p>
+      <p>她才會從「應付模式」切換到「真實模式」。</p>
+      <p>當她開始認真回應你，</p>
+      <p>對話才真正開始。</p>
+      <p>➤ 第二，挖深 → 進門，不要換地圖</p>
+      <p>她說「最近有點累」，</p>
+      <p>不要說「喔，那好好休息」。</p>
+      <p>要說：</p>
+      <p>「聽起來不只是身體累，說來聽聽？」</p>
+      <p>一句話，從表面進到裡面。</p>
+      <p>停留時間越長，她感覺被看見的程度越深。</p>
+      <p>被看見的感覺，</p>
+      <p>比任何話題都更讓人想繼續說話。</p>
+      <p>➤ 第三，轉真實 → 讓對話從客套變成真實</p>
+      <p>很多對話之所以死掉，</p>
+      <p>是因為你們都在說「應該說的話」，</p>
+      <p>沒有人說「真實的話」。</p>
+      <p>怎麼把對話拉進真實？</p>
+      <p>你先說一句真的。</p>
+      <p>「說真的，你不問問為什麼我每次出門都想邀約你嗎?」</p>
+      <p>就這一句。</p>
+      <p>當你開頭先展示真實，她才有空間回應真實。</p>
+      <p>真實對真實，</p>
+      <p>對話才有溫度。</p>
+      <p>➤ 第四，給理由 → 讓她有理由不敷衍你</p>
+      <p>她為什麼要認真跟你說話？</p>
+      <p>這個問題，大多數人從來沒有想過。</p>
+      <p>你有沒有讓她感覺——</p>
+      <p>跟你說話，是一件有趣的事？</p>
+      <p>跟你說真話，是一件安全的事？</p>
+      <p>跟你聊下去，是一件值得的事？</p>
+      <p>如果沒有，她的預設值永遠是敷衍。</p>
+      <p>不是因為她不好，</p>
+      <p>是因為你沒有給她理由切換模式。</p>
+      <p>▋同樣一句「好吃」，會發生什麼事？</p>
+      <p>你傳了一張照片給她，</p>
+      <p>她回：「好吃。」</p>
+      <p>1.0的反應：</p>
+      <p>「她有回我，代表她有在看。」</p>
+      <p>繼續傳下一張照片。</p>
+      <p>對話繼續死去。</p>
+      <p>2.0的反應：</p>
+      <p>「她這樣敷衍，代表她興趣不大。」</p>
+      <p>假裝不在意，沉默收場。</p>
+      <p>兩個人都輸。</p>
+      <p>3.0的反應：</p>
+      <p>「好吃？別敷衍我，300塊的東西你就這樣打發我？」</p>
+      <p>她笑了。</p>
+      <p>「哈，好啦，看起來是還不錯。」</p>
+      <p>球回來了。</p>
+      <p>對話，從這裡才真正開始。</p>
+      <p>現在，你看懂了嗎？</p>
+      <p>▋最後一件事，多數人不想面對：話題不是解答</p>
+      <p>我看過很多人，</p>
+      <p>花大量時間研究「要說什麼話題」，</p>
+      <p>以為找到對的話題，對話就活了。</p>
+      <p>但別以為只要話題對，她就會打開。</p>
+      <p>因為她回應的，從來不是話題。</p>
+      <p>她回應的，是你有沒有讓她感覺被看見。</p>
+      <p>對話會不會繼續，</p>
+      <p>很多時候不是你說了什麼，</p>
+      <p>是你有沒有進入她說的那扇門。</p>
+      <p>當你開始用訊號的角度看對話，</p>
+      <p>很多翻轉的方法，</p>
+      <p>其實她早就告訴你了。</p>
+      <p>話題，只是工具。</p>
+      <p>看見她，才是解答。</p>
+      <p>我是派特。</p>
+      <p>教你看懂她給的訊號，</p>
+      <p>設計出讓對話真正活起來的系統。</p>
+      <p>東西我都給你了。</p>
+      <p>框架在這裡，邏輯在這裡，案例在這裡。</p>
+      <p>剩下的，只差你願不願意——</p>
+      <p>在下一次她說「好吃」的時候，給她一個理由，說真的。</p>
+      <p>別再讓你的舊系統，浪費你的2026年。</p>
+      <p>👇下方留言「3.0」，立刻下載電子書，做情感作業系統檢測！</p>
+      <p>轉發給一個，你覺得一直在換話題、卻一直得到敷衍的兄弟。</p>
+      <p>也許這篇，是他今年最需要看到的東西。</p>
+    </div>
+  </div>
+</div>
+
+<section class="cta-section">
+  <div class="prose-container">
+    <p class="section-label reveal">想改變，從這裡開始</p>
+    <h2 class="section-title reveal">你的感情問題，<br>不是態度問題，是系統問題。</h2>
+    <div class="cta-stack reveal">
+      <a href="https://lin.ee/pljXoyp" target="_blank" rel="noopener noreferrer" class="btn-primary">
+        加入 LINE 好友，領取免費情感作業系統診斷
+        <svg width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </a>
+      <a href="../service.html" class="btn-text">或者直接預約一對一診斷 →</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-inner">
+    <p class="footer-copy">&#169; 2026 五四愛情學苑 派特</p>
+    <div class="footer-links">
+      <a href="#">隱私權政策</a>
+      <a href="#">聯絡我們</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+  const hamburger = document.getElementById('hamburger');
+  const mobileMenu = document.getElementById('mobileMenu');
+  hamburger.addEventListener('click', () => {
+    const open = mobileMenu.classList.toggle('open');
+    hamburger.classList.toggle('open', open);
+    hamburger.setAttribute('aria-expanded', String(open));
+  });
+  mobileMenu.querySelectorAll('a').forEach(link => {
+    link.addEventListener('click', () => {
+      mobileMenu.classList.remove('open');
+      hamburger.classList.remove('open');
+      hamburger.setAttribute('aria-expanded', 'false');
+    });
+  });
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.08 });
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+</script>
+
+</body>
+</html>

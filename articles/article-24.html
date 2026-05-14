@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="這篇文案要打的，是那些總愛說「我沒錢、沒身材、沒背景，所以注定失敗」的男人。">
+  <title>臉書長文：資源 vs 系統版本 | 五四愛情學苑 派特</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    :root {
+      --bg: #0a0a0a; --surface: #0f0f0f; --card: #141414;
+      --border: #1e1e1e; --border-hover: #2e2e2e;
+      --accent: #1a3a5c; --accent-hover: #234d7a; --accent-text: #4a8bc4;
+      --text-primary: #efefef; --text-secondary: #888; --text-muted: #444;
+      --font: 'Noto Sans TC', -apple-system, 'PingFang TC', 'Microsoft JhengHei', sans-serif;
+      --max-w: 1080px; --prose-w: 680px; --nav-h: 64px;
+    }
+    html { scroll-behavior: smooth; }
+    body { background: var(--bg); color: var(--text-primary); font-family: var(--font); line-height: 1.7; -webkit-font-smoothing: antialiased; }
+    a { color: inherit; text-decoration: none; }
+    .reveal { opacity: 0; transform: translateY(24px); transition: opacity 0.65s ease, transform 0.65s ease; }
+    .reveal.visible { opacity: 1; transform: none; }
+
+    nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; height: var(--nav-h); background: rgba(10,10,10,0.88); backdrop-filter: blur(18px); -webkit-backdrop-filter: blur(18px); border-bottom: 1px solid var(--border); }
+    .nav-inner { max-width: var(--max-w); margin: 0 auto; padding: 0 24px; height: 100%; display: flex; align-items: center; justify-content: space-between; }
+    .nav-links { display: flex; align-items: center; gap: 28px; list-style: none; }
+    .nav-links a { font-size: 14px; color: var(--text-secondary); transition: color 0.2s; }
+    .nav-links a:hover { color: var(--text-primary); }
+    .nav-cta { padding: 8px 18px; border: 1px solid var(--border); border-radius: 4px; color: var(--text-primary) !important; font-size: 14px; transition: background 0.2s, border-color 0.2s !important; }
+    .nav-cta:hover { background: var(--card) !important; border-color: var(--border-hover) !important; }
+    .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 6px; background: none; border: none; }
+    .hamburger span { display: block; width: 22px; height: 1.5px; background: var(--text-primary); transition: all 0.25s; }
+    .hamburger.open span:nth-child(1) { transform: translateY(6.5px) rotate(45deg); }
+    .hamburger.open span:nth-child(2) { opacity: 0; }
+    .hamburger.open span:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
+    .mobile-menu { display: none; position: fixed; top: var(--nav-h); left: 0; right: 0; background: var(--surface); border-bottom: 1px solid var(--border); z-index: 99; }
+    .mobile-menu.open { display: block; }
+    .mobile-menu a { display: block; padding: 16px 24px; font-size: 15px; color: var(--text-secondary); border-bottom: 1px solid var(--border); transition: color 0.2s; }
+    .mobile-menu a:hover { color: var(--text-primary); }
+    .mobile-menu a:last-child { border-bottom: none; }
+
+    .prose-container { max-width: var(--prose-w); margin: 0 auto; padding: 0 24px; }
+    .article-hero { padding-top: calc(var(--nav-h) + 80px); padding-bottom: 40px; }
+    .article-eyebrow { font-size: 11px; font-weight: 400; letter-spacing: 0.16em; text-transform: uppercase; color: var(--text-muted); margin-bottom: 24px; }
+    .article-title { font-size: clamp(1.6rem, 4vw, 2.4rem); font-weight: 700; line-height: 1.3; color: var(--text-primary); }
+    .article-body { padding-bottom: 80px; }
+    .divider { border: none; border-top: 1px solid var(--border); margin: 48px 0; }
+    .prose p { font-size: clamp(1rem, 2vw, 1.1rem); color: var(--text-secondary); font-weight: 300; line-height: 2; margin-bottom: 20px; }
+    .prose p:last-child { margin-bottom: 0; }
+
+    .cta-section { text-align: center; background: linear-gradient(170deg, var(--bg) 0%, #0b1623 100%); border-top: 1px solid var(--border); padding: 96px 0; }
+    .section-label { font-size: 11px; font-weight: 400; letter-spacing: 0.16em; text-transform: uppercase; color: var(--text-muted); margin-bottom: 14px; }
+    .section-title { font-size: clamp(1.7rem, 4vw, 2.5rem); font-weight: 700; line-height: 1.25; color: var(--text-primary); margin-bottom: 36px; }
+    .cta-stack { display: flex; flex-direction: column; align-items: center; gap: 16px; }
+    .btn-primary { display: inline-flex; align-items: center; gap: 10px; padding: 14px 26px; background: var(--accent); color: #fff; font-size: 15px; font-weight: 500; font-family: var(--font); border-radius: 4px; border: none; cursor: pointer; transition: background 0.2s, transform 0.15s; }
+    .btn-primary:hover { background: var(--accent-hover); transform: translateY(-1px); }
+    .btn-text { display: inline-flex; align-items: center; gap: 6px; font-size: 14px; color: var(--text-secondary); transition: color 0.2s; }
+    .btn-text:hover { color: var(--text-primary); }
+
+    footer { padding: 32px 24px; border-top: 1px solid var(--border); }
+    .footer-inner { max-width: var(--max-w); margin: 0 auto; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 12px; }
+    .footer-copy { font-size: 13px; color: var(--text-muted); }
+    .footer-links { display: flex; gap: 24px; }
+    .footer-links a { font-size: 13px; color: var(--text-muted); transition: color 0.2s; }
+    .footer-links a:hover { color: var(--text-secondary); }
+
+    @media (max-width: 768px) {
+      .nav-links { display: none; }
+      .hamburger { display: flex; }
+      .footer-inner { flex-direction: column; align-items: flex-start; }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <a href="../index.html" class="nav-logo">
+      <img src="../logo.png" alt="派特 五四愛情學苑" height="56" style="width:auto;display:block;">
+    </a>
+    <ul class="nav-links">
+      <li><a href="../index.html">文章</a></li>
+      <li><a href="../about.html">關於派特</a></li>
+      <li><a href="../service.html" class="nav-cta">預約諮詢</a></li>
+    </ul>
+    <button class="hamburger" id="hamburger" aria-label="開啟選單" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<div class="mobile-menu" id="mobileMenu" role="navigation">
+  <a href="../index.html">文章</a>
+  <a href="../about.html">關於派特</a>
+  <a href="../service.html">預約諮詢</a>
+</div>
+
+<div class="article-hero">
+  <div class="prose-container">
+    <p class="article-eyebrow">派特觀點</p>
+    <h1 class="article-title">臉書長文：資源 vs 系統版本</h1>
+  </div>
+</div>
+
+<div class="article-body">
+  <div class="prose-container">
+    <hr class="divider">
+    <div class="prose reveal">
+      <p>這篇文案要打的，是那些總愛說「我沒錢、沒身材、沒背景，所以注定失敗」的男人。</p>
+      <p>我們要揭露一個殘酷的事實：限制你的從來不是資源，而是你那套過時的 1.0 腦袋。 透過「非洲賣鞋」的經典案例，我們要讓讀者明白，升級作業系統不是為了學招式，而是為了「看見」那些被他們忽略的遍地黃金。</p>
+      <p>📝 FB 實戰長文：【「我沒錢、沒身材、沒背景，所以愛情注定失敗」——為什麼你的「命運困境」，在我們眼裡只是系統版本太低？】</p>
+      <p>（01. 衝突開場：人生真的有「翻越不了」的困境嗎？）</p>
+      <p>最近有個小兄弟跟我說：「派特老師，我覺得情感作業系統 3.0 也有極限吧？畢竟人生有很多困境是沒辦法翻越的。」</p>
+      <p>聽完我笑了。兄弟，你可能對「系統」這兩個字有很深的誤會。</p>
+      <p>你以為人生要成功，靠的是運氣、是天生拿到的那副牌。但在 OS 3.0 的架構師眼裡，一個人的成就，是由這三個維度決定的：</p>
+      <p>你擁有的資源（你有什麼）</p>
+      <p>你擁有的技能（你會什麼）</p>
+      <p>你的心智運作模式（你的情感作業系統）</p>
+      <p>而第三個，才是決定前兩個能不能發揮效益的「心智中樞」。</p>
+      <p>（02. 診斷核心：一樣的鞋子，不同的命運）</p>
+      <p>聽過那個著名的非洲賣鞋故事嗎？</p>
+      <p>兩個商人到了非洲，看到當地人都不穿鞋。</p>
+      <p>1.0 系統的人（受挫思維）： 他想的是：「完蛋了，這裡沒人穿鞋，生意鐵定做不了。」然後帶著資源撤退，宣告失敗。</p>
+      <p>3.0 系統的人（架構思維）： 他想的是：「太棒了！這裡的人竟然都還沒有鞋子穿，這簡直是遍地商機！」</p>
+      <p>資源（鞋子）是一樣的，但因為「看世界的方式」不同，一個看到的是絕路，另一個看到的是金礦。</p>
+      <p>這就是為什麼我說，當你的情感作業系統等級越高，你運用資源的方式就會產生更大的效益。</p>
+      <p>（03. 戰略重構：為什麼你學了那麼多技巧，卻還是沒用？）</p>
+      <p>很多人問我：「派特哥，我學過搭訕、學過聊天、甚至去健身練身材，為什麼還是沒女友？」</p>
+      <p>原因很簡單：你的硬體（技能）在升級，但你的軟體（系統）還是 1.0。</p>
+      <p>你學了一堆賣鞋的技巧，但當你進到市場，你的腦袋卻告訴你「這裡沒市場」，那你再強的技巧也發揮不出來。</p>
+      <p>OS 3.0 的本質，是你跟這個世界互動的「底層邏輯」。</p>
+      <p>當系統升級後，你會發現：</p>
+      <p>看見資源： 以前你覺得沒用的背景、平凡的工作，現在都成了可以交換資訊的籌碼。</p>
+      <p>活用技能： 以前學過的零散技巧，現在能完美搭配。你學什麼都快，用什麼都強。</p>
+      <p>（04. 執行金句：不是世界太難，是你的眼鏡太髒）</p>
+      <p>別再抱怨人生有翻越不了的牆。</p>
+      <p>當你用 3.0 的視角來看世界，你會驚訝地發現：原來遍地都是資源，遍地都是機會。 你以前覺得是牆，現在看只是通往下一關的階梯。</p>
+      <p>如果你在其他地方學了情感技巧卻無法使用，那你一定要來升級你的作業系統；如果你從來沒學過，那你更要來，因為這是一切「看懂世界」的基礎點。</p>
+      <p>（05. 昇華觀點：從「求生存」進化到「主導賽局」）</p>
+      <p>3.0 系統不是要教你怎麼「騙」女生，而是要教你如何像個強者一樣，重新排列組合你的人生資產。</p>
+      <p>當你的人生主控權回到手上，你就不再是那個在非洲岸邊嘆氣的商人，而是那個正在規劃鞋廠版圖的架構師。</p>
+      <p>（06. 呼籲行動：升級你的心智運作模式）</p>
+      <p>別再讓舊系統限制了你的可能性。</p>
+      <p>如果你也覺得自己空有技能卻無處發揮，如果你受夠了在困境中內耗原地踏步。</p>
+      <p>我已經把這份「3.0 視角：重構人生資源的底層代碼」放在我的 LINE 官方帳號裡了。</p>
+      <p>別再靠蠻力翻牆，來我這裡，我們直接把牆拆掉。</p>
+      <p>👇 點擊下方連結，加入我的 LINE。升級你的 OS。</p>
+      <p>留言 「3.0」，我私訊你這份讓你「看見機會」的系統補丁。</p>
+      <p>🧱 派特總結：</p>
+      <p>這篇文案利用「資源、技能、心智」的黃金三角，為 3.0 建立了一個極高層次的權威感。</p>
+      <p>透過「非洲賣鞋」的案例，成功把「情感問題」轉化為「商業/人生問題」，這對想要提升社會競爭力的男性受眾非常有吸引力。它不只解決了「脫單」，還解決了「人生出路」。</p>
+      <p>Would you like me to...</p>
+      <p>幫你把這段「資源 vs 系統」的邏輯，設計成一組 「3.0 心智升級：你看見的是牆還是門？」的對比圖文？這非常適合作為臉書的導流貼文！</p>
+      <p>======【「我沒錢、沒身材、沒背景，所以愛情注定失敗」——為什麼你的「命運困境」，在我們眼裡只是系統版本太低？】</p>
+      <p>最近有個小兄弟跟我說：「派特老師，我覺得情感作業系統 3.0 也有極限吧？畢竟人生有很多困境是沒辦法翻越的。」</p>
+      <p>聽完我笑了。兄弟，你可能對「系統」這兩個字有很深的誤會。</p>
+      <p>你以為人生要成功，靠的是運氣、是天生拿到的那副牌。但在 OS 3.0 的架構師眼裡，一個人的成就，是由這三個維度決定的：</p>
+      <p>你擁有的資源（你有什麼）</p>
+      <p>你擁有的技能（你會什麼）</p>
+      <p>你的心智運作模式（你的情感作業系統）</p>
+      <p>而第三個，才是決定前兩個能不能發揮效益的「心智中樞」。</p>
+      <p>聽過那個著名的非洲賣鞋故事嗎？</p>
+      <p>兩個商人到了非洲，看到當地人都不穿鞋。</p>
+      <p>1.0 系統的人（受挫思維）： 他想的是：「完蛋了，這裡沒人穿鞋，生意鐵定做不了。」然後帶著資源撤退，宣告失敗。</p>
+      <p>3.0 系統的人（架構思維）： 他想的是：「太棒了！這裡的人竟然都還沒有鞋子穿，這簡直是遍地商機！」</p>
+      <p>資源（鞋子）是一樣的，但因為「看世界的方式」不同，一個看到的是絕路，另一個看到的是金礦。</p>
+      <p>這就是為什麼我說，當你的情感作業系統等級越高，你運用資源的方式就會產生更大的效益。</p>
+      <p>很多人問我：「派特哥，我學過搭訕、學過聊天、甚至去健身練身材，為什麼還是沒女友？」</p>
+      <p>原因很簡單：你的資源和技能在升級，但你的心智（情感作業系統）還是 1.0。</p>
+      <p>你學了一堆賣鞋的技巧，但當你進到市場，你的腦袋卻告訴你「這裡沒市場」，那你再強的技巧也發揮不出來。</p>
+      <p>OS 3.0 的本質，是你跟這個世界互動的「底層邏輯」。</p>
+      <p>當系統升級後，你會發現：</p>
+      <p>看見資源： 以前你覺得沒用的背景、平凡的工作，現在都成了可以交換資訊的籌碼。</p>
+      <p>活用技能： 以前學過的零散技巧，現在能完美搭配。你學什麼都快，用什麼都強。</p>
+      <p>別再抱怨人生有翻越不了的牆。</p>
+      <p>當你用 3.0 的視角來看世界，你會驚訝地發現：原來遍地都是資源，遍地都是機會。 你以前覺得是牆，現在看只是通往下一關的階梯。</p>
+      <p>如果你在其他地方學了情感技巧卻無法使用，那你一定要來升級你的作業系統；如果你從來沒學過，那你更要來，因為這是一切「看懂世界」的基礎點。</p>
+      <p>3.0 系統不是要教你怎麼「騙」女生和自己，而是要教你如何像個合諧者，重新排列組合你的人生資產跟世界互動，進而創造你想要的結果。</p>
+      <p>當你的人生主控權回到手上，你就不再是那個在非洲岸邊嘆氣的商人，而是那個正在規劃鞋廠版圖的架構師。</p>
+      <p>別再讓舊系統限制了你的可能性。</p>
+      <p>如果你也覺得自己空有技能卻無處發揮，如果你受夠了在困境中內耗原地踏步。</p>
+      <p>我已經把這份「3.0 視角：重構人生資源的底層代碼」放在我的 LINE 官方帳號裡了。</p>
+      <p>別再靠蠻力翻牆，來我這裡，我們直接把牆拆掉。</p>
+      <p>👇 留言 「3.0」，我私訊你這份讓你「看見機會」的系統補丁(電子書和檢測)。</p>
+    </div>
+  </div>
+</div>
+
+<section class="cta-section">
+  <div class="prose-container">
+    <p class="section-label reveal">想改變，從這裡開始</p>
+    <h2 class="section-title reveal">你的感情問題，<br>不是態度問題，是系統問題。</h2>
+    <div class="cta-stack reveal">
+      <a href="https://lin.ee/pljXoyp" target="_blank" rel="noopener noreferrer" class="btn-primary">
+        加入 LINE 好友，領取免費情感作業系統診斷
+        <svg width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </a>
+      <a href="../service.html" class="btn-text">或者直接預約一對一診斷 →</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-inner">
+    <p class="footer-copy">&#169; 2026 五四愛情學苑 派特</p>
+    <div class="footer-links">
+      <a href="#">隱私權政策</a>
+      <a href="#">聯絡我們</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+  const hamburger = document.getElementById('hamburger');
+  const mobileMenu = document.getElementById('mobileMenu');
+  hamburger.addEventListener('click', () => {
+    const open = mobileMenu.classList.toggle('open');
+    hamburger.classList.toggle('open', open);
+    hamburger.setAttribute('aria-expanded', String(open));
+  });
+  mobileMenu.querySelectorAll('a').forEach(link => {
+    link.addEventListener('click', () => {
+      mobileMenu.classList.remove('open');
+      hamburger.classList.remove('open');
+      hamburger.setAttribute('aria-expanded', 'false');
+    });
+  });
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.08 });
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+</script>
+
+</body>
+</html>

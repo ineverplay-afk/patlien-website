@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="【你認識了那麼多女生，為什麼一直沒有結果？】">
+  <title>【你認識了那麼多女生，為什麼一直沒有結果？】 | 五四愛情學苑 派特</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    :root {
+      --bg: #0a0a0a; --surface: #0f0f0f; --card: #141414;
+      --border: #1e1e1e; --border-hover: #2e2e2e;
+      --accent: #1a3a5c; --accent-hover: #234d7a; --accent-text: #4a8bc4;
+      --text-primary: #efefef; --text-secondary: #888; --text-muted: #444;
+      --font: 'Noto Sans TC', -apple-system, 'PingFang TC', 'Microsoft JhengHei', sans-serif;
+      --max-w: 1080px; --prose-w: 680px; --nav-h: 64px;
+    }
+    html { scroll-behavior: smooth; }
+    body { background: var(--bg); color: var(--text-primary); font-family: var(--font); line-height: 1.7; -webkit-font-smoothing: antialiased; }
+    a { color: inherit; text-decoration: none; }
+    .reveal { opacity: 0; transform: translateY(24px); transition: opacity 0.65s ease, transform 0.65s ease; }
+    .reveal.visible { opacity: 1; transform: none; }
+
+    nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; height: var(--nav-h); background: rgba(10,10,10,0.88); backdrop-filter: blur(18px); -webkit-backdrop-filter: blur(18px); border-bottom: 1px solid var(--border); }
+    .nav-inner { max-width: var(--max-w); margin: 0 auto; padding: 0 24px; height: 100%; display: flex; align-items: center; justify-content: space-between; }
+    .nav-links { display: flex; align-items: center; gap: 28px; list-style: none; }
+    .nav-links a { font-size: 14px; color: var(--text-secondary); transition: color 0.2s; }
+    .nav-links a:hover { color: var(--text-primary); }
+    .nav-cta { padding: 8px 18px; border: 1px solid var(--border); border-radius: 4px; color: var(--text-primary) !important; font-size: 14px; transition: background 0.2s, border-color 0.2s !important; }
+    .nav-cta:hover { background: var(--card) !important; border-color: var(--border-hover) !important; }
+    .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 6px; background: none; border: none; }
+    .hamburger span { display: block; width: 22px; height: 1.5px; background: var(--text-primary); transition: all 0.25s; }
+    .hamburger.open span:nth-child(1) { transform: translateY(6.5px) rotate(45deg); }
+    .hamburger.open span:nth-child(2) { opacity: 0; }
+    .hamburger.open span:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
+    .mobile-menu { display: none; position: fixed; top: var(--nav-h); left: 0; right: 0; background: var(--surface); border-bottom: 1px solid var(--border); z-index: 99; }
+    .mobile-menu.open { display: block; }
+    .mobile-menu a { display: block; padding: 16px 24px; font-size: 15px; color: var(--text-secondary); border-bottom: 1px solid var(--border); transition: color 0.2s; }
+    .mobile-menu a:hover { color: var(--text-primary); }
+    .mobile-menu a:last-child { border-bottom: none; }
+
+    .prose-container { max-width: var(--prose-w); margin: 0 auto; padding: 0 24px; }
+    .article-hero { padding-top: calc(var(--nav-h) + 80px); padding-bottom: 40px; }
+    .article-eyebrow { font-size: 11px; font-weight: 400; letter-spacing: 0.16em; text-transform: uppercase; color: var(--text-muted); margin-bottom: 24px; }
+    .article-title { font-size: clamp(1.6rem, 4vw, 2.4rem); font-weight: 700; line-height: 1.3; color: var(--text-primary); }
+    .article-body { padding-bottom: 80px; }
+    .divider { border: none; border-top: 1px solid var(--border); margin: 48px 0; }
+    .prose p { font-size: clamp(1rem, 2vw, 1.1rem); color: var(--text-secondary); font-weight: 300; line-height: 2; margin-bottom: 20px; }
+    .prose p:last-child { margin-bottom: 0; }
+
+    .cta-section { text-align: center; background: linear-gradient(170deg, var(--bg) 0%, #0b1623 100%); border-top: 1px solid var(--border); padding: 96px 0; }
+    .section-label { font-size: 11px; font-weight: 400; letter-spacing: 0.16em; text-transform: uppercase; color: var(--text-muted); margin-bottom: 14px; }
+    .section-title { font-size: clamp(1.7rem, 4vw, 2.5rem); font-weight: 700; line-height: 1.25; color: var(--text-primary); margin-bottom: 36px; }
+    .cta-stack { display: flex; flex-direction: column; align-items: center; gap: 16px; }
+    .btn-primary { display: inline-flex; align-items: center; gap: 10px; padding: 14px 26px; background: var(--accent); color: #fff; font-size: 15px; font-weight: 500; font-family: var(--font); border-radius: 4px; border: none; cursor: pointer; transition: background 0.2s, transform 0.15s; }
+    .btn-primary:hover { background: var(--accent-hover); transform: translateY(-1px); }
+    .btn-text { display: inline-flex; align-items: center; gap: 6px; font-size: 14px; color: var(--text-secondary); transition: color 0.2s; }
+    .btn-text:hover { color: var(--text-primary); }
+
+    footer { padding: 32px 24px; border-top: 1px solid var(--border); }
+    .footer-inner { max-width: var(--max-w); margin: 0 auto; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 12px; }
+    .footer-copy { font-size: 13px; color: var(--text-muted); }
+    .footer-links { display: flex; gap: 24px; }
+    .footer-links a { font-size: 13px; color: var(--text-muted); transition: color 0.2s; }
+    .footer-links a:hover { color: var(--text-secondary); }
+
+    @media (max-width: 768px) {
+      .nav-links { display: none; }
+      .hamburger { display: flex; }
+      .footer-inner { flex-direction: column; align-items: flex-start; }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <a href="../index.html" class="nav-logo">
+      <img src="../logo.png" alt="派特 五四愛情學苑" height="56" style="width:auto;display:block;">
+    </a>
+    <ul class="nav-links">
+      <li><a href="../index.html">文章</a></li>
+      <li><a href="../about.html">關於派特</a></li>
+      <li><a href="../service.html" class="nav-cta">預約諮詢</a></li>
+    </ul>
+    <button class="hamburger" id="hamburger" aria-label="開啟選單" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<div class="mobile-menu" id="mobileMenu" role="navigation">
+  <a href="../index.html">文章</a>
+  <a href="../about.html">關於派特</a>
+  <a href="../service.html">預約諮詢</a>
+</div>
+
+<div class="article-hero">
+  <div class="prose-container">
+    <p class="article-eyebrow">派特觀點</p>
+    <h1 class="article-title">【你認識了那麼多女生，為什麼一直沒有結果？】</h1>
+  </div>
+</div>
+
+<div class="article-body">
+  <div class="prose-container">
+    <hr class="divider">
+    <div class="prose reveal">
+      <p>【你認識了那麼多女生，為什麼一直沒有結果？】</p>
+      <p>​</p>
+      <p>答案可能比你想像的簡單。</p>
+      <p>​</p>
+      <p>你走錯路了。</p>
+      <p>​</p>
+      <p>我有一個讀者來諮詢，我們叫他阿慶。</p>
+      <p>​</p>
+      <p>他來找我的時候說：「老師，我認識了很多女生，話也聊了很多，但就是一直沒有結果。」</p>
+      <p>​</p>
+      <p>我問他：「你在哪裡認識她們的？」</p>
+      <p>​</p>
+      <p>他說：「學校、工作、偶爾跟路人聊天認識的。」</p>
+      <p>​</p>
+      <p>我說：「找到了。」</p>
+      <p>​</p>
+      <p>他說：「找到什麼了？」</p>
+      <p>​</p>
+      <p>我說：「你一直在不對的地方，用不對的方式，做對的事。」</p>
+      <p>​</p>
+      <p>▋脫單只有七條路，但每一條的規則都不一樣</p>
+      <p>​</p>
+      <p>很多人以為，認識女生就是認識女生，哪裡認識的不重要，重要的是你夠不夠好。</p>
+      <p>​</p>
+      <p>這個想法，讓無數人白費了大量的力氣。</p>
+      <p>​</p>
+      <p>脫單的路徑只有七條——</p>
+      <p>​</p>
+      <p>婚友社、網路交友、多對多聯誼、親友介紹、學校、工作場合、搭訕。</p>
+      <p>​</p>
+      <p>這七條路，規則完全不一樣。</p>
+      <p>​</p>
+      <p>在錯的路上用錯的方式，不是你不夠好，是你根本不知道那條路的女生在想什麼。</p>
+      <p>​</p>
+      <p>▋前四條：她理應是來找對象的</p>
+      <p>​</p>
+      <p>婚友社、網路交友、多對多聯誼、親友介紹——</p>
+      <p>​</p>
+      <p>這四條路，有一個共同點：</p>
+      <p>​</p>
+      <p>女生出現在這裡，理應是來找對象的。</p>
+      <p>​</p>
+      <p>這不是假設，這是她選擇來這裡的理由。</p>
+      <p>​</p>
+      <p>就像你去應徵工作，你理應是來談勞資關係的。</p>
+      <p>​</p>
+      <p>如果面試的時候老闆一直跟你聊興趣、聊生活、就是不談工作內容和薪水，你會不會覺得哪裡怪怪的？</p>
+      <p>​</p>
+      <p>同樣的道理。</p>
+      <p>​</p>
+      <p>這四條路上，你應該做的事叫做——聚焦男女關係。</p>
+      <p>​</p>
+      <p>讓她知道你對她有興趣。</p>
+      <p>​</p>
+      <p>讓她感受到你們在談的不只是朋友。</p>
+      <p>​</p>
+      <p>讓這段互動，朝著感情的方向走。</p>
+      <p>​</p>
+      <p>不是第一句話就表白，是整個互動的方向，要讓她感覺到你的心意。</p>
+      <p>​</p>
+      <p>你不聚焦，她就只會把你當過場的萍水相逢。</p>
+      <p>​</p>
+      <p>然後你摸不著頭緒的問為什麼一直沒有結果。</p>
+      <p>​</p>
+      <p>▋後三條：她不一定是來找對象的</p>
+      <p>​</p>
+      <p>學校、工作場合、搭訕——</p>
+      <p>​</p>
+      <p>這三條路，完全不同。</p>
+      <p>​</p>
+      <p>學校，她是來學習的。</p>
+      <p>​</p>
+      <p>工作場合，她是來賺錢的。</p>
+      <p>​</p>
+      <p>搭訕，她只是倒楣剛好在那裡。</p>
+      <p>​</p>
+      <p>這三條路上的女生，不一定有感情需求。</p>
+      <p>​</p>
+      <p>你不能假設她想找對象，然後貿然聚焦男女關係。</p>
+      <p>​</p>
+      <p>你要做的事，是先發覺她潛意識的感受與反饋。</p>
+      <p>​</p>
+      <p>搞清楚這些，你才知道要不要繼續走、怎麼走。</p>
+      <p>​</p>
+      <p>不搞清楚，你就是在黑暗裡亂槍打鳥，打中了叫做運氣，打不中是常態。</p>
+      <p>​</p>
+      <p>▋阿慶的問題在哪裡</p>
+      <p>​</p>
+      <p>阿慶在學校和工作場合認識女生，然後用「前四條路」的邏輯去互動。</p>
+      <p>​</p>
+      <p>他以為在這裡認識的女生跟他一樣，都想找對象。</p>
+      <p>​</p>
+      <p>所以他很早就表現出明顯的感情意圖。</p>
+      <p>​</p>
+      <p>結果呢？</p>
+      <p>​</p>
+      <p>對方覺得莫名其妙，開始保持距離。</p>
+      <p>​</p>
+      <p>阿慶不知道哪裡出了問題，只覺得自己又失敗了。</p>
+      <p>​</p>
+      <p>但問題不是他這個人，是他搞錯了那條路的規則。</p>
+      <p>​</p>
+      <p>在後三條路上，你要先成為她願意繼續認識的人，而不是急著讓她知道你對她有意思。</p>
+      <p>​</p>
+      <p>順序錯了，結果就錯了。</p>
+      <p>​</p>
+      <p>▋同樣一個女生，不同的路徑，完全不同的做法</p>
+      <p>​</p>
+      <p>你在婚友社遇到她——她嘴上說來交朋友，但她真的只是來交朋友嗎？</p>
+      <p>​</p>
+      <p>你在公司遇到她——她對你很友善，但那是喜歡你，還是職場禮貌？</p>
+      <p>​</p>
+      <p>你在路上搭訕她——她停下來跟你聊了，但她是真的有興趣，還是不好意思離開？</p>
+      <p>​</p>
+      <p>同一個女生，同一個場景，你聽她說的話，還是看她真正的反應？</p>
+      <p>​</p>
+      <p>這就是問題所在。</p>
+      <p>​</p>
+      <p>你走的每一條路，都有它表面的遊戲規則——</p>
+      <p>​</p>
+      <p>婚友社有婚友社的禮貌，工作場合有工作場合的分際，搭訕有搭訕的客套。</p>
+      <p>​</p>
+      <p>這些規則，是人們上意識整理出來、說給你聽的答案。</p>
+      <p>​</p>
+      <p>但她潛意識裡真正的反應，從來不說謊。</p>
+      <p>​</p>
+      <p>她看到你的瞬間，眼睛有沒有微微撐大？</p>
+      <p>​</p>
+      <p>她假裝在看別的地方，但視線一直飄回來？</p>
+      <p>​</p>
+      <p>她嘴上說「我不認識你」，但身體沒有要離開？</p>
+      <p>​</p>
+      <p>這些，是她潛意識給你的真實答案。</p>
+      <p>​</p>
+      <p>不是她的嘴巴，是她的生理反應在說話。</p>
+      <p>​</p>
+      <p>當你學會讀這些訊號，你就不需要靠猜測、靠運氣、靠揣摩她說的話是什麼意思。</p>
+      <p>​</p>
+      <p>你直接看她的潛意識，然後知道下一步該怎麼走。</p>
+      <p>​</p>
+      <p>這判斷邏輯，我把它寫在電子書裡了。</p>
+      <p>​</p>
+      <p>▋你現在最常走哪條路？</p>
+      <p>​</p>
+      <p>我問你一個問題。</p>
+      <p>​</p>
+      <p>你現在最常認識女生的管道是哪一條？</p>
+      <p>​</p>
+      <p>你知道那條路上的女生，動機是什麼嗎？</p>
+      <p>​</p>
+      <p>你知道在那條路上，你應該怎麼前進嗎？</p>
+      <p>​</p>
+      <p>如果你的答案是「不確定」，那你現在知道問題在哪裡了。</p>
+      <p>​</p>
+      <p>不是你不夠好。</p>
+      <p>​</p>
+      <p>不是你不會說話。</p>
+      <p>​</p>
+      <p>是你對那條路的規則，還沒有搞清楚。</p>
+      <p>​</p>
+      <p>搞清楚規則，你的每一分力才算數。</p>
+      <p>​</p>
+      <p>我是派特。</p>
+      <p>​</p>
+      <p>七條路，每一條都有它的邏輯。</p>
+      <p>​</p>
+      <p>你不需要七條都走，你只需要找到最適合你的那一條，然後搞清楚那條路的規則。</p>
+      <p>​</p>
+      <p>東西我都給你了。框架在這裡，邏輯在這裡，案例在這裡。</p>
+      <p>​</p>
+      <p>剩下的，只差你願不願意——</p>
+      <p>​</p>
+      <p>停止問「我要說什麼」。</p>
+      <p>​</p>
+      <p>開始問「我走的這條路，規則是什麼」。</p>
+      <p>​</p>
+      <p>別再讓你的舊系統，繼續浪費你的2026年。</p>
+      <p>​</p>
+      <p>👇 下方留言「3.0」，立刻下載電子書，做情感作業系統檢測！</p>
+      <p>​</p>
+      <p>轉發給一個，認識了很多女生卻一直沒有結果、不知道問題在哪裡的兄弟。</p>
+      <p>​</p>
+      <p>也許這篇，是他今年最需要看到的東西。</p>
+    </div>
+  </div>
+</div>
+
+<section class="cta-section">
+  <div class="prose-container">
+    <p class="section-label reveal">想改變，從這裡開始</p>
+    <h2 class="section-title reveal">你的感情問題，<br>不是態度問題，是系統問題。</h2>
+    <div class="cta-stack reveal">
+      <a href="https://lin.ee/pljXoyp" target="_blank" rel="noopener noreferrer" class="btn-primary">
+        加入 LINE 好友，領取免費情感作業系統診斷
+        <svg width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </a>
+      <a href="../service.html" class="btn-text">或者直接預約一對一診斷 →</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-inner">
+    <p class="footer-copy">&#169; 2026 五四愛情學苑 派特</p>
+    <div class="footer-links">
+      <a href="#">隱私權政策</a>
+      <a href="#">聯絡我們</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+  const hamburger = document.getElementById('hamburger');
+  const mobileMenu = document.getElementById('mobileMenu');
+  hamburger.addEventListener('click', () => {
+    const open = mobileMenu.classList.toggle('open');
+    hamburger.classList.toggle('open', open);
+    hamburger.setAttribute('aria-expanded', String(open));
+  });
+  mobileMenu.querySelectorAll('a').forEach(link => {
+    link.addEventListener('click', () => {
+      mobileMenu.classList.remove('open');
+      hamburger.classList.remove('open');
+      hamburger.setAttribute('aria-expanded', 'false');
+    });
+  });
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.08 });
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+</script>
+
+</body>
+</html>

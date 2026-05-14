@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="King的故事轉化案例有一天有個小老弟去參加一個聚餐聚餐結束的時候大家會有一個環節提醒大家要在Line群裡面加入每一個人">
+  <title>【談戀愛別再讓你的「恐懼」假裝成「有禮貌」，3.0 的世界裡沒有「錯過」這兩個字】 | 五四愛情學苑 派特</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    :root {
+      --bg: #0a0a0a; --surface: #0f0f0f; --card: #141414;
+      --border: #1e1e1e; --border-hover: #2e2e2e;
+      --accent: #1a3a5c; --accent-hover: #234d7a; --accent-text: #4a8bc4;
+      --text-primary: #efefef; --text-secondary: #888; --text-muted: #444;
+      --font: 'Noto Sans TC', -apple-system, 'PingFang TC', 'Microsoft JhengHei', sans-serif;
+      --max-w: 1080px; --prose-w: 680px; --nav-h: 64px;
+    }
+    html { scroll-behavior: smooth; }
+    body { background: var(--bg); color: var(--text-primary); font-family: var(--font); line-height: 1.7; -webkit-font-smoothing: antialiased; }
+    a { color: inherit; text-decoration: none; }
+    .reveal { opacity: 0; transform: translateY(24px); transition: opacity 0.65s ease, transform 0.65s ease; }
+    .reveal.visible { opacity: 1; transform: none; }
+
+    nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; height: var(--nav-h); background: rgba(10,10,10,0.88); backdrop-filter: blur(18px); -webkit-backdrop-filter: blur(18px); border-bottom: 1px solid var(--border); }
+    .nav-inner { max-width: var(--max-w); margin: 0 auto; padding: 0 24px; height: 100%; display: flex; align-items: center; justify-content: space-between; }
+    .nav-links { display: flex; align-items: center; gap: 28px; list-style: none; }
+    .nav-links a { font-size: 14px; color: var(--text-secondary); transition: color 0.2s; }
+    .nav-links a:hover { color: var(--text-primary); }
+    .nav-cta { padding: 8px 18px; border: 1px solid var(--border); border-radius: 4px; color: var(--text-primary) !important; font-size: 14px; transition: background 0.2s, border-color 0.2s !important; }
+    .nav-cta:hover { background: var(--card) !important; border-color: var(--border-hover) !important; }
+    .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 6px; background: none; border: none; }
+    .hamburger span { display: block; width: 22px; height: 1.5px; background: var(--text-primary); transition: all 0.25s; }
+    .hamburger.open span:nth-child(1) { transform: translateY(6.5px) rotate(45deg); }
+    .hamburger.open span:nth-child(2) { opacity: 0; }
+    .hamburger.open span:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
+    .mobile-menu { display: none; position: fixed; top: var(--nav-h); left: 0; right: 0; background: var(--surface); border-bottom: 1px solid var(--border); z-index: 99; }
+    .mobile-menu.open { display: block; }
+    .mobile-menu a { display: block; padding: 16px 24px; font-size: 15px; color: var(--text-secondary); border-bottom: 1px solid var(--border); transition: color 0.2s; }
+    .mobile-menu a:hover { color: var(--text-primary); }
+    .mobile-menu a:last-child { border-bottom: none; }
+
+    .prose-container { max-width: var(--prose-w); margin: 0 auto; padding: 0 24px; }
+    .article-hero { padding-top: calc(var(--nav-h) + 80px); padding-bottom: 40px; }
+    .article-eyebrow { font-size: 11px; font-weight: 400; letter-spacing: 0.16em; text-transform: uppercase; color: var(--text-muted); margin-bottom: 24px; }
+    .article-title { font-size: clamp(1.6rem, 4vw, 2.4rem); font-weight: 700; line-height: 1.3; color: var(--text-primary); }
+    .article-body { padding-bottom: 80px; }
+    .divider { border: none; border-top: 1px solid var(--border); margin: 48px 0; }
+    .prose p { font-size: clamp(1rem, 2vw, 1.1rem); color: var(--text-secondary); font-weight: 300; line-height: 2; margin-bottom: 20px; }
+    .prose p:last-child { margin-bottom: 0; }
+
+    .cta-section { text-align: center; background: linear-gradient(170deg, var(--bg) 0%, #0b1623 100%); border-top: 1px solid var(--border); padding: 96px 0; }
+    .section-label { font-size: 11px; font-weight: 400; letter-spacing: 0.16em; text-transform: uppercase; color: var(--text-muted); margin-bottom: 14px; }
+    .section-title { font-size: clamp(1.7rem, 4vw, 2.5rem); font-weight: 700; line-height: 1.25; color: var(--text-primary); margin-bottom: 36px; }
+    .cta-stack { display: flex; flex-direction: column; align-items: center; gap: 16px; }
+    .btn-primary { display: inline-flex; align-items: center; gap: 10px; padding: 14px 26px; background: var(--accent); color: #fff; font-size: 15px; font-weight: 500; font-family: var(--font); border-radius: 4px; border: none; cursor: pointer; transition: background 0.2s, transform 0.15s; }
+    .btn-primary:hover { background: var(--accent-hover); transform: translateY(-1px); }
+    .btn-text { display: inline-flex; align-items: center; gap: 6px; font-size: 14px; color: var(--text-secondary); transition: color 0.2s; }
+    .btn-text:hover { color: var(--text-primary); }
+
+    footer { padding: 32px 24px; border-top: 1px solid var(--border); }
+    .footer-inner { max-width: var(--max-w); margin: 0 auto; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 12px; }
+    .footer-copy { font-size: 13px; color: var(--text-muted); }
+    .footer-links { display: flex; gap: 24px; }
+    .footer-links a { font-size: 13px; color: var(--text-muted); transition: color 0.2s; }
+    .footer-links a:hover { color: var(--text-secondary); }
+
+    @media (max-width: 768px) {
+      .nav-links { display: none; }
+      .hamburger { display: flex; }
+      .footer-inner { flex-direction: column; align-items: flex-start; }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <a href="../index.html" class="nav-logo">
+      <img src="../logo.png" alt="派特 五四愛情學苑" height="56" style="width:auto;display:block;">
+    </a>
+    <ul class="nav-links">
+      <li><a href="../index.html">文章</a></li>
+      <li><a href="../about.html">關於派特</a></li>
+      <li><a href="../service.html" class="nav-cta">預約諮詢</a></li>
+    </ul>
+    <button class="hamburger" id="hamburger" aria-label="開啟選單" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<div class="mobile-menu" id="mobileMenu" role="navigation">
+  <a href="../index.html">文章</a>
+  <a href="../about.html">關於派特</a>
+  <a href="../service.html">預約諮詢</a>
+</div>
+
+<div class="article-hero">
+  <div class="prose-container">
+    <p class="article-eyebrow">派特觀點</p>
+    <h1 class="article-title">【談戀愛別再讓你的「恐懼」假裝成「有禮貌」，3.0 的世界裡沒有「錯過」這兩個字】</h1>
+  </div>
+</div>
+
+<div class="article-body">
+  <div class="prose-container">
+    <hr class="divider">
+    <div class="prose reveal">
+      <p>King的故事轉化案例有一天有個小老弟去參加一個聚餐聚餐結束的時候大家會有一個環節提醒大家要在Line群裡面加入每一個人</p>
+      <p>然後有一個女孩子才離開前跑到小樓梯面前問你有加到我嗎？</p>
+      <p>小弟當時也被問一下直覺式的進入了解決問題的腦袋他說喔，我有</p>
+      <p>事後小老弟跑來問我他說女生啊，廁所跑過來問自己是什麼意思？</p>
+      <p>我說既然你想知道為什麼你不當下問他是因為1.0的習性讓你因為恐懼而不敢問還是因為自我保護怕自己覺得怪，所以要跟沒想到還是在重重騎的你覺得這樣子問會不會太沒禮貌所以不論是上醫師或小醫師都讓你忽視了這個件事</p>
+      <p>如果是3.0的腦袋當然是直接開口問他你特地跑來問我是希望這一個儀式這個活動的每一個流程能夠被完整，所以你不希望漏掉我這一個緩解還是你真想確定我有沒有加到啊</p>
+      <p>你絕對有籌碼在這個環節進行提問，因為是他來確定你被動的人往往具有優勢</p>
+      <p>小老弟恍然大悟，但已經錯過了那還有什麼補救辦法嗎？</p>
+      <p>我說3.0的腦袋沒有什麼補救不補救的問題，因為所有的反饋都只是一種狀況根據狀況我是請做好就好從來不以當下的失敗為失敗</p>
+      <p>你現在要做的事情就是敲那個女生跟他說：「我今天都沒有機會好好問你你來跟我確認有沒有加到你是流程的環節你希望能夠圓滿還是我有這個機會多跟你聊聊私事啊？」</p>
+      <p>關係的引導應該掌握在自己手裡用最舒服的方式，聚焦在你想想知道的事情上讓答案你最輕鬆的方式浮上台面這就是3.0驅動你面對自己渴望所產生的結果勇敢的面對自己想要的東西把不滿化為動力，該聚焦你想要的關係就大膽放膽地去做吧======【談戀愛別再讓你的「恐懼」假裝成「有禮貌」，3.0 的世界裡沒有「錯過」這兩個字】</p>
+      <p>​</p>
+      <p>前幾天，有個小老弟一臉糾結地跑來找我。他說：「派特哥，我好像搞砸了一個機會。」</p>
+      <p>​</p>
+      <p>事情是這樣的：聚餐快結束時，大家在 Line 群組互相加好友。</p>
+      <p>​</p>
+      <p>一個他挺欣賞的女孩子，在離開前竟然特地穿過人群跑到他面前，亮著螢幕問他：「你有加到我嗎？」</p>
+      <p>​</p>
+      <p>當時這小老弟腦袋一熱，直接進入了「解決問題」的模式，反射性地回答：「喔，我有加了。」然後，就沒有然後了。</p>
+      <p>​</p>
+      <p>他事後越想越不對，跑來問我：「派特哥，女生特地跑過來問我這句，到底是什麼意思？」</p>
+      <p>​</p>
+      <p>我聽完笑著看著他：「你現在才來問我什麼意思？當下為什麼不直接問她？是因為 1.0 的習性讓你因為『恐懼』而不敢開口？還是你為了『自我保護』怕自己顯得太怪，所以大腦自動忽視了這個反饋？」</p>
+      <p>​</p>
+      <p>我告訴他，無論是你的上意識還是潛意識，在那一刻都選擇了逃避。你覺得多問一句會沒禮貌，但事實上，你只是不敢面對自己「想要」的慾望。</p>
+      <p>​</p>
+      <p>如果是 OS 3.0 的腦袋，你當下就會優雅地接招。</p>
+      <p>​</p>
+      <p>你要知道，是她主動過來確認你的，這代表你手中握有極大的籌碼。</p>
+      <p>​</p>
+      <p>你可以直接開口問她：</p>
+      <p>​</p>
+      <p>「妳特地跑來問我，是希望聚餐的流程能被完整圓滿，不希望漏掉我？還是……妳真的想確定我有沒有加到妳？」</p>
+      <p>​</p>
+      <p>這句話一出，壓力就回到了對方身上。</p>
+      <p>​</p>
+      <p>被動的人，往往才具有真正的引導優勢。</p>
+      <p>​</p>
+      <p>小老弟聽完恍然大悟，但隨即又垂頭喪氣：「但我當下已經錯過了，還有補救辦法嗎？」</p>
+      <p>​</p>
+      <p>我拍拍他的肩膀：「記住，3.0 的腦袋裡沒有什麼『補救』不補救。所有的反饋都只是一種狀態，根據狀況『做對』就好。我們從不以當下的沉默為失敗。」</p>
+      <p>​</p>
+      <p>我給了他一個重構指令，叫他直接傳 Line 給那個女生：</p>
+      <p>​</p>
+      <p>「我今天都沒機會好好問妳，妳剛才來跟我確認有沒有加到妳，是流程環節妳希望圓滿？還是……我有這個機會能多跟妳聊聊私事啊？」</p>
+      <p>​</p>
+      <p>小老弟傳完之後，整個人都鬆了一口氣。</p>
+      <p>​</p>
+      <p>因為關係的引導應該掌握在自己手裡。你要用最舒服的方式，聚焦在你真正想知道的事情上，讓答案以最輕鬆的方式浮上檯面。</p>
+      <p>​</p>
+      <p>這就是 OS 3.0 驅動你面對渴望時產生的結果。</p>
+      <p>​</p>
+      <p>把不甘心化為動力，大膽地去聚焦你想要的關係。</p>
+      <p>​</p>
+      <p>你要學習的不是「如何不犯錯」，而是學習如何成為那個「定義規則」的人。</p>
+      <p>​</p>
+      <p>如果你也常在社交場合「慢半拍」，事後才在後悔剛才沒說什麼。</p>
+      <p>​</p>
+      <p>如果你想學會如何把對方的「主動」轉化為你的「主導權」。</p>
+      <p>​</p>
+      <p>我已經把這套「反客為主」的重構指令放在我的 LINE 官方帳號裡了。</p>
+      <p>​</p>
+      <p>別再讓你的幸福，斷送在「我以為沒禮貌」的自我限制裡。</p>
+      <p>​</p>
+      <p>👇 留言 「3.0」，我私訊你這份讓你不再錯過機會的情感作業系統補丁。</p>
+    </div>
+  </div>
+</div>
+
+<section class="cta-section">
+  <div class="prose-container">
+    <p class="section-label reveal">想改變，從這裡開始</p>
+    <h2 class="section-title reveal">你的感情問題，<br>不是態度問題，是系統問題。</h2>
+    <div class="cta-stack reveal">
+      <a href="https://lin.ee/pljXoyp" target="_blank" rel="noopener noreferrer" class="btn-primary">
+        加入 LINE 好友，領取免費情感作業系統診斷
+        <svg width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </a>
+      <a href="../service.html" class="btn-text">或者直接預約一對一診斷 →</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-inner">
+    <p class="footer-copy">&#169; 2026 五四愛情學苑 派特</p>
+    <div class="footer-links">
+      <a href="#">隱私權政策</a>
+      <a href="#">聯絡我們</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+  const hamburger = document.getElementById('hamburger');
+  const mobileMenu = document.getElementById('mobileMenu');
+  hamburger.addEventListener('click', () => {
+    const open = mobileMenu.classList.toggle('open');
+    hamburger.classList.toggle('open', open);
+    hamburger.setAttribute('aria-expanded', String(open));
+  });
+  mobileMenu.querySelectorAll('a').forEach(link => {
+    link.addEventListener('click', () => {
+      mobileMenu.classList.remove('open');
+      hamburger.classList.remove('open');
+      hamburger.setAttribute('aria-expanded', 'false');
+    });
+  });
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.08 });
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+</script>
+
+</body>
+</html>

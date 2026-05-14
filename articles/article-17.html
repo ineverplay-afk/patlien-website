@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="參加聯誼活動抱著平常心參加，這種想法最危險。">
+  <title>參加聯誼活動抱著平常心參加，這種想法最危險。 | 五四愛情學苑 派特</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    :root {
+      --bg: #0a0a0a; --surface: #0f0f0f; --card: #141414;
+      --border: #1e1e1e; --border-hover: #2e2e2e;
+      --accent: #1a3a5c; --accent-hover: #234d7a; --accent-text: #4a8bc4;
+      --text-primary: #efefef; --text-secondary: #888; --text-muted: #444;
+      --font: 'Noto Sans TC', -apple-system, 'PingFang TC', 'Microsoft JhengHei', sans-serif;
+      --max-w: 1080px; --prose-w: 680px; --nav-h: 64px;
+    }
+    html { scroll-behavior: smooth; }
+    body { background: var(--bg); color: var(--text-primary); font-family: var(--font); line-height: 1.7; -webkit-font-smoothing: antialiased; }
+    a { color: inherit; text-decoration: none; }
+    .reveal { opacity: 0; transform: translateY(24px); transition: opacity 0.65s ease, transform 0.65s ease; }
+    .reveal.visible { opacity: 1; transform: none; }
+
+    nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; height: var(--nav-h); background: rgba(10,10,10,0.88); backdrop-filter: blur(18px); -webkit-backdrop-filter: blur(18px); border-bottom: 1px solid var(--border); }
+    .nav-inner { max-width: var(--max-w); margin: 0 auto; padding: 0 24px; height: 100%; display: flex; align-items: center; justify-content: space-between; }
+    .nav-links { display: flex; align-items: center; gap: 28px; list-style: none; }
+    .nav-links a { font-size: 14px; color: var(--text-secondary); transition: color 0.2s; }
+    .nav-links a:hover { color: var(--text-primary); }
+    .nav-cta { padding: 8px 18px; border: 1px solid var(--border); border-radius: 4px; color: var(--text-primary) !important; font-size: 14px; transition: background 0.2s, border-color 0.2s !important; }
+    .nav-cta:hover { background: var(--card) !important; border-color: var(--border-hover) !important; }
+    .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 6px; background: none; border: none; }
+    .hamburger span { display: block; width: 22px; height: 1.5px; background: var(--text-primary); transition: all 0.25s; }
+    .hamburger.open span:nth-child(1) { transform: translateY(6.5px) rotate(45deg); }
+    .hamburger.open span:nth-child(2) { opacity: 0; }
+    .hamburger.open span:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
+    .mobile-menu { display: none; position: fixed; top: var(--nav-h); left: 0; right: 0; background: var(--surface); border-bottom: 1px solid var(--border); z-index: 99; }
+    .mobile-menu.open { display: block; }
+    .mobile-menu a { display: block; padding: 16px 24px; font-size: 15px; color: var(--text-secondary); border-bottom: 1px solid var(--border); transition: color 0.2s; }
+    .mobile-menu a:hover { color: var(--text-primary); }
+    .mobile-menu a:last-child { border-bottom: none; }
+
+    .prose-container { max-width: var(--prose-w); margin: 0 auto; padding: 0 24px; }
+    .article-hero { padding-top: calc(var(--nav-h) + 80px); padding-bottom: 40px; }
+    .article-eyebrow { font-size: 11px; font-weight: 400; letter-spacing: 0.16em; text-transform: uppercase; color: var(--text-muted); margin-bottom: 24px; }
+    .article-title { font-size: clamp(1.6rem, 4vw, 2.4rem); font-weight: 700; line-height: 1.3; color: var(--text-primary); }
+    .article-body { padding-bottom: 80px; }
+    .divider { border: none; border-top: 1px solid var(--border); margin: 48px 0; }
+    .prose p { font-size: clamp(1rem, 2vw, 1.1rem); color: var(--text-secondary); font-weight: 300; line-height: 2; margin-bottom: 20px; }
+    .prose p:last-child { margin-bottom: 0; }
+
+    .cta-section { text-align: center; background: linear-gradient(170deg, var(--bg) 0%, #0b1623 100%); border-top: 1px solid var(--border); padding: 96px 0; }
+    .section-label { font-size: 11px; font-weight: 400; letter-spacing: 0.16em; text-transform: uppercase; color: var(--text-muted); margin-bottom: 14px; }
+    .section-title { font-size: clamp(1.7rem, 4vw, 2.5rem); font-weight: 700; line-height: 1.25; color: var(--text-primary); margin-bottom: 36px; }
+    .cta-stack { display: flex; flex-direction: column; align-items: center; gap: 16px; }
+    .btn-primary { display: inline-flex; align-items: center; gap: 10px; padding: 14px 26px; background: var(--accent); color: #fff; font-size: 15px; font-weight: 500; font-family: var(--font); border-radius: 4px; border: none; cursor: pointer; transition: background 0.2s, transform 0.15s; }
+    .btn-primary:hover { background: var(--accent-hover); transform: translateY(-1px); }
+    .btn-text { display: inline-flex; align-items: center; gap: 6px; font-size: 14px; color: var(--text-secondary); transition: color 0.2s; }
+    .btn-text:hover { color: var(--text-primary); }
+
+    footer { padding: 32px 24px; border-top: 1px solid var(--border); }
+    .footer-inner { max-width: var(--max-w); margin: 0 auto; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 12px; }
+    .footer-copy { font-size: 13px; color: var(--text-muted); }
+    .footer-links { display: flex; gap: 24px; }
+    .footer-links a { font-size: 13px; color: var(--text-muted); transition: color 0.2s; }
+    .footer-links a:hover { color: var(--text-secondary); }
+
+    @media (max-width: 768px) {
+      .nav-links { display: none; }
+      .hamburger { display: flex; }
+      .footer-inner { flex-direction: column; align-items: flex-start; }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <a href="../index.html" class="nav-logo">
+      <img src="../logo.png" alt="派特 五四愛情學苑" height="56" style="width:auto;display:block;">
+    </a>
+    <ul class="nav-links">
+      <li><a href="../index.html">文章</a></li>
+      <li><a href="../about.html">關於派特</a></li>
+      <li><a href="../service.html" class="nav-cta">預約諮詢</a></li>
+    </ul>
+    <button class="hamburger" id="hamburger" aria-label="開啟選單" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<div class="mobile-menu" id="mobileMenu" role="navigation">
+  <a href="../index.html">文章</a>
+  <a href="../about.html">關於派特</a>
+  <a href="../service.html">預約諮詢</a>
+</div>
+
+<div class="article-hero">
+  <div class="prose-container">
+    <p class="article-eyebrow">派特觀點</p>
+    <h1 class="article-title">參加聯誼活動抱著平常心參加，這種想法最危險。</h1>
+  </div>
+</div>
+
+<div class="article-body">
+  <div class="prose-container">
+    <hr class="divider">
+    <div class="prose reveal">
+      <p>參加聯誼活動抱著平常心參加，這種想法最危險。</p>
+      <p>參加聯誼活動前的心情，最常見為下面三種：</p>
+      <p>第一種抱著期待，希望在這裡遇到自己喜歡的女孩，如果她也剛好喜歡自己，那就太棒了。</p>
+      <p>第二種告訴自己，不需要期待，自己是單純交友或活動內容有趣才來的，有沒有遇到喜歡的女生不重要。</p>
+      <p>第三種對未知的社交情境感到緊張或焦慮，為了讓自己一顆心平靜下來，不斷告訴自己平常心對待吧。</p>
+      <p>不論是上面哪一種，不掉入脫單陷阱的關鍵，在於時刻檢視自己的念頭是否正在自我欺騙。</p>
+      <p>這是男生的心情，參加活動前的女生也是這樣想，它反映出了為什麼聯誼活動很多人參加且雙方都有情感需求，但最後邁向約會的卻很少。</p>
+      <p>1.情感區塊敏感且脆弱，所以我只要符合期待的。1.0因情緒而決定作為。</p>
+      <p>2.被過去的經驗綁住害怕失敗，所以不抱期待沒有傷害。1.0自我保護機制限制作為。</p>
+      <p>3.害怕別人的評價，冷漠或是傻笑是社交最佳的保護色。1.0從眾期，自己的價值觀完全來自於外界，有禮貌跟笑容和矜持就是最佳社交路徑。</p>
+      <p>3.0的情感作業系統的人面對這個聯誼局會採取甚麼行動呢?我來講受過3.0洗禮的阿華的故事。阿華參加聯誼，因為辦活動的那個飯店場地很大，分成兩塊，一塊是聯誼區，另外一塊是普通用餐區。阿華在活動參加到一半的時候，看到用餐區有兩個女孩子在吃飯。1.0的人現在的認知是甚麼?他們兩個好會打扮，它們應該不會看上我吧。(因情緒恐懼不配感而自我貶低阻止行動自然不會觸發人生可能性。)1.0的人還會認為，我現在在活動參加到一半，突然中離去跟別的女生在聊天，大家應該覺得我腦子有洞，不尊重主辦單位和現場的人。(環境-推託活動當藉口)</p>
+      <p>1.0的人我在參加活動，這兩個女生應該跟我沒關係，就算我能跟他們說話，它們會不會覺得我參加聯誼還來跟他們說話，我會被當成花心大蘿蔔吧。它們不會答應認識我。(從眾期-以自以為的別人價值觀來限制自己的行為)阿華做了甚麼事情周全了所有1.0人的擔心，阿華找了飯店的服務生，分別點了甜點給這一桌子的兩個女生。女生自然會看向自己，接下來他們的目光也會觀察阿華，這就給了很多空間讓女生評估阿華適不˙適合。阿華在活動期間平凡跟他們遠端互動，微笑，點頭、扮鬼臉。活動中場休息的時候，主動過去那一桌打招呼，確保對方離開的時間自己不會錯過。最後活動結束的時候，跑去跟哪兩個女生喝茶。當1.0的人將緣分交給恐懼交給環境交給人云亦云當個愛情倖存者時，3.0的阿華深深地清楚知道自己要甚麼，所有的狀況都是幫助自己成功的工具。3.0的情感作業系統才能幫助你駕馭所有你學過的東西。======</p>
+      <p>【談戀愛別再用「平常心」來掩飾你的無能——阿華的聯誼場外奇襲】</p>
+      <p>​</p>
+      <p>「派特哥，我明天要去參加聯誼，我告訴自己要抱著『平常心』參加。」</p>
+      <p>​</p>
+      <p>每當我聽到這句話，我心裡就浮現一個 Error 的報錯紅字。</p>
+      <p>​</p>
+      <p>很多人以為「平常心」是高尚的修養，但在 OS 3.0 的眼裡，這叫「系統逃避」。</p>
+      <p>​</p>
+      <p>你不是平常心，你是因為恐懼、因為害怕期待落空、因為害怕別人的評價，所以你選擇把自己的情感作業系統切換成「離線模式」。</p>
+      <p>​</p>
+      <p>你不期待，就不會受傷；你保持禮貌、冷漠或傻笑，就不會出錯。</p>
+      <p>​</p>
+      <p>結果呢？你參加了十場聯誼，最後唯一的收穫就是跟一群男人在門口抽菸換 Line。</p>
+      <p>​</p>
+      <p>為什麼聯誼活動這麼多人參加，最後能邁向約會的卻少之又少？</p>
+      <p>​</p>
+      <p>因為 1.0 的系統裡長滿了病毒：</p>
+      <p>​</p>
+      <p>敏感且脆弱：只要對方的反饋不符合預期，情緒立刻決定作為（放棄）。</p>
+      <p>​</p>
+      <p>自我保護機制：被過去的失敗經驗綁架，「不抱期待」變成了你的防彈衣。</p>
+      <p>​</p>
+      <p>從眾期作祟：你以為「有禮貌」、「矜持」是最佳路徑，其實那只是你為了躲避社會評價而穿上的保護色。</p>
+      <p>​</p>
+      <p>來看看受過 3.0 洗禮的阿華是怎麼活的。</p>
+      <p>​</p>
+      <p>那次聯誼飯店場地很大，一邊是熱鬧的聯誼區，另一邊是安靜的普通用餐區。</p>
+      <p>​</p>
+      <p>當所有 1.0 的男人都在乖乖玩著主辦單位的遊戲、想著等一下要說什麼話時，阿華的眼睛看向了圍欄外的用餐區。那裡坐著兩位氣質出眾、打扮精緻的女生在吃飯。</p>
+      <p>​</p>
+      <p>這時，1.0 的人腦袋怎麼想的：</p>
+      <p>​</p>
+      <p>「她們那麼正，應該看不上我吧？」（自我貶低）</p>
+      <p>​</p>
+      <p>「我現在中離去搭訕，大家會覺得我沒禮貌吧？」（環境推託）</p>
+      <p>​</p>
+      <p>「參加聯誼還去搭訕路人，會被當成花心大蘿蔔吧？」（從眾恐懼）</p>
+      <p>​</p>
+      <p>阿華沒理會這些1.0的思維，他只解決一件事：「如何創造成功的概率」。</p>
+      <p>​</p>
+      <p>他找來飯店服務生，點了兩份精緻甜點送到那兩位女生的桌上。</p>
+      <p>​</p>
+      <p>這一招太狠了。</p>
+      <p>​</p>
+      <p>女生一定會看向他，接下來的幾十分鐘，她們的目光會不自覺地停留在阿華身上，評估這個男人。</p>
+      <p>​</p>
+      <p>阿華呢？他沒有丟下聯誼不管。他在活動中，隔著一段距離，平凡地跟她們眼神互動、微笑、點頭，甚至扮個鬼臉。</p>
+      <p>​</p>
+      <p>他把整個空間，都重構成他的主場。</p>
+      <p>​</p>
+      <p>中場休息時，他優雅地走到那一桌打招呼，確保不會錯過她們離開的時間。</p>
+      <p>​</p>
+      <p>最後，活動結束了，1.0 的人在門口抱怨聯誼女生，阿華已經坐在那一桌跟兩位女生喝茶了。</p>
+      <p>​</p>
+      <p>這就是「情感作業系統」的代差。</p>
+      <p>​</p>
+      <p>1.0 的人把緣分交給恐懼、交給環境、交給人云亦云，一輩子只能當個「愛情倖存者」。</p>
+      <p>​</p>
+      <p>3.0 的阿華深深清楚自己要什麼，對他來說，現場的所有人、所有物、所有環境，都是幫助他成功的工具。</p>
+      <p>​</p>
+      <p>3.0 系統，不是教你方法，是教你如何「駕馭」工具。</p>
+      <p>​</p>
+      <p>如果你不升級你的 OS，你學再多聊天法，你依然跨不出那一座心裡的圍欄。</p>
+      <p>​</p>
+      <p>別再讓「平常心」耽誤你的人生了。</p>
+      <p>​</p>
+      <p>如果你想學會如何像阿華一樣，一眼看穿局勢，並用最優雅的方式重構你的社交現實。</p>
+      <p>​</p>
+      <p>我已經把這套「反客為主」的重構指令放在我的 LINE 官方帳號裡了。</p>
+      <p>​</p>
+      <p>別再當那個在圍欄裡等待分配的人。</p>
+      <p>​</p>
+      <p>👇 留言 「3.0」，領取這份讓你「駕馭全局」的電子書系統補丁。</p>
+    </div>
+  </div>
+</div>
+
+<section class="cta-section">
+  <div class="prose-container">
+    <p class="section-label reveal">想改變，從這裡開始</p>
+    <h2 class="section-title reveal">你的感情問題，<br>不是態度問題，是系統問題。</h2>
+    <div class="cta-stack reveal">
+      <a href="https://lin.ee/pljXoyp" target="_blank" rel="noopener noreferrer" class="btn-primary">
+        加入 LINE 好友，領取免費情感作業系統診斷
+        <svg width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </a>
+      <a href="../service.html" class="btn-text">或者直接預約一對一診斷 →</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-inner">
+    <p class="footer-copy">&#169; 2026 五四愛情學苑 派特</p>
+    <div class="footer-links">
+      <a href="#">隱私權政策</a>
+      <a href="#">聯絡我們</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+  const hamburger = document.getElementById('hamburger');
+  const mobileMenu = document.getElementById('mobileMenu');
+  hamburger.addEventListener('click', () => {
+    const open = mobileMenu.classList.toggle('open');
+    hamburger.classList.toggle('open', open);
+    hamburger.setAttribute('aria-expanded', String(open));
+  });
+  mobileMenu.querySelectorAll('a').forEach(link => {
+    link.addEventListener('click', () => {
+      mobileMenu.classList.remove('open');
+      hamburger.classList.remove('open');
+      hamburger.setAttribute('aria-expanded', 'false');
+    });
+  });
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.08 });
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+</script>
+
+</body>
+</html>

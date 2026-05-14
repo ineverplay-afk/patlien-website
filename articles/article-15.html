@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="【追女生追到被封鎖？——解封鎖的十五步執行導航】">
+  <title>【追女生追到被封鎖？——解封鎖的十五步執行導航】 | 五四愛情學苑 派特</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    :root {
+      --bg: #0a0a0a; --surface: #0f0f0f; --card: #141414;
+      --border: #1e1e1e; --border-hover: #2e2e2e;
+      --accent: #1a3a5c; --accent-hover: #234d7a; --accent-text: #4a8bc4;
+      --text-primary: #efefef; --text-secondary: #888; --text-muted: #444;
+      --font: 'Noto Sans TC', -apple-system, 'PingFang TC', 'Microsoft JhengHei', sans-serif;
+      --max-w: 1080px; --prose-w: 680px; --nav-h: 64px;
+    }
+    html { scroll-behavior: smooth; }
+    body { background: var(--bg); color: var(--text-primary); font-family: var(--font); line-height: 1.7; -webkit-font-smoothing: antialiased; }
+    a { color: inherit; text-decoration: none; }
+    .reveal { opacity: 0; transform: translateY(24px); transition: opacity 0.65s ease, transform 0.65s ease; }
+    .reveal.visible { opacity: 1; transform: none; }
+
+    nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; height: var(--nav-h); background: rgba(10,10,10,0.88); backdrop-filter: blur(18px); -webkit-backdrop-filter: blur(18px); border-bottom: 1px solid var(--border); }
+    .nav-inner { max-width: var(--max-w); margin: 0 auto; padding: 0 24px; height: 100%; display: flex; align-items: center; justify-content: space-between; }
+    .nav-links { display: flex; align-items: center; gap: 28px; list-style: none; }
+    .nav-links a { font-size: 14px; color: var(--text-secondary); transition: color 0.2s; }
+    .nav-links a:hover { color: var(--text-primary); }
+    .nav-cta { padding: 8px 18px; border: 1px solid var(--border); border-radius: 4px; color: var(--text-primary) !important; font-size: 14px; transition: background 0.2s, border-color 0.2s !important; }
+    .nav-cta:hover { background: var(--card) !important; border-color: var(--border-hover) !important; }
+    .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 6px; background: none; border: none; }
+    .hamburger span { display: block; width: 22px; height: 1.5px; background: var(--text-primary); transition: all 0.25s; }
+    .hamburger.open span:nth-child(1) { transform: translateY(6.5px) rotate(45deg); }
+    .hamburger.open span:nth-child(2) { opacity: 0; }
+    .hamburger.open span:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
+    .mobile-menu { display: none; position: fixed; top: var(--nav-h); left: 0; right: 0; background: var(--surface); border-bottom: 1px solid var(--border); z-index: 99; }
+    .mobile-menu.open { display: block; }
+    .mobile-menu a { display: block; padding: 16px 24px; font-size: 15px; color: var(--text-secondary); border-bottom: 1px solid var(--border); transition: color 0.2s; }
+    .mobile-menu a:hover { color: var(--text-primary); }
+    .mobile-menu a:last-child { border-bottom: none; }
+
+    .prose-container { max-width: var(--prose-w); margin: 0 auto; padding: 0 24px; }
+    .article-hero { padding-top: calc(var(--nav-h) + 80px); padding-bottom: 40px; }
+    .article-eyebrow { font-size: 11px; font-weight: 400; letter-spacing: 0.16em; text-transform: uppercase; color: var(--text-muted); margin-bottom: 24px; }
+    .article-title { font-size: clamp(1.6rem, 4vw, 2.4rem); font-weight: 700; line-height: 1.3; color: var(--text-primary); }
+    .article-body { padding-bottom: 80px; }
+    .divider { border: none; border-top: 1px solid var(--border); margin: 48px 0; }
+    .prose p { font-size: clamp(1rem, 2vw, 1.1rem); color: var(--text-secondary); font-weight: 300; line-height: 2; margin-bottom: 20px; }
+    .prose p:last-child { margin-bottom: 0; }
+
+    .cta-section { text-align: center; background: linear-gradient(170deg, var(--bg) 0%, #0b1623 100%); border-top: 1px solid var(--border); padding: 96px 0; }
+    .section-label { font-size: 11px; font-weight: 400; letter-spacing: 0.16em; text-transform: uppercase; color: var(--text-muted); margin-bottom: 14px; }
+    .section-title { font-size: clamp(1.7rem, 4vw, 2.5rem); font-weight: 700; line-height: 1.25; color: var(--text-primary); margin-bottom: 36px; }
+    .cta-stack { display: flex; flex-direction: column; align-items: center; gap: 16px; }
+    .btn-primary { display: inline-flex; align-items: center; gap: 10px; padding: 14px 26px; background: var(--accent); color: #fff; font-size: 15px; font-weight: 500; font-family: var(--font); border-radius: 4px; border: none; cursor: pointer; transition: background 0.2s, transform 0.15s; }
+    .btn-primary:hover { background: var(--accent-hover); transform: translateY(-1px); }
+    .btn-text { display: inline-flex; align-items: center; gap: 6px; font-size: 14px; color: var(--text-secondary); transition: color 0.2s; }
+    .btn-text:hover { color: var(--text-primary); }
+
+    footer { padding: 32px 24px; border-top: 1px solid var(--border); }
+    .footer-inner { max-width: var(--max-w); margin: 0 auto; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 12px; }
+    .footer-copy { font-size: 13px; color: var(--text-muted); }
+    .footer-links { display: flex; gap: 24px; }
+    .footer-links a { font-size: 13px; color: var(--text-muted); transition: color 0.2s; }
+    .footer-links a:hover { color: var(--text-secondary); }
+
+    @media (max-width: 768px) {
+      .nav-links { display: none; }
+      .hamburger { display: flex; }
+      .footer-inner { flex-direction: column; align-items: flex-start; }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <a href="../index.html" class="nav-logo">
+      <img src="../logo.png" alt="派特 五四愛情學苑" height="56" style="width:auto;display:block;">
+    </a>
+    <ul class="nav-links">
+      <li><a href="../index.html">文章</a></li>
+      <li><a href="../about.html">關於派特</a></li>
+      <li><a href="../service.html" class="nav-cta">預約諮詢</a></li>
+    </ul>
+    <button class="hamburger" id="hamburger" aria-label="開啟選單" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<div class="mobile-menu" id="mobileMenu" role="navigation">
+  <a href="../index.html">文章</a>
+  <a href="../about.html">關於派特</a>
+  <a href="../service.html">預約諮詢</a>
+</div>
+
+<div class="article-hero">
+  <div class="prose-container">
+    <p class="article-eyebrow">派特觀點</p>
+    <h1 class="article-title">【追女生追到被封鎖？——解封鎖的十五步執行導航】</h1>
+  </div>
+</div>
+
+<div class="article-body">
+  <div class="prose-container">
+    <hr class="divider">
+    <div class="prose reveal">
+      <p>【追女生追到被封鎖？——解封鎖的十五步執行導航】</p>
+      <p>​</p>
+      <p>「派特哥，我徹底斷線了。她把我的LINE封鎖……這還有救嗎？」說話的是阿偉，我的一位 VIP 客戶。</p>
+      <p>​</p>
+      <p>我喝了一口茶，冷冷地看著他：「在 1.0 的舊腦袋裡，封鎖等於死刑；但在 OS 3.0 的架構師眼裡，封鎖只是一道暫時被鎖上的數位門禁。</p>
+      <p>​</p>
+      <p>問題不是她關門，而是你還在用『求饒』這種已經報廢的鑰匙。」</p>
+      <p>​</p>
+      <p>我敲了敲桌面：「現在，收起你的焦慮。我要幫你設計一套『話軌』。</p>
+      <p>​</p>
+      <p>接下來你去找她，按照我的指示 15 個步驟，你只要腦袋清醒地執行，我們會讓她不知不覺地，親手解開那道鎖。」</p>
+      <p>​</p>
+      <p>我帶著阿偉「親臨現場」，在腦中演練那場即將到來的碰面。</p>
+      <p>​</p>
+      <p>「阿偉，聽好。我們這次去找她不談感情，我們談『生理反射』。</p>
+      <p>​</p>
+      <p>當你出現在她面前，第一句不要道歉，要用封閉式問題起手：『哇～好久沒看到妳了？』」 只要她開口回答，哪怕只是冷冷地應一聲，這就是第一個 小 YES。</p>
+      <p>​</p>
+      <p>「接著，節奏要快。把東西遞過去：『這東西妳先拿著。』」 人在節奏快、要求小時，潛意識會被你牽著走。</p>
+      <p>​</p>
+      <p>她接過手，就是第二個 YES。 「趁熱打鐵：『趕快打開看看。』東西都在她手上了，看一眼比退回來更容易，第三個 YES 到手。」</p>
+      <p>​</p>
+      <p>阿偉聽得入神，我繼續往下拆解那個「LEGO 樂高場景」的絕殺佈局。</p>
+      <p>​</p>
+      <p>「在這個樂高裡，我們拼出了她、拼出了你，還預留了一個放『招財貓』的位子。</p>
+      <p>​</p>
+      <p>這就是為了要執行『無意識綁定』。」</p>
+      <p>​</p>
+      <p>我告訴阿偉，你要在現場看著她的眼睛說： 「我之前送妳的招財貓，回去把它放進這個 LEGO 位子。</p>
+      <p>​</p>
+      <p>還記得你之前跟我說風水就是提醒自己錢財很重要，這座樂高也一樣，妳照顧好它，它就會幫妳聚財。」</p>
+      <p>​</p>
+      <p>這一招最狠的地方在於：當她把這座樂高帶回家，喜歡賺錢的她會重視這件事，而放在顯眼的地方，她會一直看到這些提示，她的潛意識就會不斷地把「財富」、「她自己」和「你（男主角）」三者綁定在一起了。</p>
+      <p>​</p>
+      <p>「當一連串的 YES 讓氣氛拉到頂點，你再拋出核心：『妳 Line 的封鎖可不可以解除啦？』」 阿偉一臉緊張：「如果她尷尬拒絕怎麼辦？」</p>
+      <p>​</p>
+      <p>「所以你要給她台階啊！」</p>
+      <p>​</p>
+      <p>我拍拍他的肩膀：「你要立刻補上一句：『都怪我以前不懂事，讓妳不舒服。希望這個小禮物能讓我們盡釋前嫌。』」</p>
+      <p>​</p>
+      <p>「然後，不要等她回答！ 節奏拉快，拿出手機：『拿著這東西，獨一無二，我幫妳拍張照。』」</p>
+      <p>​</p>
+      <p>阿偉，這是一個關鍵轉換。</p>
+      <p>​</p>
+      <p>如果她讓你拍照，她的行為就已經在回答你「我會解開封鎖你」。</p>
+      <p>​</p>
+      <p>最後，我教阿偉玩了一場「心理雲霄飛車」。</p>
+      <p>​</p>
+      <p>「分別前，問她：『妳爸在不在家？』她會以為你要去拜訪她爸，等她嚇一跳時，你再補一句：『嚇妳的啦！快回家吧。』」</p>
+      <p>​</p>
+      <p>這種從「緊繃」到「放鬆」的情緒震盪，會讓離別變得圓滿且充滿餘韻。</p>
+      <p>​</p>
+      <p>最後加上那句霸道總裁式的命令：「快進去，不然我要拽妳上車了。」</p>
+      <p>​</p>
+      <p>一路累積下來的主權感，會讓這句話在那個瞬間變得合情合理。</p>
+      <p>​</p>
+      <p>阿偉聽完，原本死寂的眼神終於亮了起來。後來，他真的在那場精心設計的「十五步導航」中，拿回了被解除封鎖的權利。</p>
+      <p>​</p>
+      <p>普通人只會給一招半式，但情感架構師將每個環節拆解、重新排列。這不是碰運氣，這叫「算無遺策」。 3.0 的人不去猜測結果，我們直接用系統創造結果。</p>
+      <p>​</p>
+      <p>如果你也對那個更有主導權的自己心動了。 別再當那個在門外哭喊的 1.0 了，來我這，我們把你的情感 OS 全面升級。</p>
+      <p>​</p>
+      <p>👇 留言 「3.0」，領取絕世神功電子書，希望你也能跟上全人類升級3.0的首班車。</p>
+      <p>======原始步驟:楊老大奪回line話軌封閉式的問題</p>
+      <p>1.挖~我好久沒看到你了?</p>
+      <p>2.這的東西你先拿著?</p>
+      <p>3.你趕快打開來看看</p>
+      <p>4.她會問你這是什麼?我先旁邊買個飲料喝，跟過來就是yes</p>
+      <p>5.我記得你不太喝飲料對不對----對</p>
+      <p>6.談lego</p>
+      <p>7.叫她拿出來看，lego和艾菲照，你有沒有認出來。</p>
+      <p>8.問她你有沒有認出來旁邊那個男的(手比一下自己)</p>
+      <p>9.咬錢虎放在水裡</p>
+      <p>10.你之前錢虎放哪邊?對，就是要這樣放，為什麼有錢人都用長皮夾，它再提醒人要容易看到錢，才會重視錢，所以錢虎一樣的道理，有形無形才會幫你聚財。</p>
+      <p>11.line的封鎖可不可以解除啦?</p>
+      <p>台階下，說到這個，都怪我，以前覺得自己超級不懂事，我一定讓你覺得不舒服，才發生這種事，希望這個小禮物，能讓我們竟是前嫌，一筆勾銷。</p>
+      <p>12.你拿這個東西我幫你拍張照好不好(自己留著)</p>
+      <p>13.我時間差不多了，阿你爸在不在家，你是不是以為我要去找你爸，沒有啦，嚇唬你的啦!快回家吧。</p>
+      <p>14.你趕緊進去，要不然我要拽你上車了。</p>
+      <p>15.目送她進去。</p>
+      <p>=====可以拿來當教材如果你追一個女生，被封鎖刪除了，還有得救嗎?曾經有一個VIP客戶，我幫他設計了一套話軌(說話軌跡)，只要他說話都到達每個節點，就會完成解封鎖的結果。我們先用封閉式的問題起手。</p>
+      <p>1.「挖~我好久沒看到你了?」他一定會回答你，當他回答你就是一個小YES</p>
+      <p>2.「這的東西你先拿著?」說話節奏快，要求又小，潛意識會被你影響，他沒道理不拿，除非他恨你入骨，而當他幫你拿這又是一個小yes</p>
+      <p>3.「你趕快打開來看看」當你下這個指令時，東西都在他手上了，他要退回給你比較花力氣?還是順勢看看是甚麼比較花力氣?他沒有道理不看，這又是一個小yes</p>
+      <p>4.人的慣性會問這是甚麼?你不用回答他直接說:「我先旁邊買個飲料喝」，跟過來就是yes，留在原地偷看是甚麼也是小yes</p>
+      <p>5.接著你順勢問他，我記得你不太喝飲料對不對----對。這裡兩個目的，1女主角有沒有跟你說實話2.抓包女主角想偷看的心，來搶佔互動上風</p>
+      <p>6.接下來跟他他談你過往跟樂高lego的回憶</p>
+      <p>7.這是為了叫她拿出來看禮物的鋪墊，禮物是我們用自己組的lego將女主角的照片還原，然後問女生:「你有沒有認出來?」</p>
+      <p>8.問她你有沒有認出來旁邊那個男的(手比一下自己)(因為這個樂高裡面我們也用樂高人偶拚了一個自己)</p>
+      <p>9.而這一個樂高的場景除了有按照女主角組成的人偶和男主角的人偶，我們更設計一個座可以把招財貓放在lego裡。</p>
+      <p>10.接著把這三句話講完「我之前送你的招財貓你放哪邊?」「來我教你，回去把它放lego這個位子。」「為什麼有錢人都用長皮夾，它再提醒人要容易看到錢，才會重視錢，所以招財貓一樣的道理，把招財貓照顧好，把這個有你和招財貓的lego場景座放好，有形無形才會幫你聚財。」這邊就是要佈陣，讓女生無意識綁定三樣東西，1她自己、財富和男主角。</p>
+      <p>11.一路yes下來，就會收下這禮物，當他收下這禮物，你就要轉換關係說:「你line的封鎖可不可以解除啦?」</p>
+      <p>她突然被問這個問題一定很尷尬，給她個台階下:「說到這個，都怪我，以前覺得自己超級不懂事，我一定讓你覺得不舒服，才發生這種事，希望這個小禮物，能讓我們竟是前嫌，一筆勾銷。」</p>
+      <p>12.一講完，節奏要快不等她回覆說:「你拿這個東西我幫你拍張照」這裡有兩個用意，1如果他讓你拍，又是一個yes，你們不用糾結面對封鎖的問題，她一定會解你封鎖，因為她讓你拍照的行為已經回答你會解封鎖了。2為什麼照片要自己帶走，因為這是聚焦男女關係。</p>
+      <p>13.最後收尾:「我時間差不多了，你爸在不在家?」「你是不是以為我要去找你爸，沒有啦，嚇唬你的啦!快回家吧。」這邊要營造的感覺是甚麼你要來我家真的假的?然後一個反轉解除緊繃之後的鬆弛感，這樣會讓收尾分開更圓滿。</p>
+      <p>14.「你趕緊進去家裡，要不然我要拽你上車了。」一路下來都yes，最後這句霸道總裁才合情合理。</p>
+      <p>15.之後，目送她進去家裡。</p>
+      <p>最後男生果然被女生解除封鎖甚麼是戀愛顧問?普通人只會給個一招半式，情感架構師將每個環節拆解，重新排列，讓整個碰面環節都能如預期般地被執行，算無遺策。問題來了，這套精妙的做法，3.0的人會去執行，創造解果。如果你也對更好的自己心動了，趕緊留言3.0，我們一起進話吧!其實我們缺的不是技術方法，我們更缺的是3.0的執行力!</p>
+    </div>
+  </div>
+</div>
+
+<section class="cta-section">
+  <div class="prose-container">
+    <p class="section-label reveal">想改變，從這裡開始</p>
+    <h2 class="section-title reveal">你的感情問題，<br>不是態度問題，是系統問題。</h2>
+    <div class="cta-stack reveal">
+      <a href="https://lin.ee/pljXoyp" target="_blank" rel="noopener noreferrer" class="btn-primary">
+        加入 LINE 好友，領取免費情感作業系統診斷
+        <svg width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </a>
+      <a href="../service.html" class="btn-text">或者直接預約一對一診斷 →</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-inner">
+    <p class="footer-copy">&#169; 2026 五四愛情學苑 派特</p>
+    <div class="footer-links">
+      <a href="#">隱私權政策</a>
+      <a href="#">聯絡我們</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+  const hamburger = document.getElementById('hamburger');
+  const mobileMenu = document.getElementById('mobileMenu');
+  hamburger.addEventListener('click', () => {
+    const open = mobileMenu.classList.toggle('open');
+    hamburger.classList.toggle('open', open);
+    hamburger.setAttribute('aria-expanded', String(open));
+  });
+  mobileMenu.querySelectorAll('a').forEach(link => {
+    link.addEventListener('click', () => {
+      mobileMenu.classList.remove('open');
+      hamburger.classList.remove('open');
+      hamburger.setAttribute('aria-expanded', 'false');
+    });
+  });
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.08 });
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+</script>
+
+</body>
+</html>

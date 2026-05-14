@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="【婚友社排約20分鐘後，你就不知道說什麼了——不是你不會聊天，是你沒想好結局】">
+  <title>【婚友社排約20分鐘後，你就不知道說什麼了——不是你不會聊天，是你沒想好結局】 | 五四愛情學苑 派特</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    :root {
+      --bg: #0a0a0a; --surface: #0f0f0f; --card: #141414;
+      --border: #1e1e1e; --border-hover: #2e2e2e;
+      --accent: #1a3a5c; --accent-hover: #234d7a; --accent-text: #4a8bc4;
+      --text-primary: #efefef; --text-secondary: #888; --text-muted: #444;
+      --font: 'Noto Sans TC', -apple-system, 'PingFang TC', 'Microsoft JhengHei', sans-serif;
+      --max-w: 1080px; --prose-w: 680px; --nav-h: 64px;
+    }
+    html { scroll-behavior: smooth; }
+    body { background: var(--bg); color: var(--text-primary); font-family: var(--font); line-height: 1.7; -webkit-font-smoothing: antialiased; }
+    a { color: inherit; text-decoration: none; }
+    .reveal { opacity: 0; transform: translateY(24px); transition: opacity 0.65s ease, transform 0.65s ease; }
+    .reveal.visible { opacity: 1; transform: none; }
+
+    nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; height: var(--nav-h); background: rgba(10,10,10,0.88); backdrop-filter: blur(18px); -webkit-backdrop-filter: blur(18px); border-bottom: 1px solid var(--border); }
+    .nav-inner { max-width: var(--max-w); margin: 0 auto; padding: 0 24px; height: 100%; display: flex; align-items: center; justify-content: space-between; }
+    .nav-links { display: flex; align-items: center; gap: 28px; list-style: none; }
+    .nav-links a { font-size: 14px; color: var(--text-secondary); transition: color 0.2s; }
+    .nav-links a:hover { color: var(--text-primary); }
+    .nav-cta { padding: 8px 18px; border: 1px solid var(--border); border-radius: 4px; color: var(--text-primary) !important; font-size: 14px; transition: background 0.2s, border-color 0.2s !important; }
+    .nav-cta:hover { background: var(--card) !important; border-color: var(--border-hover) !important; }
+    .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 6px; background: none; border: none; }
+    .hamburger span { display: block; width: 22px; height: 1.5px; background: var(--text-primary); transition: all 0.25s; }
+    .hamburger.open span:nth-child(1) { transform: translateY(6.5px) rotate(45deg); }
+    .hamburger.open span:nth-child(2) { opacity: 0; }
+    .hamburger.open span:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
+    .mobile-menu { display: none; position: fixed; top: var(--nav-h); left: 0; right: 0; background: var(--surface); border-bottom: 1px solid var(--border); z-index: 99; }
+    .mobile-menu.open { display: block; }
+    .mobile-menu a { display: block; padding: 16px 24px; font-size: 15px; color: var(--text-secondary); border-bottom: 1px solid var(--border); transition: color 0.2s; }
+    .mobile-menu a:hover { color: var(--text-primary); }
+    .mobile-menu a:last-child { border-bottom: none; }
+
+    .prose-container { max-width: var(--prose-w); margin: 0 auto; padding: 0 24px; }
+    .article-hero { padding-top: calc(var(--nav-h) + 80px); padding-bottom: 40px; }
+    .article-eyebrow { font-size: 11px; font-weight: 400; letter-spacing: 0.16em; text-transform: uppercase; color: var(--text-muted); margin-bottom: 24px; }
+    .article-title { font-size: clamp(1.6rem, 4vw, 2.4rem); font-weight: 700; line-height: 1.3; color: var(--text-primary); }
+    .article-body { padding-bottom: 80px; }
+    .divider { border: none; border-top: 1px solid var(--border); margin: 48px 0; }
+    .prose p { font-size: clamp(1rem, 2vw, 1.1rem); color: var(--text-secondary); font-weight: 300; line-height: 2; margin-bottom: 20px; }
+    .prose p:last-child { margin-bottom: 0; }
+
+    .cta-section { text-align: center; background: linear-gradient(170deg, var(--bg) 0%, #0b1623 100%); border-top: 1px solid var(--border); padding: 96px 0; }
+    .section-label { font-size: 11px; font-weight: 400; letter-spacing: 0.16em; text-transform: uppercase; color: var(--text-muted); margin-bottom: 14px; }
+    .section-title { font-size: clamp(1.7rem, 4vw, 2.5rem); font-weight: 700; line-height: 1.25; color: var(--text-primary); margin-bottom: 36px; }
+    .cta-stack { display: flex; flex-direction: column; align-items: center; gap: 16px; }
+    .btn-primary { display: inline-flex; align-items: center; gap: 10px; padding: 14px 26px; background: var(--accent); color: #fff; font-size: 15px; font-weight: 500; font-family: var(--font); border-radius: 4px; border: none; cursor: pointer; transition: background 0.2s, transform 0.15s; }
+    .btn-primary:hover { background: var(--accent-hover); transform: translateY(-1px); }
+    .btn-text { display: inline-flex; align-items: center; gap: 6px; font-size: 14px; color: var(--text-secondary); transition: color 0.2s; }
+    .btn-text:hover { color: var(--text-primary); }
+
+    footer { padding: 32px 24px; border-top: 1px solid var(--border); }
+    .footer-inner { max-width: var(--max-w); margin: 0 auto; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 12px; }
+    .footer-copy { font-size: 13px; color: var(--text-muted); }
+    .footer-links { display: flex; gap: 24px; }
+    .footer-links a { font-size: 13px; color: var(--text-muted); transition: color 0.2s; }
+    .footer-links a:hover { color: var(--text-secondary); }
+
+    @media (max-width: 768px) {
+      .nav-links { display: none; }
+      .hamburger { display: flex; }
+      .footer-inner { flex-direction: column; align-items: flex-start; }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <a href="../index.html" class="nav-logo">
+      <img src="../logo.png" alt="派特 五四愛情學苑" height="56" style="width:auto;display:block;">
+    </a>
+    <ul class="nav-links">
+      <li><a href="../index.html">文章</a></li>
+      <li><a href="../about.html">關於派特</a></li>
+      <li><a href="../service.html" class="nav-cta">預約諮詢</a></li>
+    </ul>
+    <button class="hamburger" id="hamburger" aria-label="開啟選單" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<div class="mobile-menu" id="mobileMenu" role="navigation">
+  <a href="../index.html">文章</a>
+  <a href="../about.html">關於派特</a>
+  <a href="../service.html">預約諮詢</a>
+</div>
+
+<div class="article-hero">
+  <div class="prose-container">
+    <p class="article-eyebrow">派特觀點</p>
+    <h1 class="article-title">【婚友社排約20分鐘後，你就不知道說什麼了——不是你不會聊天，是你沒想好結局】</h1>
+  </div>
+</div>
+
+<div class="article-body">
+  <div class="prose-container">
+    <hr class="divider">
+    <div class="prose reveal">
+      <p>【婚友社排約20分鐘後，你就不知道說什麼了——不是你不會聊天，是你沒想好結局】</p>
+      <p>​</p>
+      <p>我輔導過很多來找我諮詢的男生，阿華就是其中一個。</p>
+      <p>​</p>
+      <p>他跟我說的第一句話是：「老師，我跟女生排約，前20分鐘還好，但過了之後就不知道說什麼了，兩個人就這樣尬在那裡。」</p>
+      <p>​</p>
+      <p>我第一個反應，是問他：「你去那場約會，你要的結局是什麼？」</p>
+      <p>​</p>
+      <p>他愣了一下。</p>
+      <p>​</p>
+      <p>「呃……就是聊得開心？」</p>
+      <p>​</p>
+      <p>我說：「那你今天來找我，你的結局是什麼？」</p>
+      <p>​</p>
+      <p>他又愣了。</p>
+      <p>​</p>
+      <p>這個問題，才是真正的問題所在。</p>
+      <p>​</p>
+      <p>▋你以為你在聊天，其實你在漂流</p>
+      <p>​</p>
+      <p>很多男生去排約，腦子裡沒有方向。</p>
+      <p>​</p>
+      <p>他不知道這場約會要推進到哪裡。他只知道「要讓對方開心」、「要找到可以聊的話題」、「要不要太尷尬」。</p>
+      <p>​</p>
+      <p>所以他準備了話題。準備了問題。準備了笑話。</p>
+      <p>​</p>
+      <p>前20分鐘，靠備料撐過去了。</p>
+      <p>​</p>
+      <p>20分鐘後，備料用完，兩個人開始互相看著對方，等對方開口。</p>
+      <p>​</p>
+      <p>然後，就尬住了。</p>
+      <p>​</p>
+      <p>這不是他不會說話。他其實很會說話。</p>
+      <p>​</p>
+      <p>問題是，他不知道說話是為了什麼。</p>
+      <p>​</p>
+      <p>▋什麼叫終局思維？</p>
+      <p>​</p>
+      <p>我跟阿華說了一個比喻。</p>
+      <p>​</p>
+      <p>你今天要去一個地方，你沒有目的地，你只是出發了。</p>
+      <p>​</p>
+      <p>走了20分鐘，你開始不知道要往哪裡走。</p>
+      <p>​</p>
+      <p>你說：「老師，我不知道接下來的路該怎麼走。」</p>
+      <p>​</p>
+      <p>我說：「你要去哪裡？」</p>
+      <p>​</p>
+      <p>你說：「呃……走走看？」</p>
+      <p>​</p>
+      <p>那就對了。你不是迷路了，你從一開始就沒有地圖。</p>
+      <p>​</p>
+      <p>終局思維，就是先把終點設好，再往回規劃每一步。</p>
+      <p>​</p>
+      <p>你去婚友社排約，你的終點是什麼？是交到女朋友？是讓對方答應下次見面？是讓對方留下你的LINE？</p>
+      <p>​</p>
+      <p>不同的終點，話題的選擇、互動的方式、要建立的感覺，全部都不一樣。</p>
+      <p>​</p>
+      <p>沒有終點，你就只能靠感覺飄。飄20分鐘後，就沒了。</p>
+      <p>​</p>
+      <p>▋你以為在聊感情，其實在玩別人的遊戲規則</p>
+      <p>​</p>
+      <p>我問阿華：「那個女生，她去排約，她的目的是什麼？」</p>
+      <p>​</p>
+      <p>他說：「應該也是找對象吧？」</p>
+      <p>​</p>
+      <p>我說：「那你們兩個都想找對象，但聊了20分鐘在聊什麼？」</p>
+      <p>​</p>
+      <p>他想了一下，笑了：「聊興趣、聊工作、聊最近吃了什麼。」</p>
+      <p>​</p>
+      <p>我說：「所以你們兩個都在找對象，但都不敢聚焦在男女關係上。結果呢？就是兩個人在那邊互相繞圈圈，誰也不推進，然後20分鐘後不知道說什麼了。」</p>
+      <p>​</p>
+      <p>你去面試，你會聊勞資關係——薪水、工作內容、期待。這叫正常面試。</p>
+      <p>​</p>
+      <p>你去婚友社，你應該聊男女關係——你欣賞什麼樣的人、你想要的關係是什麼樣的、你怎麼看待兩個人相處。</p>
+      <p>​</p>
+      <p>但你沒有。</p>
+      <p>​</p>
+      <p>你在聚焦別的事，然後假裝那才是重點。</p>
+      <p>​</p>
+      <p>這就是「玩別人的遊戲規則」。</p>
+      <p>​</p>
+      <p>你用你以為安全的方式在互動，但那個方式，並不會帶你到你要的終點。</p>
+      <p>​</p>
+      <p>▋終局思維不是要你直白說「我喜歡你」</p>
+      <p>​</p>
+      <p>很多人聽到「聚焦男女關係」，第一個反應是恐慌。</p>
+      <p>​</p>
+      <p>「這樣太直接了吧？」「她會不會嚇跑？」「這樣感覺很奇怪。」</p>
+      <p>​</p>
+      <p>不是這個意思。</p>
+      <p>​</p>
+      <p>終局思維，不是要你直接表白，不是要你把目的說出來。</p>
+      <p>​</p>
+      <p>它是讓你的每一個選擇，都在服務你的目標。</p>
+      <p>​</p>
+      <p>你選擇問的問題，是讓她感受到你在意她這個人；你選擇分享的事，是讓她看見你不只是在客套；你選擇製造的感覺，是讓她覺得跟你說話比一個人待著更值得。</p>
+      <p>​</p>
+      <p>當你有了終局，你說的每一句話都有意義。</p>
+      <p>​</p>
+      <p>當你沒有終局，你說的每一句話，都只是在填滿沉默。</p>
+      <p>​</p>
+      <p>▋20分鐘後不知道說什麼，是個好消息</p>
+      <p>​</p>
+      <p>我跟阿華說：「你說20分鐘後不知道說什麼，其實是個好消息。」</p>
+      <p>​</p>
+      <p>他說：「怎麼說？」</p>
+      <p>​</p>
+      <p>我說：「因為你終於感覺到了。你感覺到備料用完、感覺到方向失掉、感覺到這樣下去不對。這個不對的感覺，才是起點。」</p>
+      <p>​</p>
+      <p>很多男生備料夠多，每次約會可以撐1個小時不尷尬，然後對方還是沒有消息。他們以為是話題不夠好，繼續研究新話題。</p>
+      <p>​</p>
+      <p>他們永遠找不到問題在哪，因為他們從來沒有感覺到不對。</p>
+      <p>​</p>
+      <p>阿華感覺到了。</p>
+      <p>​</p>
+      <p>感覺到不對，然後回來問問題——這才是開始。</p>
+      <p>​</p>
+      <p>▋下一次約會前，先問自己這個問題</p>
+      <p>​</p>
+      <p>不是「我要說什麼話題」。</p>
+      <p>​</p>
+      <p>是：「這場約會結束的時候，我希望她對我有什麼感覺？」</p>
+      <p>​</p>
+      <p>然後倒回來問：要讓她有那個感覺，這場約會我應該創造什麼？</p>
+      <p>​</p>
+      <p>要創造那個，我這20分鐘要往哪個方向走？</p>
+      <p>​</p>
+      <p>這就是終局思維。</p>
+      <p>​</p>
+      <p>你不會再不知道說什麼。</p>
+      <p>​</p>
+      <p>因為每一句話，你都清楚它在幫你還是在浪費你。</p>
+      <p>​</p>
+      <p>我是派特。</p>
+      <p>​</p>
+      <p>終局思維是一個技能，它更是一種看世界的方式。</p>
+      <p>​</p>
+      <p>當你開始用它看每一場互動，你會發現，你從來不是「不知道說什麼」——</p>
+      <p>你只是從來沒有先想好，你要去哪裡。</p>
+      <p>​</p>
+      <p>👇 下方留言「3.0」，立刻下載電子書(終局思維實例)，做情感作業系統檢測！</p>
+      <p>​</p>
+      <p>把這篇轉給一個，每次約會都撐20分鐘然後沉默的兄弟。</p>
+      <p>​</p>
+      <p>他需要的不是更多話題——他需要先找到他的終點。</p>
+    </div>
+  </div>
+</div>
+
+<section class="cta-section">
+  <div class="prose-container">
+    <p class="section-label reveal">想改變，從這裡開始</p>
+    <h2 class="section-title reveal">你的感情問題，<br>不是態度問題，是系統問題。</h2>
+    <div class="cta-stack reveal">
+      <a href="https://lin.ee/pljXoyp" target="_blank" rel="noopener noreferrer" class="btn-primary">
+        加入 LINE 好友，領取免費情感作業系統診斷
+        <svg width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </a>
+      <a href="../service.html" class="btn-text">或者直接預約一對一診斷 →</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-inner">
+    <p class="footer-copy">&#169; 2026 五四愛情學苑 派特</p>
+    <div class="footer-links">
+      <a href="#">隱私權政策</a>
+      <a href="#">聯絡我們</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+  const hamburger = document.getElementById('hamburger');
+  const mobileMenu = document.getElementById('mobileMenu');
+  hamburger.addEventListener('click', () => {
+    const open = mobileMenu.classList.toggle('open');
+    hamburger.classList.toggle('open', open);
+    hamburger.setAttribute('aria-expanded', String(open));
+  });
+  mobileMenu.querySelectorAll('a').forEach(link => {
+    link.addEventListener('click', () => {
+      mobileMenu.classList.remove('open');
+      hamburger.classList.remove('open');
+      hamburger.setAttribute('aria-expanded', 'false');
+    });
+  });
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.08 });
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+</script>
+
+</body>
+</html>

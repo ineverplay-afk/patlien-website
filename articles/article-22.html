@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="好不容易我們約出來了要聊什麼才可以讓它好感度翻倍">
+  <title>【「派特，為什麼我聊了她感興趣的話題，她卻離我越來越遠？」】 | 五四愛情學苑 派特</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    :root {
+      --bg: #0a0a0a; --surface: #0f0f0f; --card: #141414;
+      --border: #1e1e1e; --border-hover: #2e2e2e;
+      --accent: #1a3a5c; --accent-hover: #234d7a; --accent-text: #4a8bc4;
+      --text-primary: #efefef; --text-secondary: #888; --text-muted: #444;
+      --font: 'Noto Sans TC', -apple-system, 'PingFang TC', 'Microsoft JhengHei', sans-serif;
+      --max-w: 1080px; --prose-w: 680px; --nav-h: 64px;
+    }
+    html { scroll-behavior: smooth; }
+    body { background: var(--bg); color: var(--text-primary); font-family: var(--font); line-height: 1.7; -webkit-font-smoothing: antialiased; }
+    a { color: inherit; text-decoration: none; }
+    .reveal { opacity: 0; transform: translateY(24px); transition: opacity 0.65s ease, transform 0.65s ease; }
+    .reveal.visible { opacity: 1; transform: none; }
+
+    nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; height: var(--nav-h); background: rgba(10,10,10,0.88); backdrop-filter: blur(18px); -webkit-backdrop-filter: blur(18px); border-bottom: 1px solid var(--border); }
+    .nav-inner { max-width: var(--max-w); margin: 0 auto; padding: 0 24px; height: 100%; display: flex; align-items: center; justify-content: space-between; }
+    .nav-links { display: flex; align-items: center; gap: 28px; list-style: none; }
+    .nav-links a { font-size: 14px; color: var(--text-secondary); transition: color 0.2s; }
+    .nav-links a:hover { color: var(--text-primary); }
+    .nav-cta { padding: 8px 18px; border: 1px solid var(--border); border-radius: 4px; color: var(--text-primary) !important; font-size: 14px; transition: background 0.2s, border-color 0.2s !important; }
+    .nav-cta:hover { background: var(--card) !important; border-color: var(--border-hover) !important; }
+    .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 6px; background: none; border: none; }
+    .hamburger span { display: block; width: 22px; height: 1.5px; background: var(--text-primary); transition: all 0.25s; }
+    .hamburger.open span:nth-child(1) { transform: translateY(6.5px) rotate(45deg); }
+    .hamburger.open span:nth-child(2) { opacity: 0; }
+    .hamburger.open span:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
+    .mobile-menu { display: none; position: fixed; top: var(--nav-h); left: 0; right: 0; background: var(--surface); border-bottom: 1px solid var(--border); z-index: 99; }
+    .mobile-menu.open { display: block; }
+    .mobile-menu a { display: block; padding: 16px 24px; font-size: 15px; color: var(--text-secondary); border-bottom: 1px solid var(--border); transition: color 0.2s; }
+    .mobile-menu a:hover { color: var(--text-primary); }
+    .mobile-menu a:last-child { border-bottom: none; }
+
+    .prose-container { max-width: var(--prose-w); margin: 0 auto; padding: 0 24px; }
+    .article-hero { padding-top: calc(var(--nav-h) + 80px); padding-bottom: 40px; }
+    .article-eyebrow { font-size: 11px; font-weight: 400; letter-spacing: 0.16em; text-transform: uppercase; color: var(--text-muted); margin-bottom: 24px; }
+    .article-title { font-size: clamp(1.6rem, 4vw, 2.4rem); font-weight: 700; line-height: 1.3; color: var(--text-primary); }
+    .article-body { padding-bottom: 80px; }
+    .divider { border: none; border-top: 1px solid var(--border); margin: 48px 0; }
+    .prose p { font-size: clamp(1rem, 2vw, 1.1rem); color: var(--text-secondary); font-weight: 300; line-height: 2; margin-bottom: 20px; }
+    .prose p:last-child { margin-bottom: 0; }
+
+    .cta-section { text-align: center; background: linear-gradient(170deg, var(--bg) 0%, #0b1623 100%); border-top: 1px solid var(--border); padding: 96px 0; }
+    .section-label { font-size: 11px; font-weight: 400; letter-spacing: 0.16em; text-transform: uppercase; color: var(--text-muted); margin-bottom: 14px; }
+    .section-title { font-size: clamp(1.7rem, 4vw, 2.5rem); font-weight: 700; line-height: 1.25; color: var(--text-primary); margin-bottom: 36px; }
+    .cta-stack { display: flex; flex-direction: column; align-items: center; gap: 16px; }
+    .btn-primary { display: inline-flex; align-items: center; gap: 10px; padding: 14px 26px; background: var(--accent); color: #fff; font-size: 15px; font-weight: 500; font-family: var(--font); border-radius: 4px; border: none; cursor: pointer; transition: background 0.2s, transform 0.15s; }
+    .btn-primary:hover { background: var(--accent-hover); transform: translateY(-1px); }
+    .btn-text { display: inline-flex; align-items: center; gap: 6px; font-size: 14px; color: var(--text-secondary); transition: color 0.2s; }
+    .btn-text:hover { color: var(--text-primary); }
+
+    footer { padding: 32px 24px; border-top: 1px solid var(--border); }
+    .footer-inner { max-width: var(--max-w); margin: 0 auto; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 12px; }
+    .footer-copy { font-size: 13px; color: var(--text-muted); }
+    .footer-links { display: flex; gap: 24px; }
+    .footer-links a { font-size: 13px; color: var(--text-muted); transition: color 0.2s; }
+    .footer-links a:hover { color: var(--text-secondary); }
+
+    @media (max-width: 768px) {
+      .nav-links { display: none; }
+      .hamburger { display: flex; }
+      .footer-inner { flex-direction: column; align-items: flex-start; }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <a href="../index.html" class="nav-logo">
+      <img src="../logo.png" alt="派特 五四愛情學苑" height="56" style="width:auto;display:block;">
+    </a>
+    <ul class="nav-links">
+      <li><a href="../index.html">文章</a></li>
+      <li><a href="../about.html">關於派特</a></li>
+      <li><a href="../service.html" class="nav-cta">預約諮詢</a></li>
+    </ul>
+    <button class="hamburger" id="hamburger" aria-label="開啟選單" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<div class="mobile-menu" id="mobileMenu" role="navigation">
+  <a href="../index.html">文章</a>
+  <a href="../about.html">關於派特</a>
+  <a href="../service.html">預約諮詢</a>
+</div>
+
+<div class="article-hero">
+  <div class="prose-container">
+    <p class="article-eyebrow">派特觀點</p>
+    <h1 class="article-title">【「派特，為什麼我聊了她感興趣的話題，她卻離我越來越遠？」】</h1>
+  </div>
+</div>
+
+<div class="article-body">
+  <div class="prose-container">
+    <hr class="divider">
+    <div class="prose reveal">
+      <p>好不容易我們約出來了要聊什麼才可以讓它好感度翻倍</p>
+      <p>基本上你只要記住聊下面三個話題</p>
+      <p>約會成功率提升十倍以上</p>
+      <p>最後一個最關鍵</p>
+      <p>第一個從興趣去接入</p>
+      <p>就知道他的生活型態是什麼</p>
+      <p>假如說你的生活是規律早起的</p>
+      <p>可是這個女生是喜歡熬夜跑趴</p>
+      <p>長期相處下來可能就會鬧翻</p>
+      <p>問它的時候不要只問說你喜歡運動嗎</p>
+      <p>這樣會太空泛</p>
+      <p>你可以這樣問假日如果說你不用上班的話</p>
+      <p>除了耍廢之外你就會想要做什麼</p>
+      <p>這個時候</p>
+      <p>他講出來答案來就是他最真實的生活樣子</p>
+      <p>第二個我們要聊的呢</p>
+      <p>你可以聊感情觀</p>
+      <p>不是說我們要調查前任</p>
+      <p>而是要去了解一下他想要什麼樣的關係</p>
+      <p>你可以問說</p>
+      <p>你身邊那一對感情最好的情侶的哪個部分</p>
+      <p>最讓你羨慕</p>
+      <p>這個答案就是他心裡對愛情的理想模樣</p>
+      <p>再來我們一定要知道他在感情裡面的地雷</p>
+      <p>很多人是因為沒有了聊這個</p>
+      <p>相處之後常常會無心踩雷</p>
+      <p>這個就很冤枉</p>
+      <p>你可以這樣問</p>
+      <p>無論約會過後交往過後男生裡面做過甚麼事情</p>
+      <p>踩到你的底線</p>
+      <p>那通常她講的哩</p>
+      <p>就是它覺得很瞎</p>
+      <p>或是以前他被傷害過的一些地方</p>
+      <p>你要特別放在心上啊</p>
+      <p>在她心裡面呢</p>
+      <p>你就會大加分</p>
+      <p>第三個是超級關鍵的</p>
+      <p>就是花錢方式</p>
+      <p>不要問人家說什麼年收入多少</p>
+      <p>這太敏感</p>
+      <p>對方可能還誤以為說</p>
+      <p>你是因為錢才靠近他的</p>
+      <p>你可以觀察他的打扮</p>
+      <p>你的演衣服都好質感喔</p>
+      <p>你都去哪裡買衣服</p>
+      <p>你這項鍊很特別會很貴嗎</p>
+      <p>從他的答案了去比對一下他的工作類型還有收入</p>
+      <p>你就大概能夠看出他有沒有透支這個習慣</p>
+      <p>當你會了聊這三個話題的時候的</p>
+      <p>你就不是只是會聊天喔</p>
+      <p>而是會了解人|</p>
+      <p>如果想學更多的話他就直接私訊我的IG</p>
+      <p>我教你怎麼聊得自然又有魅力</p>
+      <p>=====【「派特，為什麼我聊了她感興趣的話題，她卻離我越來越遠？」】</p>
+      <p>下午四點，阿凱坐在我對面，語氣裡滿是不甘心。 他剛結束一場挫敗的見面。</p>
+      <p>「派特，我明明照網路上教的做了。我問了她的興趣、聊了感情觀，連金錢觀都帶到了。我甚至問她：『假日不上班的話，除了耍廢妳最想做什麼？』結果她只回我『看心情』，然後就開始頻繁滑手機。到底是哪裡出了問題？」</p>
+      <p>我喝了一口咖啡，看著這個陷入「低級勤奮」陷阱的男人。 他以為自己在學習「術」，其實他是在加速自己的淘汰。</p>
+      <p>我跟他說：「阿凱，你這不叫聊天，你這叫『資訊暴力』。你是在掠奪對方的能量，來填補你內心的不安。」</p>
+      <p>「阿凱，你問她假日做什麼，你的前提是什麼？」我問。 「我想了解她的生活型態啊！」他理直氣壯。</p>
+      <p>我搖搖頭：「那是你的目的，不是前提。為什麼房仲問你家裡幾個人，你不會反感？因為他要幫你找房子。為什麼銀行員問你大筆資金去向，你不會覺得他有病？因為他在防詐騙。這就是『角色前提』。」</p>
+      <p>但在約會桌上，如果你沒有建立「為什麼我要問這個」的背景，你突然拋出這句話，對女生來說就像是查戶口的。 你的不安 1.0 已經被對方看穿了。</p>
+      <p>「派特，你說得簡單，但現實哪有這麼多『前提』？」阿凱顯然不服氣，他打算給我出個難題。</p>
+      <p>「好，那我考你一個最極端的。」阿凱身體前傾，眼神帶著一絲挑釁：「如果是在銀行櫃檯呢？ 那地方嚴肅得要命，行員忙著點鈔、後面上司在看、外面一堆人排隊，而且我們完全陌生。在這種『錢必須算清楚』的絕對嚴肅場景下，你怎麼可能讓她開口跟你聊她假日要做什麼？這太荒謬了吧？」</p>
+      <p>我聽完笑了一下，推開面前的咖啡杯，直視他的眼睛。</p>
+      <p>「阿凱，這就是 1.0 倖存者跟 3.0 架構師的分別。你看到的是『牆』，我看到的是『梯子』。」</p>
+      <p>我調整了坐姿，語氣平靜對阿凱說：「聽好，真正的架構師，是創造遊戲規則的人。在那種環境，如果你『問』，你就是騷擾；但如果你『換』，那就是共鳴。」</p>
+      <p>「如果是我的話，我會一邊接過存摺，一邊用一種像是在自言自語、卻剛好能讓她聽到的音量說：</p>
+      <p>『這兩天天氣冷到我想原地冬眠，但錢不存又不行，假日還得陪老闆應酬。銀行業真好，假日能做自己喜歡的事，不用應酬上司。』</p>
+      <p>我停頓了一下，看著愣住的阿凱。</p>
+      <p>「發現了嗎？我沒有問她任何問題。我先揭露了我的痛苦（冷、存錢的瑣事、應酬的無奈），然後給了她一個『高價值』的定位（銀行業不用應酬、能享受生活）。」</p>
+      <p>「在那種緊繃的工作環境下，這句話對她來說不是搭訕，而是一個『情緒出口』。她只要接一句『其實我們也有我們的辛苦啦』，她假日的私人生活資訊，就會像決堤一樣，自然而然地流向你。」</p>
+      <p>「這不叫說話技術，阿凱，這叫系統級的降維打擊。」</p>
+      <p>阿凱又問：「那聊感情觀總沒錯吧？我問她『羨慕哪對情侶』，這不是很浪漫嗎？」</p>
+      <p>「這最慘。」我冷笑一聲。 「如果你們是在婚友社、在聯誼和網路交友，這叫合理；但如果你們是在一般碰面，你這是在強行聚焦『男女關係』。你口中說著『想交朋友』，行為卻在『做壓力測試』，你當對方是笨蛋嗎？」</p>
+      <p>阿凱聽完後，沈默了很久。 他終於發現，他以前學的那些「約會必聊三話題」，其實都是在討好那些把良善當策略的弱者。</p>
+      <p>我拍拍他的肩膀：「阿凱，作業系統沒升級學技巧都是沒有靈魂軀殼。你需要的不是話題清單，而是情感作業系統的徹底重構。當你的內核變成了『架構師』，所有的技巧你才能夠靈活運用。」</p>
+      <p>如果你也跟阿凱一樣，覺得自己明明很努力卻總是失敗。 如果你厭倦了那些廉價的套路，想看清感情的底層邏輯。</p>
+      <p>我是派特。 底下留言「3.0」領取電子書和檢測你的作業系統。2026 年，我們一起升級!</p>
+    </div>
+  </div>
+</div>
+
+<section class="cta-section">
+  <div class="prose-container">
+    <p class="section-label reveal">想改變，從這裡開始</p>
+    <h2 class="section-title reveal">你的感情問題，<br>不是態度問題，是系統問題。</h2>
+    <div class="cta-stack reveal">
+      <a href="https://lin.ee/pljXoyp" target="_blank" rel="noopener noreferrer" class="btn-primary">
+        加入 LINE 好友，領取免費情感作業系統診斷
+        <svg width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </a>
+      <a href="../service.html" class="btn-text">或者直接預約一對一診斷 →</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-inner">
+    <p class="footer-copy">&#169; 2026 五四愛情學苑 派特</p>
+    <div class="footer-links">
+      <a href="#">隱私權政策</a>
+      <a href="#">聯絡我們</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+  const hamburger = document.getElementById('hamburger');
+  const mobileMenu = document.getElementById('mobileMenu');
+  hamburger.addEventListener('click', () => {
+    const open = mobileMenu.classList.toggle('open');
+    hamburger.classList.toggle('open', open);
+    hamburger.setAttribute('aria-expanded', String(open));
+  });
+  mobileMenu.querySelectorAll('a').forEach(link => {
+    link.addEventListener('click', () => {
+      mobileMenu.classList.remove('open');
+      hamburger.classList.remove('open');
+      hamburger.setAttribute('aria-expanded', 'false');
+    });
+  });
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.08 });
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+</script>
+
+</body>
+</html>
