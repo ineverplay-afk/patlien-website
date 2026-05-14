@@ -1,0 +1,681 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="派特一對一諮詢。第一小時免費，不是模糊的建議，是你可以帶回去執行的具體答案。">
+  <title>一對一諮詢 | 五四愛情學苑 派特</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+  <style>
+    /* ── Reset ── */
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    /* ── Variables ── */
+    :root {
+      --bg:            #0a0a0a;
+      --surface:       #0f0f0f;
+      --card:          #141414;
+      --border:        #1e1e1e;
+      --border-hover:  #2e2e2e;
+      --accent:        #1a3a5c;
+      --accent-hover:  #234d7a;
+      --accent-text:   #4a8bc4;
+      --text-primary:  #efefef;
+      --text-secondary:#888;
+      --text-muted:    #444;
+      --font:          'Noto Sans TC', -apple-system, 'PingFang TC', 'Microsoft JhengHei', sans-serif;
+      --max-w:         1080px;
+      --nav-h:         64px;
+    }
+
+    /* ── Base ── */
+    html { scroll-behavior: smooth; }
+    body {
+      background: var(--bg);
+      color: var(--text-primary);
+      font-family: var(--font);
+      line-height: 1.7;
+      -webkit-font-smoothing: antialiased;
+    }
+    a { color: inherit; text-decoration: none; }
+
+    /* ── Container ── */
+    .container { max-width: var(--max-w); margin: 0 auto; padding: 0 24px; }
+
+    /* ── Section spacing ── */
+    section { padding: 96px 0; }
+
+    /* ── Scroll fade-in ── */
+    .reveal {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity 0.65s ease, transform 0.65s ease;
+    }
+    .reveal.visible { opacity: 1; transform: none; }
+
+    /* ── Labels ── */
+    .section-label {
+      font-size: 11px;
+      font-weight: 400;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      margin-bottom: 14px;
+    }
+
+    .section-title {
+      font-size: clamp(1.7rem, 4vw, 2.5rem);
+      font-weight: 700;
+      line-height: 1.25;
+      color: var(--text-primary);
+      margin-bottom: 48px;
+    }
+
+    /* ── Buttons ── */
+    .btn-primary {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 14px 26px;
+      background: var(--accent);
+      color: #fff;
+      font-size: 15px;
+      font-weight: 500;
+      font-family: var(--font);
+      border-radius: 4px;
+      border: none;
+      cursor: pointer;
+      transition: background 0.2s, transform 0.15s;
+    }
+    .btn-primary:hover { background: var(--accent-hover); transform: translateY(-1px); }
+
+    .btn-text {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 14px;
+      color: var(--text-secondary);
+      transition: color 0.2s;
+    }
+    .btn-text:hover { color: var(--text-primary); }
+
+
+    /* ════════════════════════════
+       NAV
+    ════════════════════════════ */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      height: var(--nav-h);
+      background: rgba(10, 10, 10, 0.88);
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .nav-inner {
+      max-width: var(--max-w);
+      margin: 0 auto;
+      padding: 0 24px;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .nav-logo { display: flex; align-items: center; line-height: 1; }
+
+    .nav-links { display: flex; align-items: center; gap: 28px; list-style: none; }
+    .nav-links a { font-size: 14px; color: var(--text-secondary); transition: color 0.2s; }
+    .nav-links a:hover { color: var(--text-primary); }
+    .nav-links a.active { color: var(--text-primary); font-weight: 500; }
+
+    .nav-cta {
+      padding: 8px 18px;
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      color: var(--text-primary) !important;
+      font-size: 14px;
+      transition: background 0.2s, border-color 0.2s !important;
+    }
+    .nav-cta:hover,
+    .nav-cta.active { background: var(--card) !important; border-color: var(--border-hover) !important; }
+
+    /* Hamburger */
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      padding: 6px;
+      background: none;
+      border: none;
+    }
+    .hamburger span { display: block; width: 22px; height: 1.5px; background: var(--text-primary); transition: all 0.25s; }
+    .hamburger.open span:nth-child(1) { transform: translateY(6.5px) rotate(45deg); }
+    .hamburger.open span:nth-child(2) { opacity: 0; }
+    .hamburger.open span:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
+
+    .mobile-menu {
+      display: none;
+      position: fixed;
+      top: var(--nav-h);
+      left: 0; right: 0;
+      background: var(--surface);
+      border-bottom: 1px solid var(--border);
+      z-index: 99;
+    }
+    .mobile-menu.open { display: block; }
+    .mobile-menu a {
+      display: block;
+      padding: 16px 24px;
+      font-size: 15px;
+      color: var(--text-secondary);
+      border-bottom: 1px solid var(--border);
+      transition: color 0.2s;
+    }
+    .mobile-menu a:hover, .mobile-menu a.active { color: var(--text-primary); }
+    .mobile-menu a.active { font-weight: 500; }
+    .mobile-menu a:last-child { border-bottom: none; }
+
+
+    /* ════════════════════════════
+       HERO
+    ════════════════════════════ */
+    .hero {
+      min-height: 75svh;
+      display: flex;
+      align-items: center;
+      padding-top: var(--nav-h);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse 60% 55% at 10% 60%, rgba(26,58,92,0.14) 0%, transparent 65%);
+      pointer-events: none;
+    }
+
+    .hero-inner {
+      padding: 72px 24px;
+      max-width: var(--max-w);
+      margin: 0 auto;
+      width: 100%;
+      animation: heroFade 0.9s ease both;
+    }
+
+    @keyframes heroFade {
+      from { opacity: 0; transform: translateY(20px); }
+      to   { opacity: 1; transform: none; }
+    }
+
+    .hero-eyebrow {
+      font-size: 12px;
+      font-weight: 400;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--accent-text);
+      margin-bottom: 28px;
+    }
+
+    .hero h1 {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      margin-bottom: 32px;
+    }
+
+    .hero-line {
+      display: block;
+      font-size: clamp(2rem, 5.5vw, 3.8rem);
+      font-weight: 900;
+      line-height: 1.18;
+      letter-spacing: -0.01em;
+      color: var(--text-primary);
+    }
+
+    .hero-sub {
+      font-size: clamp(1rem, 2.5vw, 1.2rem);
+      color: var(--text-secondary);
+      font-weight: 300;
+      max-width: 520px;
+      line-height: 1.8;
+    }
+
+
+    /* ════════════════════════════
+       STEPS
+    ════════════════════════════ */
+    .steps-section {
+      background: var(--surface);
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .step {
+      display: grid;
+      grid-template-columns: 96px 1fr;
+      gap: 40px;
+      align-items: start;
+      padding: 52px 0;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .step:first-child { padding-top: 0; }
+    .step:last-child  { border-bottom: none; padding-bottom: 0; }
+
+    .step-num {
+      font-size: clamp(3.5rem, 7vw, 5.5rem);
+      font-weight: 900;
+      color: var(--accent-text);
+      line-height: 1;
+      letter-spacing: -0.03em;
+      opacity: 0.7;
+      padding-top: 4px;
+    }
+
+    .step-title {
+      font-size: 1.3rem;
+      font-weight: 700;
+      color: var(--text-primary);
+      margin-bottom: 14px;
+      line-height: 1.3;
+    }
+
+    .step-desc {
+      font-size: 15px;
+      color: var(--text-secondary);
+      line-height: 1.9;
+      font-weight: 300;
+      max-width: 540px;
+    }
+
+
+    /* ════════════════════════════
+       FIT / UNFIT
+    ════════════════════════════ */
+    .fit-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+    }
+
+    .fit-col {
+      padding: 36px 32px;
+      border-radius: 6px;
+      border: 1px solid var(--border);
+    }
+
+    .fit-yes {
+      border-left: 2px solid var(--accent);
+      background: #0d151f;
+    }
+
+    .fit-no {
+      border-left: 2px solid #2c2c2c;
+      background: var(--card);
+    }
+
+    .fit-heading {
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      margin-bottom: 24px;
+    }
+
+    .fit-yes .fit-heading { color: var(--accent-text); }
+    .fit-no  .fit-heading { color: var(--text-muted); }
+
+    .fit-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+
+    .fit-list li {
+      font-size: 14px;
+      line-height: 1.65;
+      padding-left: 16px;
+      position: relative;
+    }
+
+    .fit-yes .fit-list li { color: var(--text-secondary); }
+    .fit-no  .fit-list li { color: var(--text-muted); }
+
+    .fit-list li::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 10px;
+      width: 6px;
+      height: 1px;
+    }
+
+    .fit-yes .fit-list li::before { background: var(--accent); }
+    .fit-no  .fit-list li::before { background: #333; }
+
+
+    /* ════════════════════════════
+       FAQ
+    ════════════════════════════ */
+    .faq-section {
+      background: var(--surface);
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .faq-list {
+      display: flex;
+      flex-direction: column;
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      overflow: hidden;
+    }
+
+    .faq-item {
+      padding: 32px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .faq-item:last-child { border-bottom: none; }
+
+    .faq-q {
+      font-size: 15px;
+      font-weight: 700;
+      color: var(--text-primary);
+      margin-bottom: 12px;
+      display: flex;
+      gap: 12px;
+      align-items: baseline;
+    }
+
+    .faq-q::before {
+      content: 'Q';
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      color: var(--accent-text);
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+
+    .faq-a {
+      font-size: 14px;
+      color: var(--text-secondary);
+      line-height: 1.85;
+      padding-left: 23px;
+      font-weight: 300;
+    }
+
+
+    /* ════════════════════════════
+       CTA
+    ════════════════════════════ */
+    .cta-section {
+      text-align: center;
+      background: linear-gradient(170deg, var(--bg) 0%, #0b1623 100%);
+      border-top: 1px solid var(--border);
+    }
+
+    .cta-section .section-title { margin-bottom: 10px; }
+
+    .cta-sub {
+      font-size: 15px;
+      color: var(--text-secondary);
+      font-weight: 300;
+      margin-bottom: 40px;
+    }
+
+    .cta-stack { display: flex; flex-direction: column; align-items: center; gap: 16px; }
+
+
+    /* ════════════════════════════
+       FOOTER
+    ════════════════════════════ */
+    footer { padding: 32px 24px; border-top: 1px solid var(--border); }
+    .footer-inner {
+      max-width: var(--max-w);
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .footer-copy { font-size: 13px; color: var(--text-muted); }
+    .footer-links { display: flex; gap: 24px; }
+    .footer-links a { font-size: 13px; color: var(--text-muted); transition: color 0.2s; }
+    .footer-links a:hover { color: var(--text-secondary); }
+
+
+    /* ════════════════════════════
+       RESPONSIVE
+    ════════════════════════════ */
+    @media (max-width: 768px) {
+      section { padding: 72px 0; }
+      .nav-links { display: none; }
+      .hamburger { display: flex; }
+
+      .hero-line { font-size: clamp(1.8rem, 8vw, 2.6rem); }
+
+      .step {
+        grid-template-columns: 64px 1fr;
+        gap: 24px;
+        padding: 40px 0;
+      }
+      .step-num { font-size: 3rem; }
+
+      .fit-grid { grid-template-columns: 1fr; }
+
+      .faq-item { padding: 24px; }
+
+      .footer-inner { flex-direction: column; align-items: flex-start; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ══ NAV ══ -->
+<nav>
+  <div class="nav-inner">
+    <a href="index.html" class="nav-logo">
+      <img src="logo.png" alt="派特 五四愛情學苑" height="56" style="width:auto;display:block;">
+    </a>
+    <ul class="nav-links">
+      <li><a href="#">文章</a></li>
+      <li><a href="about.html">關於派特</a></li>
+      <li><a href="service.html" class="nav-cta active">預約諮詢</a></li>
+    </ul>
+    <button class="hamburger" id="hamburger" aria-label="開啟選單" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<div class="mobile-menu" id="mobileMenu" role="navigation">
+  <a href="#">文章</a>
+  <a href="about.html">關於派特</a>
+  <a href="service.html" class="active">預約諮詢</a>
+</div>
+
+
+<!-- ══ HERO ══ -->
+<section class="hero">
+  <div class="hero-inner">
+    <p class="hero-eyebrow">一對一諮詢</p>
+    <h1>
+      <span class="hero-line">你的問題，</span>
+      <span class="hero-line">我給你明確的解決辦法。</span>
+    </h1>
+    <p class="hero-sub">不是模糊的建議，是你可以帶回去執行的具體答案。</p>
+  </div>
+</section>
+
+
+<!-- ══ STEPS ══ -->
+<section class="steps-section">
+  <div class="container">
+    <p class="section-label">流程</p>
+    <h2 class="section-title">三個步驟，就這樣。</h2>
+
+    <div class="reveal">
+      <div class="step">
+        <div class="step-num">01</div>
+        <div class="step-content">
+          <h3 class="step-title">預約</h3>
+          <p class="step-desc">透過 Calendly 選擇你想要的時間完成預約。<br>
+          細節說明會在預約頁面裡告訴你。</p>
+        </div>
+      </div>
+
+      <div class="step">
+        <div class="step-num">02</div>
+        <div class="step-content">
+          <h3 class="step-title">準時出席，第一小時免費</h3>
+          <p class="step-desc">只要你準時出現，第一個小時完全免費。<br>
+          你有什麼想問的、想解決的、想學的，<br>
+          儘管問，我的目的就是給你明確的答案。</p>
+        </div>
+      </div>
+
+      <div class="step">
+        <div class="step-num">03</div>
+        <div class="step-content">
+          <h3 class="step-title">你帶著答案離開</h3>
+          <p class="step-desc">諮詢結束後，你不會空手而回。<br>
+          你會清楚知道自己的問題在哪、<br>
+          可以從哪裡開始改變。</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ══ FIT / UNFIT ══ -->
+<section>
+  <div class="container">
+    <p class="section-label">適合對象</p>
+    <h2 class="section-title">先確認你是否適合</h2>
+    <div class="fit-grid reveal">
+      <div class="fit-col fit-yes">
+        <p class="fit-heading">適合的人</p>
+        <ul class="fit-list">
+          <li>在感情裡卡住，不知道問題出在哪</li>
+          <li>想改變，但不知道從哪裡開始</li>
+          <li>想知道自己的情感 OS 是哪個版本</li>
+          <li>願意面對自己的盲點</li>
+          <li>準備好認真解決這件事</li>
+        </ul>
+      </div>
+      <div class="fit-col fit-no">
+        <p class="fit-heading">不適合的人</p>
+        <ul class="fit-list">
+          <li>只是來聊聊看看的</li>
+          <li>認為所有問題都是對方的錯</li>
+          <li>沒有改變的意願</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ══ FAQ ══ -->
+<section class="faq-section">
+  <div class="container">
+    <p class="section-label">常見問題</p>
+    <h2 class="section-title">你可能想知道</h2>
+    <div class="faq-list reveal">
+      <div class="faq-item">
+        <p class="faq-q">保證金 1,000 元怎麼繳？</p>
+        <p class="faq-a">預約完成後，Calendly 頁面內有詳細說明。</p>
+      </div>
+      <div class="faq-item">
+        <p class="faq-q">諮詢是線上還是實體？</p>
+        <p class="faq-a">諮詢為實體進行，地點在台北。<br>
+        預約確認後會提供詳細地址與交通資訊。</p>
+      </div>
+      <div class="faq-item">
+        <p class="faq-q">付費訓練方案可以分期嗎？</p>
+        <p class="faq-a">可以。我們提供分期付款方案，包含零利率選項。<br>
+        經濟狀況不是你改變的障礙。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ══ CTA ══ -->
+<section class="cta-section">
+  <div class="container">
+    <p class="section-label reveal">立刻行動</p>
+    <h2 class="section-title reveal">準備好了，就來談談。</h2>
+    <p class="cta-sub reveal">第一小時免費，你沒有任何損失。</p>
+    <div class="cta-stack reveal">
+      <a href="https://calendly.com/54love/clone-2" target="_blank" rel="noopener noreferrer" class="btn-primary">
+        立即預約諮詢
+        <svg width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </a>
+      <a href="https://lin.ee/pljXoyp" target="_blank" rel="noopener noreferrer" class="btn-text">
+        或者先加入 LINE 好友 了解更多 →
+      </a>
+    </div>
+  </div>
+</section>
+
+
+<!-- ══ FOOTER ══ -->
+<footer>
+  <div class="footer-inner">
+    <p class="footer-copy">© 2026 五四愛情學苑 派特</p>
+    <div class="footer-links">
+      <a href="#">隱私權政策</a>
+      <a href="#">聯絡我們</a>
+    </div>
+  </div>
+</footer>
+
+
+<script>
+  // ── Hamburger menu ──
+  const hamburger = document.getElementById('hamburger');
+  const mobileMenu = document.getElementById('mobileMenu');
+
+  hamburger.addEventListener('click', () => {
+    const open = mobileMenu.classList.toggle('open');
+    hamburger.classList.toggle('open', open);
+    hamburger.setAttribute('aria-expanded', String(open));
+  });
+
+  mobileMenu.querySelectorAll('a').forEach(link => {
+    link.addEventListener('click', () => {
+      mobileMenu.classList.remove('open');
+      hamburger.classList.remove('open');
+      hamburger.setAttribute('aria-expanded', 'false');
+    });
+  });
+
+  // ── Scroll fade-in ──
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.08 });
+
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+</script>
+
+</body>
+</html>

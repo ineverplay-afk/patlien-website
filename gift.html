@@ -1,0 +1,956 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>講座限定福利 · 網路交友完全 SOP — 派特</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;600;700&family=Noto+Sans+TC:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #0e0e0f;
+  --surface: #18181a;
+  --surface2: #222226;
+  --border: #2e2e34;
+  --accent: #29CFFF;
+  --accent2: #7DE3FF;
+  --text: #f0ede8;
+  --text2: #a09a90;
+  --text3: #6a6460;
+  --success: #29CFFF;
+  --danger: #c05a5a;
+  --warn: #c08840;
+  --blue: #4a7ec8;
+  --radius: 12px;
+  --radius-sm: 8px;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; zoom: 1.5; }
+body { background: var(--bg); color: var(--text); font-family: 'Noto Sans TC', sans-serif; font-size: 15px; line-height: 1.7; }
+
+nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+  background: rgba(14,14,15,0.94); backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--border);
+  display: flex; align-items: center; padding: 0 24px; height: 52px;
+}
+.nav-logo { font-family: 'Noto Serif TC', serif; font-size: 14px; font-weight: 700; color: var(--accent); margin-right: auto; letter-spacing: .05em; }
+.nav-links { display: flex; gap: 4px; }
+.nav-link { padding: 6px 14px; border-radius: var(--radius-sm); font-size: 13px; color: var(--text2); cursor: pointer; transition: all .2s; border: none; background: none; font-family: 'Noto Sans TC', sans-serif; }
+.nav-link:hover, .nav-link.active { color: var(--accent); background: rgba(41,207,255,.08); }
+
+.hero { padding: 40px 24px 60px; max-width: 760px; margin: 0 auto; text-align: center; }
+.hero-eyebrow { font-size: 15px; letter-spacing: .2em; text-transform: uppercase; color: var(--accent); margin-bottom: 20px; }
+.hero h1 { font-family: 'Noto Serif TC', serif; font-size: clamp(28px, 5vw, 44px); font-weight: 700; line-height: 1.35; color: var(--text); margin-bottom: 16px; }
+.hero h1 span { color: var(--accent); }
+.hero p { font-size: 15px; color: var(--text2); max-width: 500px; margin: 0 auto 32px; }
+.hero-pills { display: flex; gap: 8px; flex-wrap: wrap; justify-content: center; }
+.pill { font-size: 12px; padding: 5px 14px; border-radius: 100px; border: 1px solid var(--border); color: var(--text2); }
+
+section { padding: 60px 24px; max-width: 800px; margin: 0 auto; }
+.section-label { font-size: 11px; letter-spacing: .2em; text-transform: uppercase; color: var(--accent); margin-bottom: 12px; }
+.section-title { font-family: 'Noto Serif TC', serif; font-size: clamp(20px, 3vw, 28px); font-weight: 700; margin-bottom: 8px; color: var(--text); }
+.section-sub { font-size: 14px; color: var(--text2); margin-bottom: 32px; }
+hr.sep { border: none; border-top: 1px solid var(--border); margin: 60px 0; }
+
+/* FLOWCHART */
+.flow-wrap { overflow-x: auto; padding-bottom: 8px; }
+
+/* STORY */
+.story-stage { margin-bottom: 36px; }
+.story-stage-header { display: flex; align-items: center; gap: 12px; margin-bottom: 16px; padding-bottom: 12px; border-bottom: 1px solid var(--border); }
+.s-num { width: 28px; height: 28px; border-radius: 50%; background: rgba(41,207,255,.12); border: 1px solid var(--accent); display: flex; align-items: center; justify-content: center; font-size: 12px; font-weight: 700; color: var(--accent); flex-shrink: 0; }
+.s-title { font-size: 15px; font-weight: 700; color: var(--text); }
+.s-goal { font-size: 11px; color: var(--text3); margin-left: auto; text-align: right; }
+.chat-area { display: flex; flex-direction: column; gap: 8px; }
+.row { display: flex; }
+.row.me { justify-content: flex-end; }
+.row.her { justify-content: flex-start; }
+.bw { max-width: 75%; display: flex; flex-direction: column; }
+.row.me .bw { align-items: flex-end; }
+.row.her .bw { align-items: flex-start; }
+.b { padding: 10px 14px; font-size: 14px; line-height: 1.7; color: var(--text); }
+.row.me .b { background: rgba(41,207,255,.15); border: 1px solid rgba(41,207,255,.25); border-radius: 16px 16px 4px 16px; }
+.row.her .b { background: var(--surface2); border: 1px solid var(--border); border-radius: 16px 16px 16px 4px; }
+.note { font-size: 11px; color: var(--text3); line-height: 1.5; margin-top: 4px; padding: 0 4px; }
+.row.me .note { text-align: right; }
+.insight { background: rgba(74,126,200,.08); border-left: 3px solid var(--blue); border-radius: 0 var(--radius-sm) var(--radius-sm) 0; padding: 10px 14px; margin: 10px 0; font-size: 12px; color: var(--text2); line-height: 1.7; }
+.insight strong { color: var(--text); font-weight: 500; }
+.win-card { background: rgba(41,207,255,.08); border: 1px solid rgba(41,207,255,.3); border-radius: var(--radius); padding: 20px 24px; margin-top: 16px; }
+.win-title { font-size: 16px; font-weight: 700; color: var(--success); margin-bottom: 6px; }
+.win-body { font-size: 13px; color: var(--text2); margin-bottom: 12px; line-height: 1.7; }
+.path-row { display: flex; flex-wrap: wrap; gap: 6px; }
+.path-tag { font-size: 11px; padding: 3px 10px; border-radius: 100px; border: 1px solid rgba(41,207,255,.4); color: var(--success); }
+
+/* SCRIPT */
+.tabs { display: flex; gap: 6px; flex-wrap: wrap; margin-bottom: 20px; }
+.tab-btn { padding: 6px 16px; border-radius: 100px; border: 1px solid var(--border); background: none; color: var(--text2); font-size: 13px; cursor: pointer; font-family: 'Noto Sans TC', sans-serif; transition: all .2s; }
+.tab-btn:hover { border-color: var(--accent); color: var(--accent); }
+.tab-btn.active { background: rgba(41,207,255,.12); border-color: var(--accent); color: var(--accent); }
+.tab-panel { display: none; }
+.tab-panel.show { display: block; }
+.phase-title { font-size: 11px; letter-spacing: .12em; text-transform: uppercase; color: var(--text3); margin-bottom: 12px; }
+.branch { margin-left: 14px; border-left: 2px solid var(--border); padding-left: 14px; margin-bottom: 14px; }
+.branch-label { font-size: 12px; font-weight: 500; margin-bottom: 8px; display: flex; align-items: center; gap: 6px; }
+.dot { width: 7px; height: 7px; border-radius: 50%; flex-shrink: 0; }
+.dot.g { background: var(--success); }
+.dot.r { background: var(--danger); }
+.dot.y { background: var(--warn); }
+.bl-g { color: var(--success); }
+.bl-r { color: var(--danger); }
+.bl-y { color: var(--warn); }
+.script-bubble { background: var(--surface2); border: 1px solid var(--border); border-radius: 12px 12px 4px 12px; padding: 10px 52px 10px 14px; font-size: 14px; line-height: 1.7; color: var(--text); position: relative; margin-bottom: 6px; cursor: pointer; transition: border-color .2s; }
+.script-bubble:hover { border-color: var(--accent); }
+.cp-btn { position: absolute; top: 8px; right: 8px; background: none; border: 1px solid var(--border); border-radius: 6px; padding: 3px 8px; font-size: 11px; color: var(--text3); cursor: pointer; font-family: 'Noto Sans TC', sans-serif; transition: all .2s; pointer-events: none; }
+.script-bubble:hover .cp-btn { color: var(--accent); border-color: var(--accent); }
+.note-small { font-size: 11px; color: var(--text3); margin-bottom: 8px; padding-left: 4px; }
+.inactive-note { font-size: 13px; color: var(--text3); font-style: italic; padding: 8px 12px; background: var(--surface2); border-radius: var(--radius-sm); }
+.wait-box { background: rgba(192,136,64,.08); border: 1px solid rgba(192,136,64,.3); border-radius: var(--radius-sm); padding: 12px 14px; margin: 8px 0 12px; font-size: 13px; color: var(--text2); line-height: 1.7; }
+.wait-title { font-size: 12px; font-weight: 700; color: var(--warn); margin-bottom: 4px; }
+.tl { display: grid; grid-template-columns: repeat(4,1fr); gap: 0; margin: 12px 0; }
+.tl-step { display: flex; flex-direction: column; align-items: center; position: relative; }
+.tl-step:not(:last-child)::after { content: ''; position: absolute; top: 5px; left: 50%; width: 100%; height: 1px; background: var(--border); z-index: 0; }
+.tl-dot { width: 10px; height: 10px; border-radius: 50%; background: var(--border); z-index: 1; }
+.tl-dot.now { background: var(--warn); }
+.tl-dot.next { background: var(--success); }
+.tl-txt { font-size: 10px; color: var(--text3); margin-top: 4px; text-align: center; line-height: 1.4; }
+.photo-hint { background: var(--surface); border: 1px dashed var(--border); border-radius: var(--radius-sm); padding: 8px 12px; font-size: 12px; color: var(--text3); margin-bottom: 8px; }
+
+.toast { position: fixed; bottom: 24px; left: 50%; transform: translateX(-50%); background: var(--surface2); border: 1px solid var(--border); border-radius: 100px; padding: 8px 20px; font-size: 13px; color: var(--accent); opacity: 0; transition: opacity .2s; pointer-events: none; z-index: 999; }
+.toast.show { opacity: 1; }
+
+footer { text-align: center; padding: 40px 24px; border-top: 1px solid var(--border); font-size: 12px; color: var(--text3); }
+footer span { color: var(--accent); }
+
+@media(max-width:600px) {
+  nav { padding: 0 16px; }
+  .nav-link { padding: 6px 10px; font-size: 12px; }
+  section { padding: 48px 16px; }
+  .hero { padding: 100px 16px 48px; }
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-logo">派特 · 網路交友指南</div>
+  <div class="nav-links">
+    <button class="nav-link active" onclick="goTo('flow')">流程圖</button>
+    <button class="nav-link" onclick="goTo('story')">案例解析</button>
+    <button class="nav-link" onclick="goTo('script')">照抄範本</button>
+  </div>
+</nav>
+<!-- GIFT BANNER -->
+<div id="gift-banner" style="
+  background: linear-gradient(135deg, rgba(41,207,255,0.08) 0%, rgba(41,207,255,0.03) 100%);
+  border-bottom: 1px solid rgba(41,207,255,0.2);
+  padding: 20px 24px;
+  text-align: center;
+  position: relative;
+  margin-top: 52px;
+">
+  <div style="max-width:640px; margin:0 auto;">
+    <div style="font-size:11px; letter-spacing:.2em; text-transform:uppercase; color:#29CFFF; margin-bottom:8px;">講座限定福利</div>
+    <div style="font-family:'Noto Serif TC',serif; font-size:18px; font-weight:700; color:#f0ede8; margin-bottom:8px;">網路交友完全 SOP ── 配對到約會</div>
+    <div style="font-size:13px; color:#a09a90; line-height:1.8; margin-bottom:12px;">
+      這是 5月16日 講座承諾提供的完整對話紀錄。<br>
+      三個區塊：辨識對象流程、完整案例拆解、可直接複製使用的範本。<br>
+      建議按順序看完流程圖和案例解析，再去用範本。
+    </div>
+    <div style="display:inline-block; background:rgba(192,136,64,0.12); border:1px solid rgba(192,136,64,0.35); border-radius:8px; padding:8px 20px; font-size:12px; color:#c08840;">
+      ⏳ 此頁面於 <strong style="color:#f0ede8;">2025 年 5 月 20 日</strong> 截止開放
+    </div>
+  </div>
+</div>
+
+
+
+<div class="hero">
+  <div class="hero-eyebrow">派特 · 情感架構師</div>
+  <h1>網路交友，<span>從配對到約會</span><br>完整 SOP</h1>
+  <p>不是話術，是理解對方在哪個位置，然後給對的東西。</p>
+  <div class="hero-pills">
+    <div class="pill">真人辨識</div>
+    <div class="pill">籌碼累積</div>
+    <div class="pill">賦格技巧</div>
+    <div class="pill">行動階梯</div>
+    <div class="pill">約碰面</div>
+  </div>
+</div>
+
+<!-- SECTION 1 -->
+<hr class="sep">
+<section id="flow">
+  <div class="section-label">Part 01</div>
+  <div class="section-title">網路交友，你面對的是什麼人？</div>
+  <div class="section-sub">配對成功不代表對面是真人。先搞清楚對象，再決定要不要投入時間。點每個節點展開說明。</div>
+
+  <div class="flow-wrap">
+    <svg id="flow-svg" width="100%" viewBox="0 0 680 400" role="img" style="min-width:480px; font-family:'Noto Sans TC',sans-serif; cursor:default;">
+      <title>網路交友女生們在想什麼</title>
+      <rect x="20" y="168" width="136" height="52" rx="8" fill="#2e2e34" stroke="#6a6460" stroke-width="0.5"/>
+      <text x="88" y="190" text-anchor="middle" font-size="13" font-weight="500" fill="#f0ede8">網路交友</text>
+      <text x="88" y="208" text-anchor="middle" font-size="11" fill="#a09a90">女生們在想什麼？</text>
+      <line x1="156" y1="194" x2="196" y2="194" stroke="#4a4a50" stroke-width="0.5"/>
+      <line x1="196" y1="100" x2="196" y2="310" stroke="#4a4a50" stroke-width="0.5"/>
+      <!-- 真人 -->
+      <line x1="196" y1="100" x2="226" y2="100" stroke="#4a4a50" stroke-width="0.5"/>
+      <g style="cursor:pointer;" onclick="showDetail('real')">
+        <rect x="226" y="74" width="96" height="44" rx="8" fill="#085041" stroke="#1D9E75" stroke-width="0.5"/>
+        <text x="274" y="100" text-anchor="middle" font-size="13" font-weight="500" fill="#9FE1CB">真人</text>
+      </g>
+      <line x1="322" y1="96" x2="362" y2="96" stroke="#4a4a50" stroke-width="0.5"/>
+      <line x1="362" y1="56" x2="362" y2="196" stroke="#4a4a50" stroke-width="0.5"/>
+      <!-- 有交友需求 -->
+      <line x1="362" y1="56" x2="392" y2="56" stroke="#4a4a50" stroke-width="0.5"/>
+      <g style="cursor:pointer;" onclick="showDetail('need')">
+        <rect x="392" y="32" width="124" height="44" rx="8" fill="#085041" stroke="#1D9E75" stroke-width="0.5"/>
+        <text x="454" y="52" text-anchor="middle" font-size="13" font-weight="500" fill="#9FE1CB">有交友需求</text>
+        <text x="454" y="68" text-anchor="middle" font-size="11" fill="#5DCAA5">這才是目標對象 ✓</text>
+      </g>
+      <!-- 找聊天慰藉 -->
+      <line x1="362" y1="196" x2="392" y2="196" stroke="#4a4a50" stroke-width="0.5"/>
+      <g style="cursor:pointer;" onclick="showDetail('comfort')">
+        <rect x="392" y="170" width="120" height="44" rx="8" fill="#2e2e34" stroke="#6a6460" stroke-width="0.5"/>
+        <text x="452" y="190" text-anchor="middle" font-size="13" font-weight="500" fill="#f0ede8">找聊天慰藉</text>
+        <text x="452" y="206" text-anchor="middle" font-size="11" fill="#a09a90">不見面</text>
+      </g>
+      <line x1="512" y1="192" x2="548" y2="192" stroke="#4a4a50" stroke-width="0.5"/>
+      <line x1="548" y1="152" x2="548" y2="240" stroke="#4a4a50" stroke-width="0.5"/>
+      <!-- 很自卑 -->
+      <line x1="548" y1="152" x2="572" y2="152" stroke="#4a4a50" stroke-width="0.5"/>
+      <g style="cursor:pointer;" onclick="showDetail('shy')">
+        <rect x="572" y="128" width="92" height="44" rx="8" fill="#2e2e34" stroke="#6a6460" stroke-width="0.5"/>
+        <text x="618" y="148" text-anchor="middle" font-size="13" font-weight="500" fill="#f0ede8">很自卑</text>
+        <text x="618" y="164" text-anchor="middle" font-size="11" fill="#a09a90">沒朋友</text>
+      </g>
+      <!-- 受傷的人 -->
+      <line x1="548" y1="240" x2="572" y2="240" stroke="#4a4a50" stroke-width="0.5"/>
+      <g style="cursor:pointer;" onclick="showDetail('hurt')">
+        <rect x="572" y="216" width="92" height="44" rx="8" fill="#2e2e34" stroke="#6a6460" stroke-width="0.5"/>
+        <text x="618" y="236" text-anchor="middle" font-size="13" font-weight="500" fill="#f0ede8">受傷的人</text>
+        <text x="618" y="252" text-anchor="middle" font-size="11" fill="#a09a90">可能長得很正</text>
+      </g>
+      <!-- 假人 -->
+      <line x1="196" y1="310" x2="226" y2="310" stroke="#4a4a50" stroke-width="0.5"/>
+      <g style="cursor:pointer;" onclick="showDetail('fake')">
+        <rect x="226" y="286" width="96" height="44" rx="8" fill="#712B13" stroke="#D85A30" stroke-width="0.5"/>
+        <text x="274" y="306" text-anchor="middle" font-size="13" font-weight="500" fill="#F5C4B3">假人</text>
+        <text x="274" y="322" text-anchor="middle" font-size="11" fill="#F0997B">錢為目的</text>
+      </g>
+      <line x1="322" y1="308" x2="362" y2="308" stroke="#4a4a50" stroke-width="0.5"/>
+      <line x1="362" y1="272" x2="362" y2="352" stroke="#4a4a50" stroke-width="0.5"/>
+      <!-- 詐騙 -->
+      <line x1="362" y1="272" x2="392" y2="272" stroke="#4a4a50" stroke-width="0.5"/>
+      <g style="cursor:pointer;" onclick="showDetail('scam')">
+        <rect x="392" y="248" width="96" height="44" rx="8" fill="#712B13" stroke="#D85A30" stroke-width="0.5"/>
+        <text x="440" y="268" text-anchor="middle" font-size="13" font-weight="500" fill="#F5C4B3">詐騙</text>
+        <text x="440" y="284" text-anchor="middle" font-size="11" fill="#F0997B">騙感情騙錢</text>
+      </g>
+      <!-- 做生意 -->
+      <line x1="362" y1="352" x2="392" y2="352" stroke="#4a4a50" stroke-width="0.5"/>
+      <g style="cursor:pointer;" onclick="showDetail('biz')">
+        <rect x="392" y="328" width="96" height="44" rx="8" fill="#712B13" stroke="#D85A30" stroke-width="0.5"/>
+        <text x="440" y="348" text-anchor="middle" font-size="13" font-weight="500" fill="#F5C4B3">做生意</text>
+        <text x="440" y="364" text-anchor="middle" font-size="11" fill="#F0997B">行銷號、業務</text>
+      </g>
+    </svg>
+    <div id="flow-detail" style="display:none; margin-top:12px; padding:14px 18px; background:#18181a; border:1px solid #2e2e34; border-radius:10px; font-size:13px; color:#a09a90; line-height:1.8; position:relative;">
+      <button onclick="document.getElementById('flow-detail').style.display='none'" style="position:absolute;top:10px;right:12px;background:none;border:none;color:#6a6460;font-size:16px;cursor:pointer;line-height:1;">✕</button>
+      <div id="flow-detail-title" style="font-size:14px;font-weight:500;color:#f0ede8;margin-bottom:6px;"></div>
+      <div id="flow-detail-body"></div>
+    </div>
+  </div>
+
+  <div style="margin-top:28px; padding:16px 20px; background:rgba(41,207,255,.06); border:1px solid rgba(41,207,255,.2); border-radius:var(--radius); font-size:13px; color:var(--text2); line-height:1.8;">
+    <strong style="color:var(--accent); display:block; margin-bottom:6px;">換LINE 指標</strong>
+    換LINE應該是連你自己都覺得表現超好的結果，不該出現在聊沒幾句的開頭。如果對方主動以「方便」為由要換LINE，但你還沒表現出任何優秀特質——高機率是假人。真人在交友平台上持續跟你互動，沒有急著換平台；換LINE是她認可你之後自然發生的事，不是開頭的例行動作。
+  </div>
+</section>
+
+<!-- SECTION 2 -->
+<hr class="sep">
+<section id="story">
+  <div class="section-label">Part 02</div>
+  <div class="section-title">Luna 完整案例解析</div>
+  <div class="section-sub">一個真實的對話流程，從配對到敲定約會。每一段話旁邊都有說明這步在做什麼。</div>
+
+  <!-- Stage 1 -->
+  <div class="story-stage">
+    <div class="story-stage-header">
+      <div class="s-num">1</div>
+      <div class="s-title">開場白：探測真人</div>
+      <div class="s-goal">目標：判斷真人／假人</div>
+    </div>
+    <div class="chat-area">
+      <div class="row me"><div class="bw">
+        <div class="b">一個人的精采生活，抵不過兩個人的嘻笑，依循著感覺走，單身也是一種景色，直到妳的右滑，讓我情不自禁的⋯⋯從冰箱拿出刁民酸菜魚，妳要來一點嗎？</div>
+        <div class="note">罐頭開場白——顯然是罐頭。如果對方嗆你，高機率是真人；如果太配合，高機率是假人。</div>
+      </div></div>
+      <div class="row her"><div class="bw">
+        <div class="b">酸菜魚吃完很空虛</div>
+        <div class="note">她嗆了你——創造衝突，真人訊號</div>
+      </div></div>
+    </div>
+    <div class="insight"><strong>為什麼這樣做：</strong>普通人假定網路交友都是真的，拼命想話題，這太累了。反直覺的做法是先用罐頭過濾——真人遇到罐頭會嗆你，假人為了賺你錢會配合你。先確認對象，再投入時間。</div>
+  </div>
+
+  <!-- Stage 2 -->
+  <div class="story-stage">
+    <div class="story-stage-header">
+      <div class="s-num">2</div>
+      <div class="s-title">確認真人：順著接話</div>
+      <div class="s-goal">目標：穩住對話，建立話題橋</div>
+    </div>
+    <div class="chat-area">
+      <div class="row me"><div class="bw">
+        <div class="b">真的，刁民酸菜魚真的不是人吃的。</div>
+        <div class="note">認同她，不解釋不道歉</div>
+      </div></div>
+      <div class="row me"><div class="bw">
+        <div class="b">懂吃！那你喜歡吃甜點嗎？</div>
+        <div class="note">「懂吃」是轉換詞，帶到下一個話題</div>
+      </div></div>
+      <div class="row her"><div class="bw">
+        <div class="b">甜點還行，但不愛太甜的⋯不是螞蟻人😊</div>
+        <div class="note">沒有附和你，說自己真實想法——真人訊號又加一</div>
+      </div></div>
+      <div class="row her"><div class="bw">
+        <div class="b">可能自己買回家加料比較划算</div>
+        <div class="note">透露個人價值觀：在意性價比——這是她的個性側寫，假人不會給你這種資訊</div>
+      </div></div>
+    </div>
+    <div class="insight"><strong>真人四訊號：</strong>①回TAG你說的話；②出現口語語助詞「啦⋯噢⋯」；③沒有附和你，說自己真實的想法；④透露個人化的私領域價值觀。符合越多點，真人確認度越高。</div>
+  </div>
+
+  <!-- Stage 3 -->
+  <div class="story-stage">
+    <div class="story-stage-header">
+      <div class="s-num">3</div>
+      <div class="s-title">累積籌碼：自然分享 + 錨定</div>
+      <div class="s-goal">目標：建立信任，產生相處畫面感</div>
+    </div>
+    <div class="chat-area">
+      <div class="row me"><div class="bw">
+        <div class="b">對，你很懂耶！我每次打包帶走，或是直接買它便利包，然後自己回家當火鍋煮著吃。有時候自己興致一來，再煎個豬排，那是一個享受。</div>
+        <div class="note">連結她的性價比觀念，讓她感覺你們是同類，但你層次更高</div>
+      </div></div>
+      <div class="row me"><div class="bw">
+        <div class="b">說到甜點，不太甜的話，你有試過「深夜裡的法國手工甜點」這家嗎？</div>
+      </div></div>
+      <div class="row me"><div class="bw">
+        <div class="b">https://yummyyummy.tw/tag/深夜裡的法國甜點/</div>
+        <div class="note">連結單獨發。她如果點了連結 = 鐵定真人（詐騙集團自己不敢點連結）</div>
+      </div></div>
+      <div class="row me"><div class="bw">
+        <div class="b">這家</div>
+        <div class="note">篤定短句收尾，在她眼裡會更有對話感</div>
+      </div></div>
+      <div class="row her"><div class="bw">
+        <div class="b">酸菜魚真的吃過一次啦😅</div>
+        <div class="note">她收回訊息後重發、TAG你說的話、氣虛說只吃過一次——籌碼又再增加</div>
+      </div></div>
+    </div>
+    <div class="insight"><strong>錨點邏輯：</strong>你傳的東西是錨點，用來定位你的生活層次。深夜法國手工甜點一份500～1000元，素未謀面就願意送——這份誠意直接打趴大多數競爭者。不好的錨點（路邊隨處可見的東西）反而扣分。</div>
+  </div>
+
+  <!-- Stage 4 -->
+  <div class="story-stage">
+    <div class="story-stage-header">
+      <div class="s-num">4</div>
+      <div class="s-title">故事攻勢：植入印象</div>
+      <div class="s-goal">目標：觸發關注，讓她相信有你會有好事</div>
+    </div>
+    <div class="chat-area">
+      <div class="row me"><div class="bw">
+        <div class="b">看來我要跟你分享我的真實身分了</div>
+        <div class="note">觸發高度關注——讓她準備好接收你接下來說的話</div>
+      </div></div>
+      <div class="row me"><div class="bw">
+        <div class="b">上次我去見了一個女網友，我聽了她的故事，差點哭了出來。</div>
+        <div class="note">三個鉤子同時下：你有見過網友（有行情）、有故事(真實感)、差點哭（為什麼？）</div>
+      </div></div>
+      <div class="row me"><div class="bw">
+        <div class="b">這故事是這樣的，她認識她的前男友是從網路交友上認識的，然後這個男生，很快地讓這個女生覺得遇到真命天子，談上戀愛之後，男生開始無故消失，原來是劈腿了⋯⋯我問她，那你現在還敢見網友？她說：「我選擇相信愛情，所以要繼續往前走」我整個太敬佩她了，隔天，我請外送送過去一份甜點，致敬她對愛的勇敢。</div>
+        <div class="note">一段好的故事要具備「情境、角色、感受、情節、結局」</div>
+      </div></div>
+      <div class="row me"><div class="bw">
+        <div class="b">從那天開始，我覺得自己真是太酷了，送甜點給人溫暖，你可以叫我——甜點俠！</div>
+        <div class="note">她叫你甜點俠 = 更親近的訊號，籌碼大加</div>
+      </div></div>
+      <div class="row me"><div class="bw">
+        <div class="b">所以嚴格說起來，我是大戶。</div>
+        <div class="note">繞回她之前說的話，讓她感覺你有在聽</div>
+      </div></div>
+      <div class="row her"><div class="bw">
+        <div class="b">這很普通的故事啊⋯大家不都這樣來的</div>
+        <div class="note">她在跟你玩，批評的是故事裡的劈腿男，不是在否定你</div>
+      </div></div>
+      <div class="row her"><div class="bw">
+        <div class="b">你也可以讓她相信愛情啊🤣</div>
+        <div class="note">嫌貨才是買貨人——她在問「你為什麼不繼續追那個女生」，她想要所以在找借鏡、找前例</div>
+      </div></div>
+    </div>
+  </div>
+
+  <!-- Stage 5 -->
+  <div class="story-stage">
+    <div class="story-stage-header">
+      <div class="s-num">5</div>
+      <div class="s-title">攤牌：確認交友意圖</div>
+      <div class="s-goal">目標：讓她親口說出她來這裡的目的</div>
+    </div>
+    <div class="chat-area">
+      <div class="row me"><div class="bw">
+        <div class="b">沒錯，你講到重點了。我會玩網路交友是想談戀愛。碰面是一個了解對方的過程，對方看看我，我也聽聽對方。如果對方沒那個意思，直說無妨，笑笑點點頭可以當朋友。我們後來變成好朋友了，哈哈哈。畢竟是她給我機會變成甜點俠的，哈哈哈。</div>
+        <div class="note">先說自己想談戀愛（有籌碼才能直接）→ 柔化碰面壓力 →正面收尾讓她知道碰了面最壞也是好結局</div>
+      </div></div>
+      <div class="row me"><div class="bw">
+        <div class="b">你呢？你玩網路交友是單純找人聊聊天的？還是也想看看有沒有不錯的人談戀愛的呢？</div>
+        <div class="note">把球丟回去——看她給你的答案來證明，你之前累積的籌碼有多少重量，可以換到什麼程度的實話</div>
+      </div></div>
+      <div class="row her"><div class="bw">
+        <div class="b">當然是找另一半的</div>
+      </div></div>
+      <div class="row her"><div class="bw">
+        <div class="b">也是跟你一樣，假如不適合當情侶也能當朋友，但主要還是找另一半</div>
+      </div></div>
+      <div class="row her"><div class="bw">
+        <div class="b">我的自介有寫交友目的啊</div>
+        <div class="note">她的這句話在自我實踐。自介寫是這麼寫，要她親自打給你才是一種承諾，就像簽名一樣有重量。</div>
+      </div></div>
+    </div>
+    <div class="insight"><strong>重要：</strong>她第一句說「找另一半」只是結論，不代表她認定你就是那個人。接下來繼續加分，讓她在生理上和意識上都確認你是她要的人。</div>
+  </div>
+
+  <!-- Stage 6 -->
+  <div class="story-stage">
+    <div class="story-stage-header">
+      <div class="s-num">6</div>
+      <div class="s-title">關係引導：進入你的遊戲規則</div>
+      <div class="s-goal">目標：讓她進入你設定的遊戲規則</div>
+    </div>
+    <div class="chat-area">
+      <div class="row me"><div class="bw">
+        <div class="b">男女朋友間很常會遇到一種狀況。男朋友問女朋友：「今天你想吃什麼？」女朋友說：「都可以。」男生說：「燒烤怎麼樣。」女生說：「燒烤衣服上會有味道。」然後男生持續提案，最後沒有從女生身上得到答案。最好的解決辦法是男生問「今天帶你去吃你想吃很久的東西。」如果女生說：「是壽司嗎？」那就是最好的晚餐。</div>
+        <div class="note">情境隱喻，讓她進入男女相處的畫面，不製造正面壓力</div>
+      </div></div>
+      <div class="row me"><div class="bw">
+        <div class="b">我有很認真看你的自介，但你回應我，打出來的字，讓我更了解你的想法。</div>
+        <div class="note">建立遊戲規則：你說出來才算數</div>
+      </div></div>
+      <div class="row me"><div class="bw">
+        <div class="b">不過我想，以你的個性，應該是想吃什麼會直接說，不會跟男朋友這樣繞來繞去的。</div>
+        <div class="note">給她台階，讓她想證明你說得對</div>
+      </div></div>
+      <div class="row her"><div class="bw">
+        <div class="b">我可能會說⋯什麼想吃很久的東西？我自己都不知道😂</div>
+      </div></div>
+      <div class="row her"><div class="bw">
+        <div class="b">想吃當然會說，但不知道吃什麼就真的沒想法😂</div>
+        <div class="note">她進入了你的情境，沒有觸發抵抗——正式進入關係引導地位</div>
+      </div></div>
+    </div>
+  </div>
+
+  <!-- Stage 7 -->
+  <div class="story-stage">
+    <div class="story-stage-header">
+      <div class="s-num">7</div>
+      <div class="s-title">自然分享：主動出場，試探情緒</div>
+      <div class="s-goal">目標：用生活畫面刺激她的情緒回應</div>
+    </div>
+    <div class="chat-area">
+      <div class="row me"><div class="bw">
+        <div class="b">來囉～阿偉上菜！</div>
+        <div class="note">不等她主動，你先出場。先傳一張有質感的食物照片，再接這幾則。</div>
+      </div></div>
+      <div class="row me"><div class="bw">
+        <div class="b">桃園老牌西餐廳－李西餐廳<br>厲害的基輔炸雞登場～～</div>
+        <div class="note">說明出處和單品，讓她有畫面，也讓她感覺你有在生活</div>
+      </div></div>
+      <div class="row me"><div class="bw">
+        <div class="b">不知道你今天中午有沒有吃什麼的想法，讓我來刺激你的食慾！</div>
+        <div class="note">把她帶進來，讓她感覺這跟她有關</div>
+      </div></div>
+      <div class="row me"><div class="bw">
+        <div class="b">外皮酥脆、雞肉香嫩，裡面的醬汁更是香醇濃郁，搭上旁邊的馬鈴薯泥，四種滋味在舌尖上爆炸！</div>
+        <div class="note">身歷其境描述，讓她想吃，同時展現你是有感受細節的人</div>
+      </div></div>
+      <div class="row me"><div class="bw">
+        <div class="b">基輔炸雞，吃到一半，你會看到澤倫斯基為你的辛苦加油打氣！</div>
+        <div class="note">幽默共鳴收尾，拉出普羅大眾的記憶點，讓她笑，發完停等她反應</div>
+      </div></div>
+    </div>
+    <div class="insight"><strong>自然分享的邏輯：</strong>當你能量滿溢、狀態很好的時候，就是你最有魅力的出場時機。傳的東西要是稀缺資源，對方不容易接觸到的——這樣才是錨點，才是利他。路邊隨處可見的東西不要拿出來，那是扣分。</div>
+  </div>
+
+  <!-- Stage 8 -->
+  <div class="story-stage">
+    <div class="story-stage-header">
+      <div class="s-num">8</div>
+      <div class="s-title">理智引導：對方用理智回你</div>
+      <div class="s-goal">目標：改用理智引導，重新觸發高度關注</div>
+    </div>
+    <div class="chat-area">
+      <div class="row her"><div class="bw">
+        <div class="b">沒想法</div>
+        <div class="note">只回結果，沒有感受——她還在用理智對待你，情緒滲透無效</div>
+      </div></div>
+      <div class="row her"><div class="bw">
+        <div class="b">我中午都吃便利商店</div>
+      </div></div>
+      <div class="row her"><div class="bw">
+        <div class="b">我吃飽了沒食慾</div>
+      </div></div>
+      <div class="row me"><div class="bw">
+        <div class="b">便利商店，很方便。</div>
+        <div class="note">認同她的選擇，不評判，降維到跟她一樣的位置</div>
+      </div></div>
+      <div class="row me"><div class="bw">
+        <div class="b">我原本是7-11派的，自從全家狂到把炸雞桶放到店裡面賣，我就倒戈成為全家派。</div>
+        <div class="note">「我也一樣」要有具體描述——有對象、有事件、有選擇、有結果。細節越多，她越相信是真的。</div>
+      </div></div>
+      <div class="row me"><div class="bw">
+        <div class="b">那如果你不介意的話，讓我明天幫你加菜。</div>
+        <div class="note">埋下下一個觸發高度關注的引子——這句是工具，不是終點</div>
+      </div></div>
+    </div>
+    <div class="insight"><strong>關係位置：</strong>她用理智回你，代表你現在在「站穩關係平等」的邊緣，還沒站穩。不要硬推幽默或情緒，改用理智慢慢引導，同時繼續累積籌碼。</div>
+  </div>
+
+  <!-- Stage 9 -->
+  <div class="story-stage">
+    <div class="story-stage-header">
+      <div class="s-num">9</div>
+      <div class="s-title">甜點錨定：不等回覆，直接上菜</div>
+      <div class="s-goal">目標：觸發高度關注，推進到主導關係邊緣</div>
+    </div>
+    <div class="chat-area">
+      <div class="row me"><div class="bw">
+        <div class="b">來囉～這個厲害的！</div>
+        <div class="note">不等她回，直接連發。先傳西瓜蛋糕照片。</div>
+      </div></div>
+      <div class="row me"><div class="bw">
+        <div class="b">昨天有個網友推薦我Supranormal Bakery Cafe的西瓜蛋糕，回來台北之後，我趕五點衝進店裡，正好剩最後一顆。</div>
+        <div class="note">稀缺性錨點——有時間壓力、有細節，讓她相信是真的</div>
+      </div></div>
+      <div class="row me"><div class="bw">
+        <div class="b">你明天的下午茶，讓我來。</div>
+        <div class="note">直接幫她做決定，不問「要不要」</div>
+      </div></div>
+      <div class="row me"><div class="bw">
+        <div class="b">我找人送過去。</div>
+        <div class="note">讓提議變成具體行動</div>
+      </div></div>
+      <div class="row me"><div class="bw">
+        <div class="b">另外，這我今天試過了，不甜，非螞蟻人最愛！口感和味道超有層次。</div>
+        <div class="note">呼應她說過自己是螞蟻人，讓她感覺你有在聽她說話，同時化解被指使感</div>
+      </div></div>
+      <div class="row her"><div class="bw">
+        <div class="b">我沒有吃過全家的炸雞耶，好像聽說很不錯</div>
+        <div class="note">她開始用感受回你了，不再只是資訊——方向對了</div>
+      </div></div>
+      <div class="row her"><div class="bw">
+        <div class="b">這是西瓜？不是草莓嗎？</div>
+        <div class="note">她在盯著照片看——錨點成功觸發高度關注</div>
+      </div></div>
+      <div class="row her"><div class="bw">
+        <div class="b">看起來就很不錯，我對草莓沒有抵抗力，巧克力反而就不愛了😊</div>
+        <div class="note">她主動多說自己的喜好——潛意識已經開始對你不設防</div>
+      </div></div>
+    </div>
+  </div>
+
+  <!-- Stage 10 -->
+  <div class="story-stage">
+    <div class="story-stage-header">
+      <div class="s-num">10</div>
+      <div class="s-title">大加分：身歷其境描述</div>
+      <div class="s-goal">目標：賦格，讓她說出「好特別」「想吃」</div>
+    </div>
+    <div class="chat-area">
+      <div class="row me"><div class="bw">
+        <div class="b">全家的炸雞很可以，但是千萬不要買烤雞，那是那隻雞和買的人的大災難！</div>
+        <div class="note">站在提點角度滿足感受，展現真實性</div>
+      </div></div>
+      <div class="row me"><div class="bw">
+        <div class="b">昨天我聽到西瓜蛋糕（澳洲特產），上網Google了一下，我起初也跟你一樣的疑惑，這裡面哪有西瓜？今天買到的時候，我覺得口感太魔幻了！</div>
+        <div class="note">感受一致性——替她補完她的疑惑，讓她感覺你們契合</div>
+      </div></div>
+      <div class="row me"><div class="bw">
+        <div class="b">最上層草莓像是糖葫蘆的味道，然後中間栗子泥中和了甜味。最神奇的是中間紅色那一塊，看起來不太像西瓜，但一口咬下，超脆！而且會爆汁，很像西瓜汁但又多了一股玫瑰的香氣伴隨而來。</div>
+        <div class="note">身歷其境描述——刺激想吃的動機，展現你是有感受細節的人</div>
+      </div></div>
+      <div class="row me"><div class="bw">
+        <div class="b">整體來說，有口感、有香氣、有驚喜、有轉折、有搭到，我給五顆星。</div>
+        <div class="note">「收闔」展現文學底蘊，所有對話都要有結論</div>
+      </div></div>
+      <div class="row her"><div class="bw">
+        <div class="b">看起來就超特別的啊</div>
+      </div></div>
+      <div class="row her"><div class="bw">
+        <div class="b">我也有看那中間感覺像西瓜果肉一樣⋯很厲害</div>
+        <div class="note">她承認「好特別」——賦格完成。她要拒絕你請她吃，就必須打自己的臉。</div>
+      </div></div>
+    </div>
+    <div class="insight"><strong>什麼是賦格：</strong>透過描述和情境，把對方帶到一個她認同的位置上——「我也覺得好特別」。她一旦說出這句話，她就被賦格了。她要拒絕，就必須打自己的臉。</div>
+  </div>
+
+  <!-- Stage 11 -->
+  <div class="story-stage">
+    <div class="story-stage-header">
+      <div class="s-num">11</div>
+      <div class="s-title">行動階梯：第一個Yes</div>
+      <div class="s-goal">目標：創造第一個Yes，推進約碰面</div>
+    </div>
+    <div class="chat-area">
+      <div class="row me"><div class="bw">
+        <div class="b">它能引起你的興趣，太好了。</div>
+        <div class="note">收合賦格，把她定在那個位置</div>
+      </div></div>
+      <div class="row me"><div class="bw">
+        <div class="b">今天來一塊，算我的。</div>
+        <div class="note">篤定，不是問她要不要</div>
+      </div></div>
+      <div class="row me"><div class="bw">
+        <div class="b">外送送到哪邊好？</div>
+        <div class="note">給她明確任務，讓她知道你是認真的</div>
+      </div></div>
+      <div class="row her"><div class="bw">
+        <div class="b">你是到處送甜點嗎😮</div>
+        <div class="note">她在釐清誠意——她動搖了，潛台詞：「你是只對我這樣嗎？」</div>
+      </div></div>
+    </div>
+  </div>
+
+  <!-- Stage 12 -->
+  <div class="story-stage">
+    <div class="story-stage-header">
+      <div class="s-num">12</div>
+      <div class="s-title">約碰面：兩段連發</div>
+      <div class="s-goal">目標：把碰面的合理性講清楚、講白</div>
+    </div>
+    <div class="chat-area">
+      <div class="row me"><div class="bw">
+        <div class="b">想見人，送個見面禮是基本的禮貌，是每個有點社會經驗的人都該具備的，這點認知我還是有的。會收禮的人，就不一樣了。懂得收得漂亮，收得恰到好處，那是收的人情商高。一塊蛋糕，如果有機會讓我遇見你，不是我的慷慨，而是你給我的福氣。</div>
+        <div class="note">社會通則合理化，反框對方，光環給她</div>
+      </div></div>
+      <div class="row me"><div class="bw">
+        <div class="b">當然這是漂亮話，講人話的話就是——我想跟你碰面，讓你看看我，也讓我見見你。</div>
+        <div class="note">反轉講實話：先讓潛意識舒服，再讓上意識覺得合理</div>
+      </div></div>
+      <div class="row her"><div class="bw">
+        <div class="b">哈，你果然是很會講話的獅子座</div>
+        <div class="note">她認同你——又一個Yes，籌碼再加</div>
+      </div></div>
+    </div>
+  </div>
+
+  <!-- Stage 13 -->
+  <div class="story-stage">
+    <div class="story-stage-header">
+      <div class="s-num">13</div>
+      <div class="s-title">單刀直入：聚焦男女關係</div>
+      <div class="s-goal">目標：問門檻，賦格收尾</div>
+    </div>
+    <div class="chat-area">
+      <div class="row me"><div class="bw">
+        <div class="b">那我有過你見面的基本門檻嗎？</div>
+        <div class="note">聚焦男女關係：直接問，有籌碼才能這樣第一人稱的問</div>
+      </div></div>
+      <div class="row her"><div class="bw">
+        <div class="b">你多高？</div>
+        <div class="note">她敢直接問——陌生的面具拿掉了，信任感到位</div>
+      </div></div>
+      <div class="row me"><div class="bw">
+        <div class="b">哈哈哈，這麼直接，你這麼直接男生們的反應如何？</div>
+        <div class="note">先製造小衝突，讓對話有溫度，再給答案</div>
+      </div></div>
+      <div class="row me"><div class="bw">
+        <div class="b">170</div>
+      </div></div>
+      <div class="row her"><div class="bw">
+        <div class="b">還好吧，我喜歡直接一點，你這樣問我我當然直接問啊</div>
+        <div class="note">她開始解釋自己的行為——當有人解釋，你就有籌碼</div>
+      </div></div>
+      <div class="row me"><div class="bw">
+        <div class="b">我覺得你這樣挺好啊，有話直接說，清楚知道自己要什麼的人才是人間清醒。人間清醒人，你還沒回答我的問題。一份甜點，一個碰面，一個有趣的人，等你答應。</div>
+        <div class="note">肯定她 + 賦格「人間清醒」收尾——她答應就是清醒的選擇</div>
+      </div></div>
+    </div>
+  </div>
+
+  <!-- Stage 14 -->
+  <div class="story-stage">
+    <div class="story-stage-header">
+      <div class="s-num">14</div>
+      <div class="s-title">安全感 + 敲定約會</div>
+      <div class="s-goal">目標：讀懂需求，二選一把約會敲死</div>
+    </div>
+    <div class="chat-area">
+      <div class="row her"><div class="bw">
+        <div class="b">哈哈哈，好的。不過我照片多少都有修，臉看起來蠻腫的⋯本身也不算瘦子，如果你不介意再碰面，比較不會浪費時間</div>
+        <div class="note">她說Yes了！後面那段是打預防針——她需要的是安全感，不是說服</div>
+      </div></div>
+      <div class="row me"><div class="bw">
+        <div class="b">我當然不介意，每個人就像是一本書，要翻了才知道喜不喜歡。對你、對我都是。輕鬆來，沒問題的。</div>
+        <div class="note">用書的譬喻來讓對方安心。譬喻產生心領神會比說服有用。「對你對我都是」讓她知道你也是被挑選的那一方。</div>
+      </div></div>
+      <div class="row me"><div class="bw">
+        <div class="b">明天下班之後或是週六，你挑個時間，我過去找你。</div>
+        <div class="note">不等她回，馬上二選一——不問「要不要」，只問「哪個時間」</div>
+      </div></div>
+      <div class="row her"><div class="bw">
+        <div class="b">我這週沒空耶，不好意思</div>
+      </div></div>
+      <div class="row me"><div class="bw">
+        <div class="b">下週一呢？</div>
+        <div class="note">有之前的賦格和籌碼，故可直接框定對方想赴約只是時間不行，所以直接給一個選項，表現出篤定感</div>
+      </div></div>
+      <div class="row her"><div class="bw">
+        <div class="b">假日不能？平日下班就不太出門了</div>
+      </div></div>
+      <div class="row me"><div class="bw">
+        <div class="b">那就是約5/3（六）囉。</div>
+      </div></div>
+      <div class="row me"><div class="bw">
+        <div class="b">你想約哪一區，我來找地點。</div>
+        <div class="note">果斷主導，降低她的赴約難度</div>
+      </div></div>
+      <div class="row her"><div class="bw">
+        <div class="b">好，都可吧</div>
+        <div class="note">約會敲定</div>
+      </div></div>
+      <div class="row me"><div class="bw">
+        <div class="b">那我們約兩點中山站，來個輕鬆下午茶。</div>
+        <div class="note">直接給時間地點，不讓對話有再猶豫的空間</div>
+      </div></div>
+    </div>
+    <div class="win-card">
+      <div class="win-title">約會敲定</div>
+      <div class="win-body">從一個罐頭開場白，到坐在對面喝下午茶。每一步都有它的目的。</div>
+      <div class="path-row">
+        <span class="path-tag">真人辨識</span>
+        <span class="path-tag">確認真人</span>
+        <span class="path-tag">累積籌碼</span>
+        <span class="path-tag">故事攻勢</span>
+        <span class="path-tag">攤牌</span>
+        <span class="path-tag">關係引導</span>
+        <span class="path-tag">理智引導</span>
+        <span class="path-tag">甜點錨定</span>
+        <span class="path-tag">大加分</span>
+        <span class="path-tag">賦格</span>
+        <span class="path-tag">行動階梯</span>
+        <span class="path-tag">約碰面</span>
+        <span class="path-tag">安全感</span>
+        <span class="path-tag">二選一</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SECTION 3 -->
+<hr class="sep">
+<section id="script">
+  <div class="section-label">Part 03</div>
+  <div class="section-title">照抄範本</div>
+  <div class="section-sub">點泡泡直接複製。聊到哪個階段就切到哪個tab。</div>
+
+  <div class="tabs">
+    <button class="tab-btn active" onclick="switchTab(0)">開場</button>
+    <button class="tab-btn" onclick="switchTab(1)">累積籌碼</button>
+    <button class="tab-btn" onclick="switchTab(2)">故事攻勢</button>
+    <button class="tab-btn" onclick="switchTab(3)">甜點錨定</button>
+    <button class="tab-btn" onclick="switchTab(4)">約碰面</button>
+  </div>
+
+  <div class="tab-panel show" id="t0">
+    <div class="phase-title">配對成功，先丟這句</div>
+    <div class="script-bubble" onclick="cp(this,'一個人的精采生活，抵不過兩個人的嘻笑，依循著感覺走，單身也是一種景色，直到妳的右滑，讓我情不自禁的⋯⋯從冰箱拿出刁民酸菜魚，妳要來一點嗎？')">一個人的精采生活，抵不過兩個人的嘻笑，依循著感覺走，單身也是一種景色，直到妳的右滑，讓我情不自禁的⋯⋯從冰箱拿出刁民酸菜魚，妳要來一點嗎？<span class="cp-btn">複製</span></div>
+    <div class="note-small">罐頭開場白，探測真人／假人</div>
+    <div style="height:16px;"></div>
+    <div class="branch">
+      <div class="branch-label"><div class="dot g"></div><span class="bl-g">她嗆你／質疑你 → 高機率真人，接這兩句</span></div>
+      <div class="script-bubble" onclick="cp(this,'真的，刁民酸菜魚真的不是人吃的。')">真的，刁民酸菜魚真的不是人吃的。<span class="cp-btn">複製</span></div>
+      <div class="note-small">順著接，不解釋不道歉</div>
+      <div class="script-bubble" onclick="cp(this,'懂吃！那你喜歡吃甜點嗎？')">懂吃！那你喜歡吃甜點嗎？<span class="cp-btn">複製</span></div>
+      <div class="note-small">「懂吃」是轉換詞</div>
+    </div>
+    <div class="branch">
+      <div class="branch-label"><div class="dot r"></div><span class="bl-r">她太配合／閃避 → 高機率假人</span></div>
+      <div class="inactive-note">不需要回，結束對話或換下一個</div>
+    </div>
+    <div class="branch">
+      <div class="branch-label"><div class="dot y"></div><span class="bl-y">她沒回／已讀不回 → 等1～3天再出場</span></div>
+      <div class="wait-box">
+        <div class="wait-title">等待週期：1～3天</div>
+        立刻補話會讓你看起來很急。讓她的生活先走，你再出現才有自然分享的質感。這個時間差本身就是不焦慮的訊號。
+      </div>
+      <div class="tl">
+        <div class="tl-step"><div class="tl-dot now"></div><div class="tl-txt">丟開場白<br>沒回</div></div>
+        <div class="tl-step"><div class="tl-dot"></div><div class="tl-txt">第1天<br>等</div></div>
+        <div class="tl-step"><div class="tl-dot"></div><div class="tl-txt">第2天<br>等</div></div>
+        <div class="tl-step"><div class="tl-dot next"></div><div class="tl-txt">第3天<br>出場</div></div>
+      </div>
+      <div class="photo-hint">先傳一張有質感的食物照片（選稀缺、有層次的），再接這五則</div>
+      <div class="script-bubble" onclick="cp(this,'來囉～上菜！')">來囉～上菜！<span class="cp-btn">複製</span></div>
+      <div class="script-bubble" onclick="cp(this,'桃園老牌西餐廳－李西餐廳\n厲害的基輔炸雞登場～～')">桃園老牌西餐廳－李西餐廳<br>厲害的基輔炸雞登場～～<span class="cp-btn">複製</span></div>
+      <div class="script-bubble" onclick="cp(this,'不知道你今天中午有沒有吃什麼的想法，讓我來刺激你的食慾！')">不知道你今天中午有沒有吃什麼的想法，讓我來刺激你的食慾！<span class="cp-btn">複製</span></div>
+      <div class="script-bubble" onclick="cp(this,'外皮酥脆、雞肉香嫩，裡面的醬汁更是香醇濃郁，搭上旁邊的馬鈴薯泥，四種滋味在舌尖上爆炸！')">外皮酥脆、雞肉香嫩，裡面的醬汁更是香醇濃郁，搭上旁邊的馬鈴薯泥，四種滋味在舌尖上爆炸！<span class="cp-btn">複製</span></div>
+      <div class="script-bubble" onclick="cp(this,'基輔炸雞，吃到一半，你會看到澤倫斯基為你的辛苦加油打氣！')">基輔炸雞，吃到一半，你會看到澤倫斯基為你的辛苦加油打氣！<span class="cp-btn">複製</span></div>
+      <div class="note-small">發完停，等她反應</div>
+    </div>
+  </div>
+
+  <div class="tab-panel" id="t1">
+    <div class="phase-title">她說講究性價比，接這句</div>
+    <div class="script-bubble" onclick="cp(this,'對，你很懂耶！我每次打包帶走，或是直接買它便利包，然後自己回家當火鍋煮著吃。有時候自己興致一來，再煎個豬排，那是一個享受。')">對，你很懂耶！我每次打包帶走，或是直接買它便利包，然後自己回家當火鍋煮著吃。有時候自己興致一來，再煎個豬排，那是一個享受。<span class="cp-btn">複製</span></div>
+    <div class="note-small">讓她感覺你們是同類，但你層次更高</div>
+    <div style="height:16px;"></div>
+    <div class="phase-title">接著丟甜點錨點（三則分開發）</div>
+    <div class="script-bubble" onclick="cp(this,'說到甜點，不太甜的話，你有試過「深夜裡的法國手工甜點」這家嗎？')">說到甜點，不太甜的話，你有試過「深夜裡的法國手工甜點」這家嗎？<span class="cp-btn">複製</span></div>
+    <div class="script-bubble" onclick="cp(this,'https://yummyyummy.tw/tag/深夜裡的法國甜點/')">https://yummyyummy.tw/tag/深夜裡的法國甜點/<span class="cp-btn">複製</span></div>
+    <div class="script-bubble" onclick="cp(this,'這家')">這家<span class="cp-btn">複製</span></div>
+    <div class="note-small">她點了連結 = 鐵定真人</div>
+    <div style="height:16px;"></div>
+  </div>
+
+  <div class="tab-panel" id="t2">
+    <div class="phase-title">籌碼夠了，依序發這六則</div>
+    <div class="script-bubble" onclick="cp(this,'看來我要跟你分享我的真實身分了')">看來我要跟你分享我的真實身分了<span class="cp-btn">複製</span></div>
+    <div class="note-small">觸發高度關注</div>
+    <div class="script-bubble" onclick="cp(this,'上次我去見了一個女網友，我聽了她的故事，差點哭了出來。')">上次我去見了一個女網友，我聽了她的故事，差點哭了出來。<span class="cp-btn">複製</span></div>
+    <div class="note-small">三個鉤子同時下</div>
+    <div class="script-bubble" onclick="cp(this,'這故事是這樣的，她認識她的前男友是從網路交友上認識的，然後這個男生，很快地讓這個女生覺得遇到真命天子，談上戀愛之後，男生開始無故消失，原來是劈腿了⋯⋯我問她，那你現在還敢見網友？她說：「我選擇相信愛情，所以要繼續往前走」我整個太敬佩她了，隔天，我請外送送過去一份甜點，致敬她對愛的勇敢。')">這故事是這樣的，她認識她的前男友是從網路交友上認識的，然後這個男生，很快地讓這個女生覺得遇到真命天子，談上戀愛之後，男生開始無故消失，原來是劈腿了⋯⋯我問她，那你現在還敢見網友？她說：「我選擇相信愛情，所以要繼續往前走」我整個太敬佩她了，隔天，我請外送送過去一份甜點，致敬她對愛的勇敢。<span class="cp-btn">複製</span></div>
+    <div class="note-small">完整故事</div>
+    <div class="script-bubble" onclick="cp(this,'從那天開始，我覺得自己真是太酷了，送甜點給人溫暖，你可以叫我——甜點俠！')">從那天開始，我覺得自己真是太酷了，送甜點給人溫暖，你可以叫我——甜點俠！<span class="cp-btn">複製</span></div>
+    <div class="note-small">她叫你甜點俠 = 籌碼大加，發完停，等她反應</div>
+  </div>
+
+  <div class="tab-panel" id="t3">
+    <div class="phase-title">先傳西瓜蛋糕照片，再發這五則</div>
+    <div class="script-bubble" onclick="cp(this,'來囉～這個厲害的！')">來囉～這個厲害的！<span class="cp-btn">複製</span></div>
+    <div class="script-bubble" onclick="cp(this,'昨天有個網友推薦我Supranormal Bakery Cafe的西瓜蛋糕，回來台北之後，我趕五點衝進店裡，正好剩最後一顆。')">昨天有個網友推薦我Supranormal Bakery Cafe的西瓜蛋糕，回來台北之後，我趕五點衝進店裡，正好剩最後一顆。<span class="cp-btn">複製</span></div>
+    <div class="script-bubble" onclick="cp(this,'你明天的下午茶，讓我來。')">你明天的下午茶，讓我來。<span class="cp-btn">複製</span></div>
+    <div class="script-bubble" onclick="cp(this,'我找人送過去。')">我找人送過去。<span class="cp-btn">複製</span></div>
+    <div class="script-bubble" onclick="cp(this,'另外，這我今天試過了，不甜，非螞蟻人最愛！口感和味道超有層次。')">另外，這我今天試過了，不甜，非螞蟻人最愛！口感和味道超有層次。<span class="cp-btn">複製</span></div>
+    <div style="height:16px;"></div>
+    <div class="phase-title">她開始有情緒回你，接這三則大加分</div>
+    <div class="script-bubble" onclick="cp(this,'昨天我聽到西瓜蛋糕（澳洲特產），上網Google了一下，我起初也跟你一樣的疑惑，這裡面哪有西瓜？今天買到的時候，我覺得口感太魔幻了！')">昨天我聽到西瓜蛋糕（澳洲特產），上網Google了一下，我起初也跟你一樣的疑惑，這裡面哪有西瓜？今天買到的時候，我覺得口感太魔幻了！<span class="cp-btn">複製</span></div>
+    <div class="script-bubble" onclick="cp(this,'最上層草莓像是糖葫蘆的味道，然後中間栗子泥中和了甜味。最神奇的是中間紅色那一塊，看起來不太像西瓜，但一口咬下，超脆！而且會爆汁，很像西瓜汁但又多了一股玫瑰的香氣伴隨而來。')">最上層草莓像是糖葫蘆的味道，然後中間栗子泥中和了甜味。最神奇的是中間紅色那一塊，看起來不太像西瓜，但一口咬下，超脆！而且會爆汁，很像西瓜汁但又多了一股玫瑰的香氣伴隨而來。<span class="cp-btn">複製</span></div>
+    <div class="script-bubble" onclick="cp(this,'整體來說，有口感、有香氣、有驚喜、有轉折、有搭到，我給五顆星。')">整體來說，有口感、有香氣、有驚喜、有轉折、有搭到，我給五顆星。<span class="cp-btn">複製</span></div>
+    <div class="note-small">她說「好特別」「想吃」= 賦格完成，進約碰面</div>
+  </div>
+
+  <div class="tab-panel" id="t4">
+    <div class="phase-title">賦格完成，丟這三則</div>
+    <div class="script-bubble" onclick="cp(this,'它能引起你的興趣，太好了。')">它能引起你的興趣，太好了。<span class="cp-btn">複製</span></div>
+    <div class="script-bubble" onclick="cp(this,'今天來一塊，算我的。')">今天來一塊，算我的。<span class="cp-btn">複製</span></div>
+    <div class="script-bubble" onclick="cp(this,'外送送到哪邊好？')">外送送到哪邊好？<span class="cp-btn">複製</span></div>
+    <div style="height:16px;"></div>
+    <div class="branch">
+      <div class="branch-label"><div class="dot y"></div><span class="bl-y">她問動機「你是到處送甜點嗎」，接這兩段</span></div>
+      <div class="script-bubble" onclick="cp(this,'想見人，送個見面禮是基本的禮貌，是每個有點社會經驗的人都該具備的，這點認知我還是有的。會收禮的人，就不一樣了。懂得收得漂亮，收得恰到好處，那是收的人情商高。一塊蛋糕，如果有機會讓我遇見你，不是我的慷慨，而是你給我的福氣。')">想見人，送個見面禮是基本的禮貌，是每個有點社會經驗的人都該具備的，這點認知我還是有的。會收禮的人，就不一樣了。懂得收得漂亮，收得恰到好處，那是收的人情商高。一塊蛋糕，如果有機會讓我遇見你，不是我的慷慨，而是你給我的福氣。<span class="cp-btn">複製</span></div>
+      <div class="script-bubble" onclick="cp(this,'當然這是漂亮話，講人話的話就是——我想跟你碰面，讓你看看我，也讓我見見你。')">當然這是漂亮話，講人話的話就是——我想跟你碰面，讓你看看我，也讓我見見你。<span class="cp-btn">複製</span></div>
+    </div>
+    <div class="branch">
+      <div class="branch-label"><div class="dot g"></div><span class="bl-g">她說Yes，問你條件，最後收這三句</span></div>
+      <div class="script-bubble" onclick="cp(this,'那我有過你見面的基本門檻嗎？')">那我有過你見面的基本門檻嗎？<span class="cp-btn">複製</span></div>
+      <div class="script-bubble" onclick="cp(this,'我覺得你這樣挺好啊，有話直接說，清楚知道自己要什麼的人才是人間清醒。人間清醒人，你還沒回答我的問題。一份甜點，一個碰面，一個有趣的人，等你答應。')">我覺得你這樣挺好啊，有話直接說，清楚知道自己要什麼的人才是人間清醒。人間清醒人，你還沒回答我的問題。一份甜點，一個碰面，一個有趣的人，等你答應。<span class="cp-btn">複製</span></div>
+      <div class="script-bubble" onclick="cp(this,'明天下班之後或是週六，你挑個時間，我過去找你。')">明天下班之後或是週六，你挑個時間，我過去找你。<span class="cp-btn">複製</span></div>
+      <div class="note-small">二選一敲定時間，不問「要不要」</div>
+    </div>
+    <div class="branch">
+      <div class="branch-label"><div class="dot y"></div><span class="bl-y">她說照片有修，打預防針</span></div>
+      <div class="script-bubble" onclick="cp(this,'我當然不介意，每個人就像是一本書，要翻了才知道喜不喜歡。對你、對我都是。輕鬆來，沒問題的。')">我當然不介意，每個人就像是一本書，要翻了才知道喜不喜歡。對你、對我都是。輕鬆來，沒問題的。<span class="cp-btn">複製</span></div>
+      <div class="script-bubble" onclick="cp(this,'明天下班之後或是週六，你挑個時間，我過去找你。')">明天下班之後或是週六，你挑個時間，我過去找你。<span class="cp-btn">複製</span></div>
+      <div class="note-small">不等她回，馬上二選一把約會敲死</div>
+    </div>
+  </div>
+</section>
+
+
+<hr class="sep">
+<section style="text-align:center; padding: 60px 24px;">
+  <div style="max-width:480px; margin:0 auto;">
+    <div style="font-size:11px; letter-spacing:.2em; text-transform:uppercase; color:#29CFFF; margin-bottom:12px;">下一步</div>
+    <div style="font-family:'Noto Serif TC',serif; font-size:22px; font-weight:700; color:#f0ede8; line-height:1.5; margin-bottom:12px;">這份 SOP 背後的系統<br>才是真正的核心</div>
+    <div style="font-size:14px; color:#a09a90; line-height:1.8; margin-bottom:28px;">
+      你現在學到的是工具。<br>
+      但工具能不能用、用得出來，取決於你的情感作業系統在哪個版本。<br>
+      加入 LINE 好友，領取免費的情感作業系統診斷，看看你現在的系統是什麼狀態。
+    </div>
+    <a href="https://lin.ee/pljXoyp" target="_blank" style="
+      display: inline-block;
+      background: rgba(41,207,255,0.12);
+      border: 1px solid rgba(41,207,255,0.4);
+      color: #29CFFF;
+      font-size: 15px;
+      font-weight: 700;
+      padding: 14px 36px;
+      border-radius: 100px;
+      text-decoration: none;
+      letter-spacing: 0.05em;
+      transition: all .2s;
+    ">加入 LINE 好友，領取免費診斷</a>
+    <div style="margin-top:14px; font-size:12px; color:#6a6460;">五四愛情學苑 · 派特</div>
+  </div>
+</section>
+
+<footer>
+  <p>派特 · 情感架構師 · 五四愛情學苑</p>
+  <p style="margin-top:6px;">講座限定福利 · 2025.05.20 截止開放</p>
+</footer>
+
+<div class="toast" id="toast">已複製</div>
+
+<script>
+var flowDetails = {
+  real: { title: '真人', body: '在交友平台上真實存在、有意願互動的人。但真人又分兩種方向——有交友需求的，以及只是來找聊天慰藉的。辨識方向決定你要不要繼續投入時間。' },
+  need: { title: '有交友需求', body: '真的單身、有意願進入關係。這才是值得投入的對象。但「她說有交友需求」只是起點，不是終點——還需要驗證她是否對你欣賞以上，才算真的有機會。' },
+  comfort: { title: '找聊天慰藉', body: '藉由男生的肯定來確認自己的存在感。證明她在男女感情市場裡還是有吸引力的，但沒有打算見網友。就算聊得再好，也很難約出來。' },
+  shy: { title: '很自卑、沒朋友', body: '對自己沒信心的人。就算聊得好，也不一定會出來見面——她怕美夢破碎。聊得不好更不用說。見面意願很低，不值得長期投入。' },
+  hurt: { title: '受傷的人（可能很正）', body: '剛分手、想讓自己好過一點，只想找人說說話，但沒打算見網友。條件可能很好，但上網路交友只是一種自我證明——就像感冒的人想把感冒傳出去，自己就好了。交友意圖是假的。' },
+  fake: { title: '假人', body: '目的是錢，不是感情。太快跟你換LINE、太配合你說話、閃避問題核心——這些都是訊號。不值得投入任何時間。' },
+  scam: { title: '詐騙', body: '假扮真人，目的是騙你的錢或感情。話術流暢、很配合、很快要換LINE到其他平台。一旦辨識出訊號，立刻停止對話。' },
+  biz: { title: '做生意', body: '行銷號或業務帳號，目的是賣東西給你。對話感覺很順，但問題核心會被閃避，話題一直往商品或服務繞。不是來找感情的。' }
+};
+function showDetail(key) {
+  var d = flowDetails[key];
+  document.getElementById('flow-detail-title').textContent = d.title;
+  document.getElementById('flow-detail-body').textContent = d.body;
+  document.getElementById('flow-detail').style.display = 'block';
+}
+function goTo(id) {
+  document.getElementById(id).scrollIntoView({behavior:'smooth'});
+  document.querySelectorAll('.nav-link').forEach(function(b){ b.classList.remove('active'); });
+  event.target.classList.add('active');
+}
+function switchTab(i) {
+  document.querySelectorAll('.tab-panel').forEach(function(p,j){ p.classList.toggle('show', j===i); });
+  document.querySelectorAll('.tab-btn').forEach(function(b,j){ b.classList.toggle('active', j===i); });
+}
+function cp(el, text) {
+  navigator.clipboard && navigator.clipboard.writeText(text);
+  var t = document.getElementById('toast');
+  t.classList.add('show');
+  setTimeout(function(){ t.classList.remove('show'); }, 1200);
+}
+window.addEventListener('scroll', function() {
+  var sections = ['flow','story','script'];
+  var links = document.querySelectorAll('.nav-link');
+  sections.forEach(function(id, i) {
+    var el = document.getElementById(id);
+    if (el) {
+      var rect = el.getBoundingClientRect();
+      if (rect.top <= 100 && rect.bottom >= 100) {
+        links.forEach(function(l){ l.classList.remove('active'); });
+        links[i].classList.add('active');
+      }
+    }
+  });
+});
+</script>
+</body>
+</html>
