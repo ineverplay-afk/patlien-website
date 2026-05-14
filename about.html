@@ -257,16 +257,9 @@
 
     .bio-photo {
       width: 100%;
-      aspect-ratio: 4 / 5;
-      background: #141414;
-      border: 1px solid var(--border);
       border-radius: 4px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: var(--text-muted);
-      font-size: 13px;
-      letter-spacing: 0.06em;
+      overflow: hidden;
+      border: 1px solid var(--border);
     }
 
     .bio-name {
@@ -474,7 +467,9 @@
   <div class="container">
     <div class="bio-grid reveal">
       <div>
-        <div class="bio-photo">派特照片</div>
+        <div class="bio-photo">
+          <img src="pat.jpg" alt="派特 — 教戀愛的祖師爺" style="width:100%; border-radius:4px; display:block;">
+        </div>
       </div>
       <div>
         <p class="bio-name">PAT LIEN 派特</p>
