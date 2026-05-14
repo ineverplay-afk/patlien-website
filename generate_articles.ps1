@@ -169,7 +169,7 @@ function Build-Html([string]$title, $paragraphs, [string]$num) {
 <div class="article-body">
   <div class="prose-container">
     <hr class="divider">
-    <div class="prose reveal">
+    <div class="prose">
 $paraHtml
     </div>
   </div>
