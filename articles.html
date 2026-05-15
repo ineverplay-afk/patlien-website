@@ -40,18 +40,28 @@
     .mobile-menu a:hover { color: var(--text-primary); }
     .mobile-menu a:last-child { border-bottom: none; }
 
-    .page-hero { padding-top: calc(var(--nav-h) + 64px); padding-bottom: 48px; max-width: var(--max-w); margin: 0 auto; padding-left: 24px; padding-right: 24px; }
+    .page-hero { padding-top: calc(var(--nav-h) + 64px); padding-bottom: 40px; max-width: var(--max-w); margin: 0 auto; padding-left: 24px; padding-right: 24px; }
     .page-eyebrow { font-size: 11px; font-weight: 400; letter-spacing: 0.16em; text-transform: uppercase; color: var(--text-muted); margin-bottom: 16px; }
     .page-title { font-size: clamp(1.6rem, 4vw, 2.4rem); font-weight: 700; color: var(--text-primary); margin-bottom: 12px; }
     .page-desc { font-size: 1rem; color: var(--text-secondary); font-weight: 300; max-width: 560px; }
 
-    .categories { max-width: var(--max-w); margin: 0 auto; padding: 0 24px 96px; }
-    .category-block { margin-bottom: 64px; }
-    .category-header { margin-bottom: 24px; padding-bottom: 16px; border-bottom: 1px solid var(--border); }
-    .category-title { font-size: 1.15rem; font-weight: 700; color: var(--text-primary); margin-bottom: 6px; }
+    /* Category tabs */
+    .tabs-wrap { border-bottom: 1px solid var(--border); margin-bottom: 0; }
+    .tabs { max-width: var(--max-w); margin: 0 auto; padding: 0 24px; display: flex; gap: 0; overflow-x: auto; scrollbar-width: none; }
+    .tabs::-webkit-scrollbar { display: none; }
+    .tab { flex-shrink: 0; padding: 14px 20px; font-size: 14px; color: var(--text-muted); cursor: pointer; border-bottom: 2px solid transparent; transition: color 0.2s, border-color 0.2s; white-space: nowrap; background: none; border-top: none; border-left: none; border-right: none; font-family: var(--font); }
+    .tab:hover { color: var(--text-secondary); }
+    .tab.active { color: var(--text-primary); border-bottom-color: var(--text-primary); }
+
+    /* Article list */
+    .content { max-width: var(--max-w); margin: 0 auto; padding: 0 24px 96px; }
+    .category-panel { display: none; }
+    .category-panel.active { display: block; }
+    .category-header { padding: 40px 0 24px; border-bottom: 1px solid var(--border); margin-bottom: 8px; }
+    .category-title { font-size: 1.3rem; font-weight: 700; color: var(--text-primary); margin-bottom: 8px; }
     .category-desc { font-size: 0.9rem; color: var(--text-muted); font-weight: 300; }
 
-    .article-list { display: flex; flex-direction: column; gap: 2px; }
+    .article-list { display: flex; flex-direction: column; }
     .article-item { display: flex; align-items: center; justify-content: space-between; padding: 10px 0; border-bottom: 1px solid var(--border); transition: border-color 0.2s; }
     .article-item:last-child { border-bottom: none; }
     .article-item:hover .article-item-title { color: var(--text-primary); }
@@ -70,6 +80,7 @@
       .nav-links { display: none; }
       .hamburger { display: flex; }
       .footer-inner { flex-direction: column; align-items: flex-start; }
+      .tab { padding: 12px 14px; font-size: 13px; }
     }
   </style>
 </head>
@@ -103,243 +114,109 @@
   <p class="page-desc">從你現在的狀態出發，找到最適合你的文章。</p>
 </div>
 
-<div class="categories">
-  <div class="category-block" id="no-partner">
+<div class="tabs-wrap">
+  <div class="tabs" id="tabs">
+    <button class="tab" data-cat="no-partner">還沒有對象</button>
+    <button class="tab" data-cat="push-forward">喜歡一個人</button>
+    <button class="tab" data-cat="relationship-trouble">關係遇到問題</button>
+    <button class="tab" data-cat="self-awareness">懷疑問題在自己</button>
+    <button class="tab" data-cat="take-action">不知道怎麼開始</button>
+  </div>
+</div>
+
+<div class="content">
+
+  <div class="category-panel" id="cat-no-partner">
     <div class="category-header">
       <h2 class="category-title">還沒有對象，不知道從哪裡開始</h2>
       <p class="category-desc">你想脫單，但不知道從哪裡著手，或者認識了不少人，就是沒有結果。</p>
     </div>
     <div class="article-list">
-      <a href="articles/article-47.html" class="article-item">
-        <span class="article-item-title">讓自己有勇氣跟女生說話，這才是最大的內耗</span>
-        <span class="article-item-arrow">→</span>
-      </a>
-      <a href="articles/article-42.html" class="article-item">
-        <span class="article-item-title">是你讓這條脫單路走得異常辛苦</span>
-        <span class="article-item-arrow">→</span>
-      </a>
-      <a href="articles/article-30.html" class="article-item">
-        <span class="article-item-title">為什麼你條件不差卻依然單身？——真的跟你會不會聊天沒關係</span>
-        <span class="article-item-arrow">→</span>
-      </a>
-      <a href="articles/article-04.html" class="article-item">
-        <span class="article-item-title">你認識了那麼多女生，為什麼一直沒有結果？</span>
-        <span class="article-item-arrow">→</span>
-      </a>
-      <a href="articles/article-37.html" class="article-item">
-        <span class="article-item-title">吸引力不是練出來的——是你本來就有，但你把它關掉了</span>
-        <span class="article-item-arrow">→</span>
-      </a>
-      <a href="articles/article-36.html" class="article-item">
-        <span class="article-item-title">不是她對你沒興趣——是你已經被她的直覺判出局</span>
-        <span class="article-item-arrow">→</span>
-      </a>
-      <a href="articles/article-10.html" class="article-item">
-        <span class="article-item-title">阿傑花了 50 萬去交友、買課程，最後換來了滿滿的心很累</span>
-        <span class="article-item-arrow">→</span>
-      </a>
-      <a href="articles/article-11.html" class="article-item">
-        <span class="article-item-title">談戀愛別再用「平常心」來掩飾你的無能</span>
-        <span class="article-item-arrow">→</span>
-      </a>
-      <a href="articles/article-17.html" class="article-item">
-        <span class="article-item-title">參加聯誼活動抱著平常心參加，這種想法最危險</span>
-        <span class="article-item-arrow">→</span>
-      </a>
-      <a href="articles/article-28.html" class="article-item">
-        <span class="article-item-title">為什麼你明明「沒說錯話」，她卻再也不回你訊息？</span>
-        <span class="article-item-arrow">→</span>
-      </a>
-      <a href="articles/article-26.html" class="article-item">
-        <span class="article-item-title">為什麼你認識不到女生？——別再用你的「創傷」當成軟弱的遮羞布</span>
-        <span class="article-item-arrow">→</span>
-      </a>
-      <a href="articles/article-29.html" class="article-item">
-        <span class="article-item-title">（女生版）讓欣賞的男生主動來跟妳講話就好啦！</span>
-        <span class="article-item-arrow">→</span>
-      </a>
+      <a href="articles/article-47.html" class="article-item"><span class="article-item-title">讓自己有勇氣跟女生說話，這才是最大的內耗</span><span class="article-item-arrow">→</span></a>
+      <a href="articles/article-42.html" class="article-item"><span class="article-item-title">是你讓這條脫單路走得異常辛苦</span><span class="article-item-arrow">→</span></a>
+      <a href="articles/article-30.html" class="article-item"><span class="article-item-title">為什麼你條件不差卻依然單身？——真的跟你會不會聊天沒關係</span><span class="article-item-arrow">→</span></a>
+      <a href="articles/article-04.html" class="article-item"><span class="article-item-title">你認識了那麼多女生，為什麼一直沒有結果？</span><span class="article-item-arrow">→</span></a>
+      <a href="articles/article-37.html" class="article-item"><span class="article-item-title">吸引力不是練出來的——是你本來就有，但你把它關掉了</span><span class="article-item-arrow">→</span></a>
+      <a href="articles/article-36.html" class="article-item"><span class="article-item-title">不是她對你沒興趣——是你已經被她的直覺判出局</span><span class="article-item-arrow">→</span></a>
+      <a href="articles/article-10.html" class="article-item"><span class="article-item-title">阿傑花了 50 萬去交友、買課程，最後換來了滿滿的心很累</span><span class="article-item-arrow">→</span></a>
+      <a href="articles/article-11.html" class="article-item"><span class="article-item-title">談戀愛別再用「平常心」來掩飾你的無能</span><span class="article-item-arrow">→</span></a>
+      <a href="articles/article-17.html" class="article-item"><span class="article-item-title">參加聯誼活動抱著平常心參加，這種想法最危險</span><span class="article-item-arrow">→</span></a>
+      <a href="articles/article-28.html" class="article-item"><span class="article-item-title">為什麼你明明「沒說錯話」，她卻再也不回你訊息？</span><span class="article-item-arrow">→</span></a>
+      <a href="articles/article-26.html" class="article-item"><span class="article-item-title">為什麼你認識不到女生？——別再用你的「創傷」當成軟弱的遮羞布</span><span class="article-item-arrow">→</span></a>
+      <a href="articles/article-29.html" class="article-item"><span class="article-item-title">（女生版）讓欣賞的男生主動來跟妳講話就好啦！</span><span class="article-item-arrow">→</span></a>
     </div>
   </div>
-  <div class="category-block" id="push-forward">
+
+  <div class="category-panel" id="cat-push-forward">
     <div class="category-header">
       <h2 class="category-title">喜歡一個人，但不知道怎麼推進</h2>
       <p class="category-desc">你已經認識她了，感覺也不錯，但就是卡在某個地方，推不動。</p>
     </div>
     <div class="article-list">
-      <a href="articles/article-06.html" class="article-item">
-        <span class="article-item-title">談感情別在「腦補式勝利」裡自嗨了，你得握在手裡才有資格決定要不要</span>
-        <span class="article-item-arrow">→</span>
-      </a>
-      <a href="articles/article-05.html" class="article-item">
-        <span class="article-item-title">談戀愛別再讓你的「恐懼」假裝成「有禮貌」</span>
-        <span class="article-item-arrow">→</span>
-      </a>
-      <a href="articles/article-08.html" class="article-item">
-        <span class="article-item-title">為什麼有些男人被拒絕後能「原地復活」，而你只能尷尬撤退？</span>
-        <span class="article-item-arrow">→</span>
-      </a>
-      <a href="articles/article-12.html" class="article-item">
-        <span class="article-item-title">追女生千萬不要告白？不要再學過時的愛情觀了</span>
-        <span class="article-item-arrow">→</span>
-      </a>
-      <a href="articles/article-16.html" class="article-item">
-        <span class="article-item-title">「派特，為什麼我聊了她感興趣的話題，她卻離我越來越遠？」</span>
-        <span class="article-item-arrow">→</span>
-      </a>
-      <a href="articles/article-33.html" class="article-item">
-        <span class="article-item-title">別再玩「試探」這種低階遊戲了</span>
-        <span class="article-item-arrow">→</span>
-      </a>
-      <a href="articles/article-44.html" class="article-item">
-        <span class="article-item-title">就是因為掌握不了才會焦慮</span>
-        <span class="article-item-arrow">→</span>
-      </a>
-      <a href="articles/article-43.html" class="article-item">
-        <span class="article-item-title">這個女生每天只花4分鐘給你，你卻覺得她喜歡你</span>
-        <span class="article-item-arrow">→</span>
-      </a>
-      <a href="articles/article-13.html" class="article-item">
-        <span class="article-item-title">女生付出多少，我再決定付出多少。這種對價的戀愛教學你敢信？</span>
-        <span class="article-item-arrow">→</span>
-      </a>
-      <a href="articles/article-02.html" class="article-item">
-        <span class="article-item-title">她喜歡強者——所以你就放棄了？</span>
-        <span class="article-item-arrow">→</span>
-      </a>
-      <a href="articles/article-01.html" class="article-item">
-        <span class="article-item-title">如果你以為靠幽默和陪伴就能追到女 CEO，那你這輩子注定只能當她的「純潔好弟弟」</span>
-        <span class="article-item-arrow">→</span>
-      </a>
-      <a href="articles/article-09.html" class="article-item">
-        <span class="article-item-title">追女生追到被封鎖？解封鎖的十五步執行導航</span>
-        <span class="article-item-arrow">→</span>
-      </a>
-      <a href="articles/article-15.html" class="article-item">
-        <span class="article-item-title">追女生追到被封鎖？——解封鎖的十五步執行導航</span>
-        <span class="article-item-arrow">→</span>
-      </a>
+      <a href="articles/article-06.html" class="article-item"><span class="article-item-title">談感情別在「腦補式勝利」裡自嗨了，你得握在手裡才有資格決定要不要</span><span class="article-item-arrow">→</span></a>
+      <a href="articles/article-05.html" class="article-item"><span class="article-item-title">談戀愛別再讓你的「恐懼」假裝成「有禮貌」</span><span class="article-item-arrow">→</span></a>
+      <a href="articles/article-08.html" class="article-item"><span class="article-item-title">為什麼有些男人被拒絕後能「原地復活」，而你只能尷尬撤退？</span><span class="article-item-arrow">→</span></a>
+      <a href="articles/article-12.html" class="article-item"><span class="article-item-title">追女生千萬不要告白？不要再學過時的愛情觀了</span><span class="article-item-arrow">→</span></a>
+      <a href="articles/article-16.html" class="article-item"><span class="article-item-title">「派特，為什麼我聊了她感興趣的話題，她卻離我越來越遠？」</span><span class="article-item-arrow">→</span></a>
+      <a href="articles/article-33.html" class="article-item"><span class="article-item-title">別再玩「試探」這種低階遊戲了</span><span class="article-item-arrow">→</span></a>
+      <a href="articles/article-44.html" class="article-item"><span class="article-item-title">就是因為掌握不了才會焦慮</span><span class="article-item-arrow">→</span></a>
+      <a href="articles/article-43.html" class="article-item"><span class="article-item-title">這個女生每天只花4分鐘給你，你卻覺得她喜歡你</span><span class="article-item-arrow">→</span></a>
+      <a href="articles/article-13.html" class="article-item"><span class="article-item-title">女生付出多少，我再決定付出多少。這種對價的戀愛教學你敢信？</span><span class="article-item-arrow">→</span></a>
+      <a href="articles/article-02.html" class="article-item"><span class="article-item-title">她喜歡強者——所以你就放棄了？</span><span class="article-item-arrow">→</span></a>
+      <a href="articles/article-01.html" class="article-item"><span class="article-item-title">如果你以為靠幽默和陪伴就能追到女 CEO，那你這輩子注定只能當她的「純潔好弟弟」</span><span class="article-item-arrow">→</span></a>
+      <a href="articles/article-09.html" class="article-item"><span class="article-item-title">追女生追到被封鎖？解封鎖的十五步執行導航</span><span class="article-item-arrow">→</span></a>
     </div>
   </div>
-  <div class="category-block" id="relationship-trouble">
+
+  <div class="category-panel" id="cat-relationship-trouble">
     <div class="category-header">
       <h2 class="category-title">關係遇到問題，感覺快撐不住</h2>
       <p class="category-desc">你們已經在交往或曖昧中，但關係出現了裂縫，你不確定問題出在哪裡。</p>
     </div>
     <div class="article-list">
-      <a href="articles/article-20.html" class="article-item">
-        <span class="article-item-title">別再收回你的訊息——為什麼你的「完美主義」，在女生眼裡是極度不安全感？</span>
-        <span class="article-item-arrow">→</span>
-      </a>
-      <a href="articles/article-23.html" class="article-item">
-        <span class="article-item-title">為什麼你的「深情接送」換不回一個吻？</span>
-        <span class="article-item-arrow">→</span>
-      </a>
-      <a href="articles/article-03.html" class="article-item">
-        <span class="article-item-title">你付出了那麼多，為什麼她還是走了？</span>
-        <span class="article-item-arrow">→</span>
-      </a>
-      <a href="articles/article-07.html" class="article-item">
-        <span class="article-item-title">天天接送、半年請客，卻只說「是朋友」？別再被他的「假性安全感」困住了</span>
-        <span class="article-item-arrow">→</span>
-      </a>
-      <a href="articles/article-22.html" class="article-item">
-        <span class="article-item-title">「派特，為什麼我聊了她感興趣的話題，她卻離我越來越遠？」</span>
-        <span class="article-item-arrow">→</span>
-      </a>
-      <a href="articles/article-35.html" class="article-item">
-        <span class="article-item-title">交往三年分手了，你還是搞不懂女生在想什麼？</span>
-        <span class="article-item-arrow">→</span>
-      </a>
+      <a href="articles/article-20.html" class="article-item"><span class="article-item-title">別再收回你的訊息——為什麼你的「完美主義」，在女生眼裡是極度不安全感？</span><span class="article-item-arrow">→</span></a>
+      <a href="articles/article-23.html" class="article-item"><span class="article-item-title">為什麼你的「深情接送」換不回一個吻？</span><span class="article-item-arrow">→</span></a>
+      <a href="articles/article-03.html" class="article-item"><span class="article-item-title">你付出了那麼多，為什麼她還是走了？</span><span class="article-item-arrow">→</span></a>
+      <a href="articles/article-07.html" class="article-item"><span class="article-item-title">天天接送、半年請客，卻只說「是朋友」？別再被他的「假性安全感」困住了</span><span class="article-item-arrow">→</span></a>
+      <a href="articles/article-22.html" class="article-item"><span class="article-item-title">「派特，為什麼我聊了她感興趣的話題，她卻離我越來越遠？」</span><span class="article-item-arrow">→</span></a>
+      <a href="articles/article-35.html" class="article-item"><span class="article-item-title">交往三年分手了，你還是搞不懂女生在想什麼？</span><span class="article-item-arrow">→</span></a>
     </div>
   </div>
-  <div class="category-block" id="self-awareness">
+
+  <div class="category-panel" id="cat-self-awareness">
     <div class="category-header">
       <h2 class="category-title">懷疑問題出在自己，想搞清楚根源</h2>
       <p class="category-desc">感情模式一直重複，換了對象問題還在。你開始覺得，根源可能在自己身上。</p>
     </div>
     <div class="article-list">
-      <a href="articles/article-19.html" class="article-item">
-        <span class="article-item-title">讓你戀情受挫的潛在原因——你該解決那個提出問題的自己</span>
-        <span class="article-item-arrow">→</span>
-      </a>
-      <a href="articles/article-39.html" class="article-item">
-        <span class="article-item-title">又一個，你以為你缺的是說話的方法，其實你缺的是這個</span>
-        <span class="article-item-arrow">→</span>
-      </a>
-      <a href="articles/article-38.html" class="article-item">
-        <span class="article-item-title">不是你不夠好——是你一直在模仿錯誤的版本</span>
-        <span class="article-item-arrow">→</span>
-      </a>
-      <a href="articles/article-21.html" class="article-item">
-        <span class="article-item-title">別再追求「內心一致」——為什麼你的自我和解，正是你失敗的根源？</span>
-        <span class="article-item-arrow">→</span>
-      </a>
-      <a href="articles/article-18.html" class="article-item">
-        <span class="article-item-title">「我沒錢、沒身材、沒背景，所以愛情注定失敗」</span>
-        <span class="article-item-arrow">→</span>
-      </a>
-      <a href="articles/article-31.html" class="article-item">
-        <span class="article-item-title">為什麼你活得像個「情感乞丐」？——拆解 2026 年最強大的三種心智版本</span>
-        <span class="article-item-arrow">→</span>
-      </a>
-      <a href="articles/article-34.html" class="article-item">
-        <span class="article-item-title">你的「生存模式」，正在偷走你的人生</span>
-        <span class="article-item-arrow">→</span>
-      </a>
-      <a href="articles/article-24.html" class="article-item">
-        <span class="article-item-title">臉書長文：資源 vs 系統版本</span>
-        <span class="article-item-arrow">→</span>
-      </a>
-      <a href="articles/article-41.html" class="article-item">
-        <span class="article-item-title">利他交換雙贏</span>
-        <span class="article-item-arrow">→</span>
-      </a>
-      <a href="articles/article-45.html" class="article-item">
-        <span class="article-item-title">感情的事，聽朋友的話，多數人後悔終生</span>
-        <span class="article-item-arrow">→</span>
-      </a>
-      <a href="articles/article-14.html" class="article-item">
-        <span class="article-item-title">講座超精彩，一年後他傳訊息問我：「老師，你還有在諮詢嗎？」</span>
-        <span class="article-item-arrow">→</span>
-      </a>
+      <a href="articles/article-19.html" class="article-item"><span class="article-item-title">讓你戀情受挫的潛在原因——你該解決那個提出問題的自己</span><span class="article-item-arrow">→</span></a>
+      <a href="articles/article-39.html" class="article-item"><span class="article-item-title">又一個，你以為你缺的是說話的方法，其實你缺的是這個</span><span class="article-item-arrow">→</span></a>
+      <a href="articles/article-38.html" class="article-item"><span class="article-item-title">不是你不夠好——是你一直在模仿錯誤的版本</span><span class="article-item-arrow">→</span></a>
+      <a href="articles/article-21.html" class="article-item"><span class="article-item-title">別再追求「內心一致」——為什麼你的自我和解，正是你失敗的根源？</span><span class="article-item-arrow">→</span></a>
+      <a href="articles/article-18.html" class="article-item"><span class="article-item-title">「我沒錢、沒身材、沒背景，所以愛情注定失敗」</span><span class="article-item-arrow">→</span></a>
+      <a href="articles/article-31.html" class="article-item"><span class="article-item-title">為什麼你活得像個「情感乞丐」？——拆解 2026 年最強大的三種心智版本</span><span class="article-item-arrow">→</span></a>
+      <a href="articles/article-34.html" class="article-item"><span class="article-item-title">你的「生存模式」，正在偷走你的人生</span><span class="article-item-arrow">→</span></a>
+      <a href="articles/article-24.html" class="article-item"><span class="article-item-title">臉書長文：資源 vs 系統版本</span><span class="article-item-arrow">→</span></a>
+      <a href="articles/article-41.html" class="article-item"><span class="article-item-title">利他交換雙贏</span><span class="article-item-arrow">→</span></a>
+      <a href="articles/article-45.html" class="article-item"><span class="article-item-title">感情的事，聽朋友的話，多數人後悔終生</span><span class="article-item-arrow">→</span></a>
+      <a href="articles/article-14.html" class="article-item"><span class="article-item-title">講座超精彩，一年後他傳訊息問我：「老師，你還有在諮詢嗎？」</span><span class="article-item-arrow">→</span></a>
     </div>
   </div>
-  <div class="category-block" id="take-action">
+
+  <div class="category-panel" id="cat-take-action">
     <div class="category-header">
       <h2 class="category-title">道理都懂，就是不知道怎麼開始行動</h2>
       <p class="category-desc">你讀了很多，聽了很多，但就是卡在「開始做」這一步。這裡的文章幫你動起來。</p>
     </div>
     <div class="article-list">
-      <a href="articles/article-46.html" class="article-item">
-        <span class="article-item-title">聽完道理之後你打算做什麼</span>
-        <span class="article-item-arrow">→</span>
-      </a>
-      <a href="articles/article-40.html" class="article-item">
-        <span class="article-item-title">三年後回來他說他進步了，我說他還在原地</span>
-        <span class="article-item-arrow">→</span>
-      </a>
-      <a href="articles/article-01.html" class="article-item">
-        <span class="article-item-title">一天之內，讓你對愛情更有自信的四個練習</span>
-        <span class="article-item-arrow">→</span>
-      </a>
-      <a href="articles/article-34.html" class="article-item">
-        <span class="article-item-title">你的「生存模式」，正在偷走你的人生</span>
-        <span class="article-item-arrow">→</span>
-      </a>
-      <a href="articles/article-32.html" class="article-item">
-        <span class="article-item-title">為什麼你認識不到女生？——別再用你的「創傷」當成軟弱的遮羞布</span>
-        <span class="article-item-arrow">→</span>
-      </a>
-      <a href="articles/article-27.html" class="article-item">
-        <span class="article-item-title">別再追求「內心一致」——為什麼你的自我和解，正是你失敗的根源？</span>
-        <span class="article-item-arrow">→</span>
-      </a>
-      <a href="articles/article-25.html" class="article-item">
-        <span class="article-item-title">讓你戀情受挫的潛在原因——你該解決那個提出問題的自己</span>
-        <span class="article-item-arrow">→</span>
-      </a>
+      <a href="articles/article-46.html" class="article-item"><span class="article-item-title">聽完道理之後你打算做什麼</span><span class="article-item-arrow">→</span></a>
+      <a href="articles/article-40.html" class="article-item"><span class="article-item-title">三年後回來他說他進步了，我說他還在原地</span><span class="article-item-arrow">→</span></a>
+      <a href="articles/article-01.html" class="article-item"><span class="article-item-title">一天之內，讓你對愛情更有自信的四個練習</span><span class="article-item-arrow">→</span></a>
+      <a href="articles/article-34.html" class="article-item"><span class="article-item-title">你的「生存模式」，正在偷走你的人生</span><span class="article-item-arrow">→</span></a>
+      <a href="articles/article-32.html" class="article-item"><span class="article-item-title">為什麼你認識不到女生？——別再用你的「創傷」當成軟弱的遮羞布</span><span class="article-item-arrow">→</span></a>
     </div>
   </div>
+
 </div>
 
 <footer>
@@ -353,6 +230,7 @@
 </footer>
 
 <script>
+  // Nav
   const hamburger = document.getElementById('hamburger');
   const mobileMenu = document.getElementById('mobileMenu');
   hamburger.addEventListener('click', () => {
@@ -367,6 +245,28 @@
       hamburger.setAttribute('aria-expanded', 'false');
     });
   });
+
+  // Tab logic
+  const tabs = document.querySelectorAll('.tab');
+  const panels = document.querySelectorAll('.category-panel');
+
+  function showCategory(cat) {
+    tabs.forEach(t => t.classList.toggle('active', t.dataset.cat === cat));
+    panels.forEach(p => p.classList.toggle('active', p.id === 'cat-' + cat));
+    // Update URL without reload
+    const url = new URL(window.location);
+    url.searchParams.set('category', cat);
+    history.replaceState(null, '', url);
+  }
+
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => showCategory(tab.dataset.cat));
+  });
+
+  // On load, check URL param
+  const params = new URLSearchParams(window.location.search);
+  const initCat = params.get('category') || 'no-partner';
+  showCategory(initCat);
 </script>
 
 </body>
