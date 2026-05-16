@@ -178,6 +178,10 @@
       max-width: var(--max-w); margin: 0 auto; width: 100%;
       position: relative; z-index: 1;
       animation: heroFade 0.8s ease both;
+      display: grid;
+      grid-template-columns: 1fr 340px;
+      gap: 56px;
+      align-items: center;
     }
     @keyframes heroFade {
       from { opacity: 0; transform: translateY(14px); }
@@ -207,7 +211,7 @@
     }
 
     .hero-sub {
-      font-size: clamp(0.95rem, 1.8vw, 1.08rem);
+      font-size: clamp(1rem, 1.8vw, 1.12rem);
       color: var(--text-secondary);
       font-weight: 300;
       max-width: 560px;
@@ -270,7 +274,7 @@
       margin-bottom: 14px;
     }
     .module-card p {
-      font-size: 14px; color: var(--text-secondary);
+      font-size: 15px; color: var(--text-secondary);
       line-height: 1.85; margin-bottom: 28px;
     }
     .module-link {
@@ -306,7 +310,7 @@
       color: var(--text-muted); margin-bottom: 14px;
     }
     .cred-desc {
-      font-size: 13px; color: var(--text-secondary);
+      font-size: 14px; color: var(--text-secondary);
       font-weight: 300; line-height: 1.8;
     }
 
@@ -331,7 +335,7 @@
       border-left: 2px solid rgba(0, 236, 151, 0.2);
     }
     .testimonial-quote {
-      font-size: 14px; line-height: 1.9;
+      font-size: 15px; line-height: 1.9;
       color: var(--text-secondary); margin-bottom: 18px;
     }
     .testimonial-author { font-size: 12px; color: var(--text-muted); }
@@ -348,7 +352,7 @@
     }
     .os-desc {
       max-width: 520px; margin: 0 auto 44px;
-      font-size: 1rem; color: var(--text-secondary);
+      font-size: 1.05rem; color: var(--text-secondary);
       line-height: 2; font-weight: 300;
     }
 
@@ -399,8 +403,83 @@
     .footer-links a { font-size: 13px; color: var(--text-muted); transition: color 0.2s; }
     .footer-links a:hover { color: var(--text-secondary); }
 
+    /* ── HERO PANEL ── */
+    .hero-panel {
+      border: 1px solid var(--border);
+      background: rgba(14, 14, 14, 0.9);
+      padding: 28px;
+      align-self: center;
+    }
+    .panel-header {
+      display: flex; align-items: center; gap: 10px;
+      padding-bottom: 16px; border-bottom: 1px solid var(--border);
+      margin-bottom: 24px;
+    }
+    .panel-dot {
+      width: 6px; height: 6px; border-radius: 50%;
+      background: var(--accent); flex-shrink: 0;
+    }
+    .panel-title {
+      font-size: 10px; font-weight: 700;
+      letter-spacing: 0.22em; text-transform: uppercase;
+      color: var(--text-secondary);
+    }
+    .panel-row { margin-bottom: 20px; }
+    .panel-row:last-of-type { margin-bottom: 0; }
+    .panel-key {
+      font-size: 10px; font-weight: 500;
+      letter-spacing: 0.16em; text-transform: uppercase;
+      color: var(--text-muted); margin-bottom: 6px;
+    }
+    .panel-val {
+      font-size: 13px; color: var(--text-secondary);
+      font-weight: 300; line-height: 1.65;
+    }
+    .panel-row.alert .panel-val { color: #d4856a; }
+    .panel-row.highlight .panel-val { color: var(--accent); font-weight: 500; }
+    .panel-footer {
+      margin-top: 24px; padding-top: 16px;
+      border-top: 1px solid var(--border);
+      font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase;
+      color: var(--text-muted);
+      display: flex; align-items: center; gap: 6px;
+    }
+    .panel-footer::before {
+      content: '';
+      display: inline-block; width: 4px; height: 4px;
+      border-radius: 50%; background: var(--text-muted); flex-shrink: 0;
+    }
+
+    /* ── PAT VOICE ── */
+    .pat-voice-section { border-top: 1px solid var(--border); }
+    .pat-voice {
+      max-width: 680px;
+      padding-left: 28px;
+      border-left: 2px solid var(--accent-border);
+    }
+    .voice-text {
+      font-size: clamp(1.05rem, 2vw, 1.2rem);
+      font-weight: 300; line-height: 2;
+      color: var(--text-primary); margin-bottom: 28px;
+    }
+    .voice-list { list-style: none; margin-bottom: 36px; }
+    .voice-list li {
+      font-size: clamp(0.95rem, 1.7vw, 1.05rem);
+      font-weight: 300; line-height: 1.9;
+      color: var(--text-secondary);
+      padding: 12px 0; border-bottom: 1px solid var(--border);
+    }
+    .voice-list li:first-child { border-top: 1px solid var(--border); }
+    .voice-signature {
+      font-size: clamp(0.95rem, 1.7vw, 1.05rem);
+      font-weight: 400; line-height: 2;
+      color: var(--text-primary);
+    }
+
     /* ── RESPONSIVE ── */
     @media (max-width: 900px) {
+      .hero-inner { grid-template-columns: 1fr; }
+      .hero-panel { display: none; }
       .cred-grid { grid-template-columns: repeat(2, 1fr); }
       .cred-item:nth-child(2) { border-right: none; }
       .cred-item:nth-child(3) { border-top: 1px solid var(--border); }
@@ -460,18 +539,39 @@
 <!-- ── HERO ── -->
 <section class="hero">
   <div class="hero-inner">
-    <p class="hero-eyebrow">EMOTIONAL OPERATING SYSTEM 3.0</p>
-    <h1>你缺的不是聊天技巧，<br>是不被她的反應<br>牽著走的情感作業系統。</h1>
-    <p class="hero-sub">19 年來，派特協助男性看懂自己在曖昧、約會與關係中反覆卡住的根本原因。當你不再把價值感交給對方的回覆決定，感情才會真正開始穩定。</p>
-    <div class="hero-ctas">
-      <a href="https://lin.ee/pljXoyp" target="_blank" rel="noopener noreferrer" class="btn-primary">
-        開始情感 OS 診斷
-        <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-      </a>
-      <a href="os.html" class="btn-ghost">
-        了解 OS 3.0
-        <svg width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-      </a>
+    <div class="hero-content">
+      <p class="hero-eyebrow">EMOTIONAL OPERATING SYSTEM 3.0</p>
+      <h1>你缺的不是聊天技巧，<br>是不被她的反應<br>牽著走的情感作業系統。</h1>
+      <p class="hero-sub">19 年來，派特協助男性看懂自己在曖昧、約會與關係中反覆卡住的根本原因。當你不再把價值感交給對方的回覆決定，感情才會真正開始穩定。</p>
+      <div class="hero-ctas">
+        <a href="https://lin.ee/pljXoyp" target="_blank" rel="noopener noreferrer" class="btn-primary">
+          開始情感 OS 診斷
+          <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
+        <a href="os.html" class="btn-ghost">
+          了解 OS 3.0
+          <svg width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
+      </div>
+    </div>
+    <div class="hero-panel" aria-hidden="true">
+      <div class="panel-header">
+        <span class="panel-dot"></span>
+        <span class="panel-title">SYSTEM STATUS</span>
+      </div>
+      <div class="panel-row alert">
+        <div class="panel-key">VALUE SOURCE</div>
+        <div class="panel-val">External Reaction Detected</div>
+      </div>
+      <div class="panel-row">
+        <div class="panel-key">PATTERN IDENTIFIED</div>
+        <div class="panel-val">Anxiety → Overthinking → Self-Doubt</div>
+      </div>
+      <div class="panel-row highlight">
+        <div class="panel-key">RECOMMENDED UPGRADE</div>
+        <div class="panel-val">Emotional OS 3.0</div>
+      </div>
+      <div class="panel-footer">Diagnostic mode active</div>
     </div>
   </div>
 </section>
@@ -569,6 +669,29 @@
         <p class="testimonial-quote">「諮詢完才知道，我卡了 5 年的問題，根源只有一個。比我自己想過的所有答案都簡單，但就是沒人告訴我。」</p>
         <span class="testimonial-author">— 台中，38 歲業務</span>
       </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ── PAT VOICE ── -->
+<section class="pat-voice-section">
+  <div class="container">
+    <div class="pat-voice reveal">
+      <p class="voice-text">
+        不是每個男人都需要更多技巧。<br>
+        有些人真正需要的，是有人幫他看懂：
+      </p>
+      <ul class="voice-list">
+        <li>為什麼一遇到喜歡的人，就開始不像自己。</li>
+        <li>為什麼明明條件不差，卻總在感情裡失去穩定。</li>
+        <li>為什麼每次都以為是遇錯人，最後卻發現模式一直重複。</li>
+      </ul>
+      <p class="voice-signature">
+        我是派特。<br>
+        19 年來，我看的不是一句訊息怎麼回，<br>
+        而是一個男人在感情裡如何一步步把自己交出去。
+      </p>
     </div>
   </div>
 </section>
