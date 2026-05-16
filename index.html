@@ -17,34 +17,27 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700;900&display=swap" rel="stylesheet">
   <style>
-    /* ── Reset ── */
-    *, *::before, *::after {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 
-    /* ── Variables ── */
     :root {
-      --bg:            #0a0a0a;
-      --surface:       #0f0f0f;
-      --card:          #141414;
-      --border:        #1e1e1e;
-      --border-hover:  #2e2e2e;
-      --accent:        #1a3a5c;
-      --accent-hover:  #234d7a;
-      --accent-text:   #4a8bc4;
-      --text-primary:  #efefef;
-      --text-secondary:#888;
-      --text-muted:    #444;
-      --font:          'Noto Sans TC', -apple-system, 'PingFang TC', 'Microsoft JhengHei', sans-serif;
-      --max-w:         1080px;
-      --nav-h:         64px;
+      --bg:             #0a0a0a;
+      --surface:        #0e0e0e;
+      --card:           #111111;
+      --border:         #1e1e1e;
+      --border-hover:   #2e2e2e;
+      --accent:         #00ec97;
+      --accent-hover:   #00cf84;
+      --accent-dim:     rgba(0, 236, 151, 0.06);
+      --accent-border:  rgba(0, 236, 151, 0.22);
+      --text-primary:   #f0f0f0;
+      --text-secondary: #787878;
+      --text-muted:     #3a3a3a;
+      --font:           'Noto Sans TC', -apple-system, 'PingFang TC', 'Microsoft JhengHei', sans-serif;
+      --max-w:          1080px;
+      --nav-h:          64px;
     }
 
-    /* ── Base ── */
     html { scroll-behavior: smooth; }
-
     body {
       background: var(--bg);
       color: var(--text-primary);
@@ -52,557 +45,395 @@
       line-height: 1.7;
       -webkit-font-smoothing: antialiased;
     }
-
     a { color: inherit; text-decoration: none; }
 
-    /* ── Container ── */
-    .container {
-      max-width: var(--max-w);
-      margin: 0 auto;
-      padding: 0 24px;
-    }
+    .container { max-width: var(--max-w); margin: 0 auto; padding: 0 32px; }
+    section { padding: 104px 0; }
 
-    /* ── Section spacing ── */
-    section { padding: 96px 0; }
-
-    /* ── Scroll fade-in ── */
     .reveal {
       opacity: 0;
-      transform: translateY(24px);
-      transition: opacity 0.65s ease, transform 0.65s ease;
+      transform: translateY(18px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
     }
-    .reveal.visible {
-      opacity: 1;
-      transform: none;
-    }
+    .reveal.visible { opacity: 1; transform: none; }
 
-    /* ── Section labels ── */
-    .section-label {
-      font-size: 11px;
-      font-weight: 400;
-      letter-spacing: 0.16em;
-      text-transform: uppercase;
-      color: var(--text-muted);
-      margin-bottom: 14px;
-    }
-
-    .section-title {
-      font-size: clamp(1.7rem, 4vw, 2.5rem);
-      font-weight: 700;
-      line-height: 1.25;
-      color: var(--text-primary);
-      margin-bottom: 48px;
-    }
-
-    /* ── Buttons ── */
-    .btn-primary {
-      display: inline-flex;
-      align-items: center;
-      gap: 10px;
-      padding: 14px 26px;
-      background: var(--accent);
-      color: #fff;
-      font-size: 15px;
-      font-weight: 500;
-      font-family: var(--font);
-      border-radius: 4px;
-      border: none;
-      cursor: pointer;
-      transition: background 0.2s, transform 0.15s;
-    }
-    .btn-primary:hover {
-      background: var(--accent-hover);
-      transform: translateY(-1px);
-    }
-
-    .btn-text {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      font-size: 14px;
-      color: var(--text-secondary);
-      transition: color 0.2s;
-    }
-    .btn-text:hover { color: var(--text-primary); }
-
-
-    /* ════════════════════════════
-       NAV
-    ════════════════════════════ */
+    /* ── NAV ── */
     nav {
-      position: fixed;
-      top: 0; left: 0; right: 0;
-      z-index: 100;
-      height: var(--nav-h);
-      background: rgba(10, 10, 10, 0.88);
-      backdrop-filter: blur(18px);
-      -webkit-backdrop-filter: blur(18px);
+      position: fixed; top: 0; left: 0; right: 0;
+      z-index: 100; height: var(--nav-h);
+      background: rgba(10, 10, 10, 0.92);
+      backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
       border-bottom: 1px solid var(--border);
     }
-
     .nav-inner {
-      max-width: var(--max-w);
-      margin: 0 auto;
-      padding: 0 24px;
-      height: 100%;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
+      max-width: var(--max-w); margin: 0 auto; padding: 0 32px;
+      height: 100%; display: flex; align-items: center; justify-content: space-between;
     }
-
-    .nav-logo {
-      display: flex;
-      align-items: center;
-      line-height: 1;
-      letter-spacing: 0.06em;
-    }
-
-    .nav-links {
-      display: flex;
-      align-items: center;
-      gap: 28px;
-      list-style: none;
-    }
-    .nav-links a {
-      font-size: 14px;
-      color: var(--text-secondary);
-      transition: color 0.2s;
-    }
+    .nav-links { display: flex; align-items: center; gap: 32px; list-style: none; }
+    .nav-links a { font-size: 14px; color: var(--text-secondary); transition: color 0.2s; }
     .nav-links a:hover { color: var(--text-primary); }
-    .nav-links a.active { color: var(--text-primary); font-weight: 500; }
-
     .nav-cta {
-      padding: 8px 18px;
-      border: 1px solid var(--border);
-      border-radius: 4px;
-      color: var(--text-primary) !important;
-      font-size: 14px;
-      transition: background 0.2s, border-color 0.2s !important;
+      padding: 8px 18px; border: 1px solid var(--border); border-radius: 4px;
+      color: var(--text-primary) !important; font-size: 14px;
+      transition: border-color 0.2s, background 0.2s !important;
     }
-    .nav-cta:hover {
-      background: var(--card) !important;
-      border-color: var(--border-hover) !important;
-    }
+    .nav-cta:hover { border-color: var(--border-hover) !important; background: var(--card) !important; }
 
-    /* Hamburger */
     .hamburger {
-      display: none;
-      flex-direction: column;
-      gap: 5px;
-      cursor: pointer;
-      padding: 6px;
-      background: none;
-      border: none;
+      display: none; flex-direction: column; gap: 5px;
+      cursor: pointer; padding: 6px; background: none; border: none;
     }
     .hamburger span {
-      display: block;
-      width: 22px;
-      height: 1.5px;
-      background: var(--text-primary);
-      transition: all 0.25s;
+      display: block; width: 22px; height: 1.5px;
+      background: var(--text-primary); transition: all 0.25s;
     }
     .hamburger.open span:nth-child(1) { transform: translateY(6.5px) rotate(45deg); }
     .hamburger.open span:nth-child(2) { opacity: 0; }
     .hamburger.open span:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
 
     .mobile-menu {
-      display: none;
-      position: fixed;
-      top: var(--nav-h);
-      left: 0; right: 0;
-      background: var(--surface);
-      border-bottom: 1px solid var(--border);
-      z-index: 99;
+      display: none; position: fixed; top: var(--nav-h); left: 0; right: 0;
+      background: var(--surface); border-bottom: 1px solid var(--border); z-index: 99;
     }
     .mobile-menu.open { display: block; }
     .mobile-menu a {
-      display: block;
-      padding: 16px 24px;
-      font-size: 15px;
-      color: var(--text-secondary);
-      border-bottom: 1px solid var(--border);
-      transition: color 0.2s;
+      display: block; padding: 16px 24px; font-size: 15px;
+      color: var(--text-secondary); border-bottom: 1px solid var(--border); transition: color 0.2s;
     }
     .mobile-menu a:hover { color: var(--text-primary); }
     .mobile-menu a:last-child { border-bottom: none; }
 
+    /* ── BUTTONS ── */
+    .btn-primary {
+      display: inline-flex; align-items: center; gap: 10px;
+      padding: 14px 28px;
+      background: var(--accent); color: #000;
+      font-size: 15px; font-weight: 700; font-family: var(--font);
+      border-radius: 4px; border: none; cursor: pointer;
+      letter-spacing: 0.01em;
+      transition: background 0.2s, transform 0.15s;
+    }
+    .btn-primary:hover { background: var(--accent-hover); transform: translateY(-1px); }
 
-    /* ════════════════════════════
-       HERO
-    ════════════════════════════ */
-    .hero {
-      min-height: 100svh;
-      display: flex;
-      align-items: center;
-      padding-top: var(--nav-h);
-      position: relative;
-      overflow: hidden;
+    .btn-ghost {
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 13px 24px;
+      border: 1px solid var(--accent-border); border-radius: 4px;
+      color: var(--accent); font-size: 15px; font-weight: 400; font-family: var(--font);
+      transition: border-color 0.2s, background 0.2s;
+    }
+    .btn-ghost:hover { border-color: var(--accent); background: var(--accent-dim); }
+
+    .btn-text {
+      display: inline-flex; align-items: center; gap: 6px;
+      font-size: 14px; color: var(--text-secondary); transition: color 0.2s;
+    }
+    .btn-text:hover { color: var(--text-primary); }
+
+    /* ── SECTION LABELS ── */
+    .section-eyebrow {
+      font-size: 11px; font-weight: 500;
+      letter-spacing: 0.18em; text-transform: uppercase;
+      color: var(--text-muted); margin-bottom: 16px;
+    }
+    .section-title {
+      font-size: clamp(1.8rem, 3.5vw, 2.6rem);
+      font-weight: 700; line-height: 1.22;
+      color: var(--text-primary); margin-bottom: 52px;
     }
 
-    /* Subtle radial glow */
+    /* ── HERO ── */
+    .hero {
+      min-height: 100svh;
+      display: flex; align-items: center;
+      padding-top: var(--nav-h);
+      position: relative; overflow: hidden;
+    }
+
+    /* Faint green radial glow */
     .hero::before {
       content: '';
-      position: absolute;
-      inset: 0;
+      position: absolute; inset: 0;
       background:
-        radial-gradient(ellipse 60% 55% at 10% 60%, rgba(26,58,92,0.18) 0%, transparent 65%),
-        radial-gradient(ellipse 40% 40% at 80% 20%, rgba(26,58,92,0.07) 0%, transparent 60%);
+        radial-gradient(ellipse 55% 70% at 4% 55%, rgba(0, 236, 151, 0.07) 0%, transparent 65%),
+        radial-gradient(ellipse 35% 40% at 85% 18%, rgba(0, 236, 151, 0.03) 0%, transparent 60%);
       pointer-events: none;
     }
 
-    .hero-inner {
-      padding: 80px 24px 80px;
-      max-width: var(--max-w);
-      margin: 0 auto;
-      width: 100%;
-      animation: heroFade 0.9s ease both;
+    /* Subtle background grid */
+    .hero::after {
+      content: '';
+      position: absolute; inset: 0;
+      background-image:
+        linear-gradient(rgba(255, 255, 255, 0.022) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 255, 255, 0.022) 1px, transparent 1px);
+      background-size: 64px 64px;
+      pointer-events: none;
+      -webkit-mask-image: radial-gradient(ellipse 85% 90% at 12% 50%, black 15%, transparent 78%);
+      mask-image: radial-gradient(ellipse 85% 90% at 12% 50%, black 15%, transparent 78%);
     }
 
+    .hero-inner {
+      padding: 100px 32px 100px;
+      max-width: var(--max-w); margin: 0 auto; width: 100%;
+      position: relative; z-index: 1;
+      animation: heroFade 0.8s ease both;
+    }
     @keyframes heroFade {
-      from { opacity: 0; transform: translateY(20px); }
+      from { opacity: 0; transform: translateY(14px); }
       to   { opacity: 1; transform: none; }
     }
 
     .hero-eyebrow {
-      font-size: 12px;
-      font-weight: 400;
-      letter-spacing: 0.14em;
-      text-transform: uppercase;
-      color: var(--accent-text);
-      margin-bottom: 24px;
+      display: inline-flex; align-items: center; gap: 10px;
+      font-size: 11px; font-weight: 500;
+      letter-spacing: 0.22em; text-transform: uppercase;
+      color: var(--accent); margin-bottom: 36px;
+    }
+    .hero-eyebrow::before {
+      content: '';
+      display: inline-block; width: 18px; height: 1px;
+      background: var(--accent); flex-shrink: 0;
     }
 
     .hero h1 {
-      font-size: clamp(2.2rem, 6.5vw, 4.4rem);
+      font-size: clamp(2.4rem, 6.2vw, 4.5rem);
       font-weight: 900;
-      line-height: 1.18;
-      letter-spacing: -0.01em;
+      line-height: 1.14;
+      letter-spacing: -0.02em;
       color: var(--text-primary);
-      margin-bottom: 28px;
-      max-width: 780px;
+      margin-bottom: 36px;
+      max-width: 840px;
     }
 
     .hero-sub {
-      font-size: clamp(1rem, 2.5vw, 1.2rem);
+      font-size: clamp(0.95rem, 1.8vw, 1.08rem);
       color: var(--text-secondary);
       font-weight: 300;
-      max-width: 500px;
-      margin-bottom: 48px;
-      line-height: 1.8;
+      max-width: 560px;
+      margin-bottom: 56px;
+      line-height: 2;
     }
 
-    .hero-ctas {
-      display: flex;
-      flex-wrap: wrap;
-      align-items: center;
-      gap: 20px;
-    }
+    .hero-ctas { display: flex; flex-wrap: wrap; align-items: center; gap: 16px; }
 
-
-    /* ════════════════════════════
-       THREE CARDS
-    ════════════════════════════ */
-    .three-cards {
-      background: var(--surface);
+    /* ── DIAGNOSTIC MODULES ── */
+    .modules-section {
       border-top: 1px solid var(--border);
       border-bottom: 1px solid var(--border);
+      background: var(--surface);
     }
 
-    .cards-grid {
+    .modules-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
-      border: 1px solid var(--border);
-      border-radius: 6px;
-      overflow: hidden;
       gap: 1px;
       background: var(--border);
+      border: 1px solid var(--border);
     }
 
-    .entry-card {
+    .module-card {
       background: var(--card);
-      padding: 36px 30px;
+      padding: 40px 32px;
       display: block;
+      position: relative;
       transition: background 0.2s;
     }
-    .entry-card:hover { background: #191919; }
-
-    .entry-tag {
-      display: inline-block;
-      font-size: 10px;
-      font-weight: 500;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      color: var(--accent-text);
-      margin-bottom: 16px;
+    .module-card::before {
+      content: '';
+      position: absolute; inset: 0;
+      border: 1px solid transparent;
+      transition: border-color 0.22s;
+      pointer-events: none;
     }
+    .module-card:hover { background: #161616; }
+    .module-card:hover::before { border-color: var(--accent-border); }
 
-    .entry-card h3 {
-      font-size: 1.1rem;
-      font-weight: 700;
-      line-height: 1.45;
-      color: var(--text-primary);
-      margin-bottom: 12px;
-    }
-
-    .entry-card p {
-      font-size: 14px;
-      color: var(--text-secondary);
-      line-height: 1.75;
+    .module-meta {
+      display: flex; flex-direction: column; gap: 3px;
       margin-bottom: 22px;
     }
-
-    .entry-link {
-      font-size: 13px;
+    .module-num {
+      font-size: 10px; font-weight: 700;
+      letter-spacing: 0.22em; text-transform: uppercase;
+      color: var(--accent);
+    }
+    .module-cat {
+      font-size: 11px; font-weight: 400;
+      letter-spacing: 0.06em;
       color: var(--text-muted);
-      transition: color 0.2s;
-    }
-    .entry-card:hover .entry-link { color: var(--text-secondary); }
-
-
-    /* ════════════════════════════
-       SOCIAL PROOF
-    ════════════════════════════ */
-    .authority-statement {
-      text-align: center;
-      padding-bottom: 60px;
-      border-bottom: 1px solid var(--border);
-      margin-bottom: 60px;
     }
 
-    .authority-text {
-      font-size: clamp(1.25rem, 2.4vw, 1.6rem);
-      font-weight: 500;
-      line-height: 2.4;
+    .module-card h3 {
+      font-size: 1.15rem; font-weight: 700;
+      line-height: 1.45; color: var(--text-primary);
+      margin-bottom: 14px;
+    }
+    .module-card p {
+      font-size: 14px; color: var(--text-secondary);
+      line-height: 1.85; margin-bottom: 28px;
+    }
+    .module-link {
+      font-size: 12px; letter-spacing: 0.06em;
+      color: var(--text-muted); transition: color 0.2s;
+    }
+    .module-card:hover .module-link { color: var(--accent); }
+
+    /* ── CREDENTIAL WALL ── */
+    .cred-section { border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+
+    .cred-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      border: 1px solid var(--border);
+      margin-bottom: 64px;
+    }
+    .cred-item {
+      padding: 36px 28px;
+      border-right: 1px solid var(--border);
+    }
+    .cred-item:last-child { border-right: none; }
+
+    .cred-stat {
+      font-size: 1.55rem; font-weight: 700;
       color: var(--text-primary);
-      letter-spacing: 0.015em;
+      letter-spacing: -0.01em;
+      margin-bottom: 8px; line-height: 1;
     }
-
-    .authority-dash { color: #2a5a8c; }
-
-    .partners-section {
-      text-align: center;
-      padding-bottom: 60px;
-      border-bottom: 1px solid var(--border);
-      margin-bottom: 60px;
+    .cred-label {
+      font-size: 10px; font-weight: 500;
+      letter-spacing: 0.14em; text-transform: uppercase;
+      color: var(--text-muted); margin-bottom: 14px;
+    }
+    .cred-desc {
+      font-size: 13px; color: var(--text-secondary);
+      font-weight: 300; line-height: 1.8;
     }
 
     .partners-label {
-      font-size: 12px;
-      letter-spacing: 0.14em;
-      text-transform: uppercase;
-      color: #444;
+      font-size: 11px; letter-spacing: 0.14em;
+      text-transform: uppercase; color: var(--text-muted);
       margin-bottom: 20px;
     }
-
     .partners-list {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 10px 36px;
+      display: flex; flex-wrap: wrap;
+      gap: 10px 32px; margin-bottom: 64px;
     }
-
-    .partners-list span {
-      font-size: 13px;
-      color: #555;
-      letter-spacing: 0.04em;
-    }
+    .partners-list span { font-size: 13px; color: #4a4a4a; letter-spacing: 0.04em; }
 
     .testimonials-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 20px;
+      display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px;
+      background: var(--border); border: 1px solid var(--border);
     }
-
     .testimonial {
       background: var(--card);
-      border: 1px solid var(--border);
-      border-left: 2px solid var(--accent);
-      border-radius: 6px;
-      padding: 28px;
+      padding: 32px 28px;
+      border-left: 2px solid rgba(0, 236, 151, 0.2);
     }
-
     .testimonial-quote {
-      font-size: 14px;
-      line-height: 1.85;
-      color: var(--text-secondary);
-      margin-bottom: 18px;
+      font-size: 14px; line-height: 1.9;
+      color: var(--text-secondary); margin-bottom: 18px;
     }
+    .testimonial-author { font-size: 12px; color: var(--text-muted); }
 
-    .testimonial-author {
-      font-size: 12px;
-      color: var(--text-muted);
-    }
-
-
-    /* ════════════════════════════
-       OS CONCEPT
-    ════════════════════════════ */
+    /* ── OS SECTION ── */
     .os-section {
       background: var(--surface);
       border-top: 1px solid var(--border);
       border-bottom: 1px solid var(--border);
       text-align: center;
     }
-
     .os-section .section-title {
-      max-width: 640px;
-      margin-left: auto;
-      margin-right: auto;
+      max-width: 640px; margin-left: auto; margin-right: auto; margin-bottom: 24px;
     }
-
     .os-desc {
-      max-width: 540px;
-      margin: 0 auto 40px;
-      font-size: 1.05rem;
-      color: var(--text-secondary);
-      line-height: 1.9;
-      font-weight: 300;
+      max-width: 520px; margin: 0 auto 44px;
+      font-size: 1rem; color: var(--text-secondary);
+      line-height: 2; font-weight: 300;
     }
 
-
-    /* ════════════════════════════
-       ARTICLES
-    ════════════════════════════ */
+    /* ── ARTICLES ── */
     .articles-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 20px;
+      display: grid; grid-template-columns: repeat(3, 1fr);
+      gap: 1px; background: var(--border); border: 1px solid var(--border);
     }
-
     .article-card {
-      border: 1px solid var(--border);
-      border-radius: 6px;
-      padding: 28px;
-      display: block;
-      transition: border-color 0.2s, background 0.2s;
+      background: var(--card); padding: 32px 28px;
+      display: block; transition: background 0.2s;
     }
-    .article-card:hover {
-      border-color: var(--border-hover);
-      background: var(--card);
-    }
-
+    .article-card:hover { background: #161616; }
     .article-tag {
-      font-size: 11px;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      color: var(--text-muted);
-      margin-bottom: 12px;
+      font-size: 10px; letter-spacing: 0.12em;
+      text-transform: uppercase; color: var(--text-muted); margin-bottom: 14px;
     }
-
     .article-title {
-      font-size: 1rem;
-      font-weight: 700;
-      line-height: 1.55;
-      color: var(--text-primary);
-      margin-bottom: 20px;
+      font-size: 1rem; font-weight: 700;
+      line-height: 1.55; color: var(--text-primary); margin-bottom: 24px;
     }
-
-    .article-link {
-      font-size: 13px;
-      color: var(--text-muted);
-      transition: color 0.2s;
-    }
+    .article-link { font-size: 12px; color: var(--text-muted); transition: color 0.2s; }
     .article-card:hover .article-link { color: var(--text-secondary); }
 
-
-    /* ════════════════════════════
-       BOTTOM CTA
-    ════════════════════════════ */
+    /* ── BOTTOM CTA ── */
     .bottom-cta {
       text-align: center;
-      background: linear-gradient(170deg, var(--bg) 0%, #0b1623 100%);
+      background: linear-gradient(170deg, var(--bg) 0%, #060f0b 100%);
       border-top: 1px solid var(--border);
     }
-
-    .bottom-cta .section-title { margin-bottom: 12px; }
-
+    .bottom-cta .section-title { margin-bottom: 16px; }
     .bottom-cta-sub {
-      max-width: 420px;
-      margin: 0 auto 44px;
-      font-size: 15px;
-      color: var(--text-secondary);
-      font-weight: 300;
-      line-height: 1.8;
+      max-width: 440px; margin: 0 auto 48px;
+      font-size: 15px; color: var(--text-secondary);
+      font-weight: 300; line-height: 1.9;
     }
+    .cta-stack { display: flex; flex-direction: column; align-items: center; gap: 16px; }
 
-    .cta-stack {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 16px;
-    }
-
-
-    /* ════════════════════════════
-       FOOTER
-    ════════════════════════════ */
-    footer {
-      padding: 32px 24px;
-      border-top: 1px solid var(--border);
-    }
-
+    /* ── FOOTER ── */
+    footer { padding: 32px 0; border-top: 1px solid var(--border); }
     .footer-inner {
-      max-width: var(--max-w);
-      margin: 0 auto;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      flex-wrap: wrap;
-      gap: 12px;
+      max-width: var(--max-w); margin: 0 auto; padding: 0 32px;
+      display: flex; align-items: center; justify-content: space-between;
+      flex-wrap: wrap; gap: 12px;
     }
-
-    .footer-copy {
-      font-size: 13px;
-      color: var(--text-muted);
-    }
-
-    .footer-links {
-      display: flex;
-      gap: 24px;
-    }
-    .footer-links a {
-      font-size: 13px;
-      color: var(--text-muted);
-      transition: color 0.2s;
-    }
+    .footer-copy { font-size: 13px; color: var(--text-muted); }
+    .footer-links { display: flex; gap: 24px; }
+    .footer-links a { font-size: 13px; color: var(--text-muted); transition: color 0.2s; }
     .footer-links a:hover { color: var(--text-secondary); }
 
-
-    /* ════════════════════════════
-       RESPONSIVE
-    ════════════════════════════ */
+    /* ── RESPONSIVE ── */
     @media (max-width: 900px) {
+      .cred-grid { grid-template-columns: repeat(2, 1fr); }
+      .cred-item:nth-child(2) { border-right: none; }
+      .cred-item:nth-child(3) { border-top: 1px solid var(--border); }
+      .cred-item:nth-child(4) { border-top: 1px solid var(--border); border-right: none; }
       .testimonials-grid { grid-template-columns: 1fr; }
     }
 
     @media (max-width: 768px) {
       section { padding: 72px 0; }
-
+      .container { padding: 0 20px; }
+      .nav-inner { padding: 0 20px; }
+      .hero-inner { padding: 72px 20px; }
       .nav-links { display: none; }
       .hamburger { display: flex; }
-
-      .hero h1 { font-size: clamp(2rem, 9vw, 3rem); }
-
+      .hero h1 { font-size: clamp(2.2rem, 9vw, 2.8rem); letter-spacing: -0.015em; }
+      .hero-sub { margin-bottom: 40px; }
       .hero-ctas { flex-direction: column; align-items: flex-start; }
-
-      .cards-grid {
-        grid-template-columns: 1fr;
-      }
-
+      .modules-grid { grid-template-columns: 1fr; }
       .articles-grid { grid-template-columns: 1fr; }
-
+      .section-title { margin-bottom: 36px; }
       .footer-inner { flex-direction: column; align-items: flex-start; }
     }
 
     @media (max-width: 480px) {
-      .authority-text { line-height: 2.1; }
-      .partners-list { gap: 10px 24px; }
+      .cred-grid { grid-template-columns: 1fr; }
+      .cred-item { border-right: none; border-bottom: 1px solid var(--border); }
+      .cred-item:last-child { border-bottom: none; }
     }
   </style>
 </head>
 <body>
 
-<!-- ══ NAV ══ -->
+<!-- ── NAV ── -->
 <nav>
   <div class="nav-inner">
     <a href="index.html" class="nav-logo">
@@ -626,19 +457,19 @@
 </div>
 
 
-<!-- ══ HERO ══ -->
+<!-- ── HERO ── -->
 <section class="hero">
   <div class="hero-inner">
-    <p class="hero-eyebrow">情感作業系統 3.0</p>
-    <h1>感情裡的患得患失，<br>不是態度問題，<br>是系統問題。</h1>
-    <p class="hero-sub">19 年，我幫助超過 X 位男性找到感情卡關的真正原因。</p>
+    <p class="hero-eyebrow">EMOTIONAL OPERATING SYSTEM 3.0</p>
+    <h1>你缺的不是聊天技巧，<br>是不被她的反應<br>牽著走的情感作業系統。</h1>
+    <p class="hero-sub">19 年來，派特協助男性看懂自己在曖昧、約會與關係中反覆卡住的根本原因。當你不再把價值感交給對方的回覆決定，感情才會真正開始穩定。</p>
     <div class="hero-ctas">
       <a href="https://lin.ee/pljXoyp" target="_blank" rel="noopener noreferrer" class="btn-primary">
-        加入 LINE 好友，領取免費情感作業系統診斷
-        <svg width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        開始情感 OS 診斷
+        <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
       </a>
-      <a href="os.html" class="btn-text">
-        了解情感作業系統 3.0
+      <a href="os.html" class="btn-ghost">
+        了解 OS 3.0
         <svg width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
       </a>
     </div>
@@ -646,48 +477,72 @@
 </section>
 
 
-<!-- ══ THREE CARDS ══ -->
-<section class="three-cards">
+<!-- ── DIAGNOSTIC MODULES ── -->
+<section class="modules-section">
   <div class="container">
-    <p class="section-label">找到你的位置</p>
-    <h2 class="section-title">你現在是哪種狀態？</h2>
-    <div class="cards-grid reveal">
-      <a href="articles.html#push-forward" class="entry-card">
-        <span class="entry-tag">行動入口</span>
+    <p class="section-eyebrow">DIAGNOSTIC SYSTEM</p>
+    <h2 class="section-title">先找出你的系統卡在哪裡</h2>
+    <div class="modules-grid reveal">
+      <a href="articles.html#push-forward" class="module-card">
+        <div class="module-meta">
+          <span class="module-num">MODULE 01</span>
+          <span class="module-cat">行動卡關</span>
+        </div>
         <h3>我想主動，但開不了口</h3>
-        <p>想認識人、想表達，但每次到關鍵時刻就縮回去，害怕被拒絕，不知道怎麼開口。</p>
-        <span class="entry-link">從這裡開始 →</span>
+        <p>可能不是你沒勇氣，而是你太害怕被拒絕後的自我否定。</p>
+        <span class="module-link">進入診斷 →</span>
       </a>
-      <a href="articles.html#relationship-trouble" class="entry-card">
-        <span class="entry-tag">痛點入口</span>
-        <h3>我在關係裡很不安，患得患失</h3>
-        <p>對方晚回一則訊息就開始瞎想，沒安全感，靠對方的反應決定自己今天過得好不好。</p>
-        <span class="entry-link">從這裡開始 →</span>
+      <a href="articles.html#relationship-trouble" class="module-card">
+        <div class="module-meta">
+          <span class="module-num">MODULE 02</span>
+          <span class="module-cat">情緒失控</span>
+        </div>
+        <h3>我在關係裡患得患失</h3>
+        <p>不是你太敏感，是你把自己的價值交給對方反應決定。</p>
+        <span class="module-link">進入診斷 →</span>
       </a>
-      <a href="articles.html#self-awareness" class="entry-card">
-        <span class="entry-tag">自我察覺入口</span>
+      <a href="articles.html#self-awareness" class="module-card">
+        <div class="module-meta">
+          <span class="module-num">MODULE 03</span>
+          <span class="module-cat">模式重複</span>
+        </div>
         <h3>我懷疑問題出在我自己</h3>
-        <p>感情模式一直重複，換了對象問題還在。開始覺得可能不是對方的問題，是自己的問題。</p>
-        <span class="entry-link">從這裡開始 →</span>
+        <p>當同樣的問題換了對象還會發生，你需要看的就不是對方，而是系統。</p>
+        <span class="module-link">進入診斷 →</span>
       </a>
     </div>
   </div>
 </section>
 
 
-<!-- ══ SOCIAL PROOF ══ -->
+<!-- ── CREDENTIALS ── -->
 <section>
   <div class="container">
-    <div class="authority-statement reveal">
-      <p class="authority-text">
-        從 2006 年至今，派特是台灣最資深的男性感情教練。<br>
-        曾出版、上節目、進企業。<br>
-        最終選擇回到一對一，<br>
-        因為這才是真正能改變一個人的方式。
-      </p>
+    <div class="cred-grid reveal">
+      <div class="cred-item">
+        <div class="cred-stat">19 YEARS</div>
+        <div class="cred-label">執業年資</div>
+        <div class="cred-desc">從 2006 年至今，持續在第一線指導台灣男性找到感情卡關的根本原因。</div>
+      </div>
+      <div class="cred-item">
+        <div class="cred-stat">2006—</div>
+        <div class="cred-label">開始執業</div>
+        <div class="cred-desc">在男性感情教育幾乎空白的年代，派特是台灣最早一批以系統化方式帶人的教練。</div>
+      </div>
+      <div class="cred-item">
+        <div class="cred-stat">MEDIA</div>
+        <div class="cred-label">媒體・出版・企業</div>
+        <div class="cred-desc">TVBS、三采文化、清華・交大、廣達電腦、工研院、南山人壽等合作紀錄。</div>
+      </div>
+      <div class="cred-item">
+        <div class="cred-stat">1:1</div>
+        <div class="cred-label">一對一諮詢</div>
+        <div class="cred-desc">最終選擇回到一對一，因為這才是真正能改變一個人情感模式的方式。</div>
+      </div>
     </div>
-    <div class="partners-section reveal">
-      <p class="partners-label">媒體・出版・企業合作</p>
+
+    <div class="reveal">
+      <p class="partners-label">合作機構與媒體</p>
       <div class="partners-list">
         <span>三采文化</span>
         <span>版圖影業</span>
@@ -700,6 +555,7 @@
         <span>陸軍花東防禦指揮部</span>
       </div>
     </div>
+
     <div class="testimonials-grid reveal">
       <div class="testimonial">
         <p class="testimonial-quote">「我以為是對方的問題，後來才發現是自己的情感 OS 在作怪。那次諮詢讓我看清楚自己到底在重複什麼模式。」</p>
@@ -718,28 +574,30 @@
 </section>
 
 
-<!-- ══ OS CONCEPT ══ -->
+<!-- ── OS CONCEPT ── -->
 <section class="os-section">
   <div class="container">
-    <p class="section-label reveal">情感作業系統</p>
+    <p class="section-eyebrow reveal" style="text-align:center; margin-bottom:16px;">OPERATING SYSTEM</p>
     <h2 class="section-title reveal">你的感情問題，<br>可能不是你想的那個問題。</h2>
     <p class="os-desc reveal">
-      你以為你缺的是說話技巧、追求方法，或者更好的外在條件。<br>
-      但 19 年下來我見過的所有感情卡關，幾乎都指向同一個根源：<br>
-      你在用一套舊版的情感作業系統，在處理現在的關係。
+      你以為你缺的是說話方式、追求方法，或者更好的條件。<br>
+      但 19 年下來我見過的感情卡關，幾乎都指向同一個根源：<br>
+      你在用一套舊版的情感作業系統，處理現在的關係。
     </p>
-    <a href="os.html" class="btn-text reveal" style="justify-content:center;">
-      了解情感作業系統 3.0
-      <svg width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-    </a>
+    <div class="reveal" style="text-align:center;">
+      <a href="os.html" class="btn-ghost">
+        了解情感作業系統 3.0
+        <svg width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </a>
+    </div>
   </div>
 </section>
 
 
-<!-- ══ ARTICLES ══ -->
+<!-- ── ARTICLES ── -->
 <section>
   <div class="container">
-    <p class="section-label">從這裡開始</p>
+    <p class="section-eyebrow">從這裡開始</p>
     <h2 class="section-title">先讀這幾篇</h2>
     <div class="articles-grid reveal">
       <a href="articles/article-39.html" class="article-card">
@@ -762,24 +620,24 @@
 </section>
 
 
-<!-- ══ BOTTOM CTA ══ -->
+<!-- ── BOTTOM CTA ── -->
 <section class="bottom-cta">
   <div class="container">
-    <p class="section-label reveal">下一步</p>
+    <p class="section-eyebrow reveal" style="text-align:center; margin-bottom:16px;">下一步</p>
     <h2 class="section-title reveal">準備好改變了嗎？</h2>
     <p class="bottom-cta-sub reveal">第一步不需要付費。先加入 LINE 好友，我幫你做一個免費的情感 OS 診斷。</p>
     <div class="cta-stack reveal">
       <a href="https://lin.ee/pljXoyp" target="_blank" rel="noopener noreferrer" class="btn-primary">
-        加入 LINE 好友，領取免費情感作業系統診斷
-        <svg width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        開始情感 OS 診斷
+        <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
       </a>
-      <a href="#" class="btn-text">或者先預約一對一諮詢 →</a>
+      <a href="service.html" class="btn-text">或者直接預約一對一諮詢 →</a>
     </div>
   </div>
 </section>
 
 
-<!-- ══ FOOTER ══ -->
+<!-- ── FOOTER ── -->
 <footer>
   <div class="footer-inner">
     <p class="footer-copy">© 2026 五四愛情學苑 派特</p>
@@ -792,16 +650,13 @@
 
 
 <script>
-  // ── Hamburger menu ──
   const hamburger = document.getElementById('hamburger');
   const mobileMenu = document.getElementById('mobileMenu');
-
   hamburger.addEventListener('click', () => {
     const open = mobileMenu.classList.toggle('open');
     hamburger.classList.toggle('open', open);
     hamburger.setAttribute('aria-expanded', String(open));
   });
-
   mobileMenu.querySelectorAll('a').forEach(link => {
     link.addEventListener('click', () => {
       mobileMenu.classList.remove('open');
@@ -810,7 +665,6 @@
     });
   });
 
-  // ── Scroll fade-in ──
   const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
@@ -819,7 +673,6 @@
       }
     });
   }, { threshold: 0.08 });
-
   document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 </script>
 
